@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckIcon, PlusIcon } from "@shopify/polaris-icons";
 import { Badge, Box, BlockStack, Button, InlineStack, Icon, Text } from "@shopify/polaris";
-import { Labels, intervalLabel, money } from "../../../../utils";
+import { Labels, intervalLabel, money } from "@heymantle/react";
 
 /**
  * @typedef {import('@heymantle/client').Plan} Plan

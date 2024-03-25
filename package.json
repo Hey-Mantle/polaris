@@ -1,14 +1,14 @@
 {
-  "name": "@heymantle/surface",
+  "name": "@heymantle/polaris",
   "description": "Mantle's frontend component library",
-  "version": "0.4.0",
+  "version": "12.0.0",
   "private": false,
   "license": "MIT",
   "author": "Mantle <josh@heymantle.com>",
   "homepage": "https://heymantle.com/docs",
-  "repository": "https://github.com/Hey-Mantle/surface",
+  "repository": "https://github.com/Hey-Mantle/polaris",
   "bugs": {
-    "url": "https://github.com/Hey-Mantle/surface/issues"
+    "url": "https://github.com/Hey-Mantle/polaris/issues"
   },
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
@@ -22,7 +22,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "vite build",
+    "build": "NODE_ENV=production vite build",
     "test": "exit 0",
     "build-and-publish": "npm run build && npx tsc && npm publish"
   },
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@heymantle/client": "^1.1.1",
+    "@heymantle/react": "^0.0.2",
     "@shopify/polaris-icons": "^8.1.0"
   },
   "publishConfig": {

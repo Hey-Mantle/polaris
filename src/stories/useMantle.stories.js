@@ -1,4 +1,4 @@
-import { MantleProvider } from "..";
+import { MantleProvider } from "@heymantle/react";
 import { AuthenticatedPage } from "./AuthenticatedPage";
 
 export default {

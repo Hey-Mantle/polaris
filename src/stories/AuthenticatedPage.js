@@ -1,5 +1,6 @@
 import { BlockStack, Page, Spinner, Text } from "@shopify/polaris";
-import { useMantle, HorizontalPlanCards } from "..";
+import { useMantle } from "@heymantle/react";
+import { HorizontalPlanCards } from "..";
 
 export const AuthenticatedPage = () => {
   const { plans, error, loading, mantleClient, customer } = useMantle();

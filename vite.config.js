@@ -28,7 +28,7 @@ export default defineConfig ({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.js"),
-      name: "@heymantle/surface",
+      name: "@heymantle/polaris",
       fileName: "index",
       formats: ["cjs", "es"]
     },

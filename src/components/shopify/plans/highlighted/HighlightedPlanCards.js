@@ -10,7 +10,7 @@ import {
   Page,
   Text,
 } from "@shopify/polaris";
-import { Labels, PlanAvailability, PlanInterval } from "../../../../utils";
+import { Labels, PlanAvailability, PlanInterval } from "@heymantle/react";
 import { PlanCardStack, PlanCardType } from "../PlanCardStack";
 
 export const HighlightedPlanCards = ({

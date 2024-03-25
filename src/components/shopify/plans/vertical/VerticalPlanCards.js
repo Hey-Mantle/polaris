@@ -16,7 +16,7 @@ import {
   Page,
   Text,
 } from "@shopify/polaris";
-import { Labels, PlanInterval, intervalLabel, money } from "../../../../utils";
+import { Labels, PlanInterval, intervalLabel, money } from "@heymantle/react";
 
 export const VerticalPlanCards = ({
   customer,

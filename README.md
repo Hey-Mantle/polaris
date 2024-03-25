@@ -9,7 +9,7 @@ You can install the Mantle react package using npm:
 
 
 ```bash
-$ npm install @heymantle/surface
+$ npm install @heymantle/polaris
 ```
 
 ## Usage

@@ -4,8 +4,9 @@ import {
   customButtonLabel,
   highestDiscount,
   isRecommendedPlan,
-} from "../../../utils";
-import { columnCount, columnSpan } from "../../../utils/views";
+  columnCount,
+  columnSpan,
+} from "@heymantle/react";
 import { HighlightedPlanCard } from "./highlighted/HighlightedPlanCard";
 import { HorizontalPlanCard } from "./horizontal";
 import { Grid } from "@shopify/polaris";
