@@ -55,7 +55,8 @@ const App = (Component) => {
 Furthur down the stack you can then use the `useMantle` hook for most data and operations, for example:
 
 ```js
-import { useMantle, HorizontalCards } from "@heymantle/react";
+import { useMantle } from "@heymantle/react";
+import { HorizontalPlanCards } from "@heymantle/polaris";
 
 const HomePage = () => {
   const { customer, subscription, plans, subscribe, cancelSubscription, pushEvent } = useMantle();
@@ -83,7 +84,7 @@ const HomePage = () => {
           </button>
         </div>
       ) : (
-        <HorizontalCards
+        <HorizontalPlanCards
           customer={customer}
           plans={plans}
           onSubscribe={async ({ planId, discountId }) => {
