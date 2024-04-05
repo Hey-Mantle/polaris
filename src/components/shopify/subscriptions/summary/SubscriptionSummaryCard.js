@@ -10,7 +10,7 @@ import {
   Modal,
   Text,
 } from "@shopify/polaris";
-import { money, PlanInterval, useMantle } from "@heymantle/react";
+import { money, PlanInterval } from "@heymantle/react";
 
 /**
  * Subscription summary component
@@ -19,6 +19,10 @@ import { money, PlanInterval, useMantle } from "@heymantle/react";
  * @param {Function} props.onShowPlans - Callback function to show plans.
  * @param {Function} props.onCancelPlan - Optional callback function to cancel plan.
  * @param {Function} props.onPlanCancelled - Optional callback function when plan is cancelled.
+ * @param {Function} props.cancelSubscription - Optional async function to cancel subscription.
+ * @param {Object} props.i18n - The internationalization object.
+ * @param {Object} props.subscription - The subscription object.
+ * @param {Function} props.refetch - Optional async function to refetch subscription data.
  * @returns {JSX.Element}
  */
 export const SubscriptionSummaryCard = ({
@@ -26,8 +30,11 @@ export const SubscriptionSummaryCard = ({
   onShowPlans,
   onCancelPlan,
   onPlanCancelled = () => { },
+  cancelSubscription = async () => { },
+  i18n,
+  subscription,
+  refetch = async () => { },
 }) => {
-  const { cancelSubscription, i18n, subscription, refetch } = useMantle();
   const [showCancelPlanModal, setShowCancelPlanModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
 

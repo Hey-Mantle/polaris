@@ -1,8 +1,6 @@
 import { AppProvider } from "@shopify/polaris";
 import { MantleProvider } from "@heymantle/react";
 import { SubscriptionSummaryPage } from "..";
-import { Plans } from "./test_data/plans";
-import { Customer } from "./test_data/customer";
 
 export default {
   title: "Subscription/SummaryPage",

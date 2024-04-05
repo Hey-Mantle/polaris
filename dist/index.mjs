@@ -1,5 +1,5 @@
 import e, { createContext as Me, useContext as ke, useState as Q } from "react";
-import { Box as I, BlockStack as f, Button as K, InlineStack as H, Badge as be, Text as o, Icon as X, Grid as re, Page as ye, ButtonGroup as de, Layout as Z, Banner as pe, Divider as Se, Card as me, Modal as $e, InlineGrid as Ae } from "@shopify/polaris";
+import { Box as I, BlockStack as v, Button as K, InlineStack as H, Badge as be, Text as u, Icon as X, Grid as ae, Page as ye, ButtonGroup as de, Layout as Z, Banner as pe, Divider as Se, Card as me, Modal as $e, InlineGrid as Ae } from "@shopify/polaris";
 const b = {
   Annual: "ANNUAL",
   Every30Days: "EVERY_30_DAYS"
@@ -9,7 +9,7 @@ const b = {
   ShopifyPlan: "shopifyPlan",
   Customer: "customer",
   Hidden: "hidden"
-}, m = {
+}, y = {
   AmountPerInterval: "{{ amount }} per {{ interval }}",
   Back: "Back",
   Cancel: "Cancel",
@@ -50,9 +50,9 @@ const b = {
   style: "currency",
   currency: t,
   notation: "standard"
-}), G = (t, i = "USD", u = !0) => {
-  let g = Be(i).format(t);
-  return u && (g = g.replace(/\.00$/, "")), g;
+}), G = (t, c = "USD", m = !0) => {
+  let d = Be(c).format(t);
+  return m && (d = d.replace(/\.00$/, "")), d;
 }, Te = (t = b.Every30Days) => {
   switch (t) {
     case b.Annual:
@@ -69,40 +69,40 @@ const b = {
     default:
       return "mo";
   }
-}, ce = ({
+}, ie = ({
   interval: t = b.Every30Days,
-  useShortFormPlanIntervals: i = !0
-}) => i ? Fe(t) : Te(t), Ce = ({ plan: t, customFieldKey: i = "recommended" }) => {
-  var u;
-  return !!((u = t.customFields) != null && u[i]);
-}, we = ({ plan: t, customFieldKey: i = "buttonLabel" }) => {
-  var u;
-  return ((u = t.customFields) == null ? void 0 : u[i]) || m.SelectPlan;
+  useShortFormPlanIntervals: c = !0
+}) => c ? Fe(t) : Te(t), Ce = ({ plan: t, customFieldKey: c = "recommended" }) => {
+  var m;
+  return !!((m = t.customFields) != null && m[c]);
+}, we = ({ plan: t, customFieldKey: c = "buttonLabel" }) => {
+  var m;
+  return ((m = t.customFields) == null ? void 0 : m[c]) || y.SelectPlan;
 }, He = ({ plan: t }) => {
-  var i;
-  return ((i = t.discounts) == null ? void 0 : i.length) > 0 ? t.discounts.reduce(
-    (u, g) => u.discountedAmount < g.discountedAmount ? u : g
+  var c;
+  return ((c = t.discounts) == null ? void 0 : c.length) > 0 ? t.discounts.reduce(
+    (m, d) => m.discountedAmount < d.discountedAmount ? m : d
   ) : void 0;
 }, Oe = (t = 4) => t % 4 === 0 ? { xs: 6, sm: 6, md: 2, lg: 3, xl: 3 } : t % 3 === 0 ? { xs: 6, sm: 6, md: 2, lg: 4, xl: 4 } : t % 2 === 0 ? { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } : t === 1 ? { xs: 6, sm: 6, md: 6, lg: 12, xl: 12 } : { xs: 6, sm: 6, md: 2, lg: 4, xl: 4 }, _e = (t = 4) => t % 4 === 0 ? 4 : t % 3 === 0 ? 3 : t % 2 === 0 ? 2 : t === 1 ? 1 : 4;
-var ae = function(i) {
+var re = function(c) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
-  }, i), /* @__PURE__ */ e.createElement("path", {
+  }, c), /* @__PURE__ */ e.createElement("path", {
     fillRule: "evenodd",
     d: "M15.78 5.97a.75.75 0 0 1 0 1.06l-6.5 6.5a.75.75 0 0 1-1.06 0l-3.25-3.25a.75.75 0 1 1 1.06-1.06l2.72 2.72 5.97-5.97a.75.75 0 0 1 1.06 0Z"
   }));
 };
-ae.displayName = "CheckIcon";
-var fe = function(i) {
+re.displayName = "CheckIcon";
+var fe = function(c) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
-  }, i), /* @__PURE__ */ e.createElement("path", {
+  }, c), /* @__PURE__ */ e.createElement("path", {
     d: "M10.75 6.75a.75.75 0 0 0-1.5 0v2.5h-2.5a.75.75 0 0 0 0 1.5h2.5v2.5a.75.75 0 0 0 1.5 0v-2.5h2.5a.75.75 0 0 0 0-1.5h-2.5v-2.5Z"
   }));
 };
 fe.displayName = "PlusIcon";
-const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd", alignment: "center" }, t.name), t.description && /* @__PURE__ */ e.createElement(o, { variant: "bodyLg", tone: "subdued", alignment: "center" }, t.description)), Ie = ({ plan: t, discount: i, useShortFormPlanIntervals: u = !0 }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, !!i && /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { variant: "heading3xl" }, G(i.discountedAmount, t.currency, !0)), /* @__PURE__ */ e.createElement(
-  o,
+const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd", alignment: "center" }, t.name), t.description && /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued", alignment: "center" }, t.description)), Ie = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "heading3xl" }, G(c.discountedAmount, t.currency, !0)), /* @__PURE__ */ e.createElement(
+  u,
   {
     variant: "heading3xl",
     tone: "subdued",
@@ -110,40 +110,40 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
     textDecorationLine: "line-through"
   },
   G(t.amount, t.currency, !0)
-), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: t.interval, useShortFormPlanIntervals: u }))), !i && /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "heading3xl" }, G(t.amount, t.currency, !0)), /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: t.interval, useShortFormPlanIntervals: u }))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(f, null, t.usageCharges.map((g, y) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${y}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg" }, g.terms))))), Ne = ({ plan: t, trialDaysAsFeature: i = !1 }) => /* @__PURE__ */ e.createElement(f, { gap: "300" }, i && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, m.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((u, g) => {
-  const y = t.features[u];
-  if (y.type !== "boolean" || y.value === !0)
-    return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${g}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), y.type === "boolean" ? /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, y.name) : /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, y.value, " ", y.name));
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "heading3xl" }, G(t.amount, t.currency, !0)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${g}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), Ne = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "300" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(H, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
+  const g = t.features[m];
+  if (g.type !== "boolean" || g.value === !0)
+    return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${d}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.value, " ", g.name));
 })), We = ({
   plan: t,
-  discount: i,
-  buttonLabel: u,
-  onSelectPlan: g,
-  useShortFormPlanIntervals: y = !0,
-  trialDaysAsFeature: d = !1,
-  expanded: v = !1,
+  discount: c,
+  buttonLabel: m,
+  onSelectPlan: d,
+  useShortFormPlanIntervals: g = !0,
+  trialDaysAsFeature: o = !1,
+  expanded: f = !1,
   isActivePlan: k = !1,
   isRecommendedPlan: P = !1,
   isCustomPlan: C = !1,
   showRecommendedPlanBadge: x = !0
-}) => /* @__PURE__ */ e.createElement(I, { position: "relative", minHeight: "100%" }, /* @__PURE__ */ e.createElement(I, { paddingBlock: v || P ? void 0 : "800", minHeight: "100%" }, /* @__PURE__ */ e.createElement(
+}) => /* @__PURE__ */ e.createElement(I, { position: "relative", minHeight: "100%" }, /* @__PURE__ */ e.createElement(I, { paddingBlock: f || P ? void 0 : "800", minHeight: "100%" }, /* @__PURE__ */ e.createElement(
   I,
   {
     background: P || C ? "bg-surface" : "bg-surface-secondary",
     borderStyle: "solid",
     borderColor: "border",
     borderWidth: "025",
-    paddingBlock: v || P ? "1600" : "800",
+    paddingBlock: f || P ? "1600" : "800",
     paddingInline: "400",
     borderRadius: "200",
     minHeight: "calc(100% - calc(var(--p-space-800) * 2))"
   },
-  /* @__PURE__ */ e.createElement(f, { gap: "800" }, /* @__PURE__ */ e.createElement(f, { gap: "400" }, /* @__PURE__ */ e.createElement(Ye, { plan: t }), /* @__PURE__ */ e.createElement(
+  /* @__PURE__ */ e.createElement(v, { gap: "800" }, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(Ye, { plan: t }), /* @__PURE__ */ e.createElement(
     Ie,
     {
       plan: t,
-      discount: i,
-      useShortFormPlanIntervals: y
+      discount: c,
+      useShortFormPlanIntervals: g
     }
   )), /* @__PURE__ */ e.createElement(
     K,
@@ -151,12 +151,12 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
       size: "large",
       variant: P ? "primary" : "secondary",
       onClick: () => {
-        g ? g({ plan: t, discount: i }) : console.log("No onSelectPlan callback provided");
+        d ? d({ plan: t, discount: c }) : console.log("No onSelectPlan callback provided");
       },
       disabled: k
     },
-    u || m.SelectPlan
-  ), /* @__PURE__ */ e.createElement(Ne, { plan: t, trialDaysAsFeature: d }), P && x && /* @__PURE__ */ e.createElement(H, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(be, { tone: "success" }, m.MostPopular)))
+    m || y.SelectPlan
+  ), /* @__PURE__ */ e.createElement(Ne, { plan: t, trialDaysAsFeature: o }), P && x && /* @__PURE__ */ e.createElement(H, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)))
 ))), q = {
   /**
    * Recommended plans will be highlighted and optionally expanded
@@ -172,46 +172,46 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
   Vertical: "vertical"
 }, Ee = ({
   plans: t,
-  customer: i,
-  onSelectPlan: u,
-  planInterval: g,
-  cardType: y = q.Horizontal,
-  trialDaysAsFeature: d = !0,
-  useShortFormPlanIntervals: v = !0,
+  customer: c,
+  onSelectPlan: m,
+  planInterval: d,
+  cardType: g = q.Horizontal,
+  trialDaysAsFeature: o = !0,
+  useShortFormPlanIntervals: f = !0,
   keyForRecommended: k = "recommended",
   keyForCustomButtonLabel: P = "buttonLabel",
   showRecommendedPlanBadge: C = !0,
   applyDiscount: x = !0
 }) => {
   var w;
-  const M = (w = i == null ? void 0 : i.subscription) != null && w.active ? i.subscription : void 0, $ = M == null ? void 0 : M.plan, O = g ? t.filter((S) => S.interval === g) : t, L = y === q.Vertical ? 1 : _e(O.length), B = Oe(L);
-  return /* @__PURE__ */ e.createElement(re, { columns: L }, O.map((S) => {
+  const M = (w = c == null ? void 0 : c.subscription) != null && w.active ? c.subscription : void 0, $ = M == null ? void 0 : M.plan, O = d ? t.filter((S) => S.interval === d) : t, L = g === q.Vertical ? 1 : _e(O.length), B = Oe(L);
+  return /* @__PURE__ */ e.createElement(ae, { columns: L }, O.map((S) => {
     const j = x ? He({ plan: S }) : void 0;
-    return /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: B, key: S.id }, y === q.Highlighted && /* @__PURE__ */ e.createElement(
+    return /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: B, key: S.id }, g === q.Highlighted && /* @__PURE__ */ e.createElement(
       We,
       {
         key: `HighlightedPlanCard-${S.id}`,
         plan: S,
         discount: j,
-        onSelectPlan: u,
+        onSelectPlan: m,
         isActivePlan: ($ == null ? void 0 : $.id) === S.id,
-        trialDaysAsFeature: d,
-        useShortFormPlanIntervals: v,
+        trialDaysAsFeature: o,
+        useShortFormPlanIntervals: f,
         isCustomPlan: S.availability !== ge.Public,
         isRecommendedPlan: Ce({ plan: S, customFieldKey: k }),
         buttonLabel: we({ plan: S, customFieldKey: P }),
         showRecommendedPlanBadge: C
       }
-    ), y === q.Horizontal && /* @__PURE__ */ e.createElement(
+    ), g === q.Horizontal && /* @__PURE__ */ e.createElement(
       Re,
       {
         key: `HorizontalPlanCard-${S.id}`,
         plan: S,
         discount: j,
-        onSelectPlan: u,
+        onSelectPlan: m,
         isActivePlan: ($ == null ? void 0 : $.id) === S.id,
-        trialDaysAsFeature: d,
-        useShortFormPlanIntervals: v,
+        trialDaysAsFeature: o,
+        useShortFormPlanIntervals: f,
         isRecommendedPlan: Ce({ plan: S, customFieldKey: k }),
         buttonLabel: we({ plan: S, customFieldKey: P }),
         showRecommendedPlanBadge: C
@@ -220,15 +220,15 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
   }));
 }, Je = ({
   customer: t,
-  plans: i,
-  onSubscribe: u,
-  backUrl: g = "",
+  plans: c,
+  onSubscribe: m,
+  backUrl: d = "",
   // string: URL to use as "back" breadcrumb URL. leave as empty string or null to hide the back button
-  showRecommendedBadge: y = !0,
+  showRecommendedBadge: g = !0,
   // boolean
-  customFieldCta: d,
+  customFieldCta: o,
   // string: value of the custom plan field to use as the CTA. e.g. "cta"
-  customFieldPlanRecommended: v = "Recommended",
+  customFieldPlanRecommended: f = "Recommended",
   // string: value of the custom plan field to use as the recommended badge
   showPlanIntervalToggle: k = !0,
   // boolean
@@ -241,74 +241,74 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
   showCustomPlans: M = !0
   // boolean: show custom plans
 }) => {
-  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = i.some((p) => p.interval === b.Annual) && i.some((p) => p.interval === b.Every30Days), B = i.find((p) => p.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
+  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = c.some((p) => p.interval === b.Annual) && c.some((p) => p.interval === b.Every30Days), B = c.find((p) => p.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
     B ? B.interval : L ? b.Annual : b.Every30Days
-  ), j = i.filter((p) => p.availability === ge.Public), A = M ? i.filter((p) => p.availability !== ge.Public) : [], [W, R] = Q(
+  ), j = c.filter((p) => p.availability === ge.Public), A = M ? c.filter((p) => p.availability !== ge.Public) : [], [W, R] = Q(
     O.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
     ye,
     {
-      title: m.Plans,
-      backAction: g ? { content: m.Back, url: g } : void 0,
+      title: y.Plans,
+      backAction: d ? { content: y.Back, url: d } : void 0,
       secondaryActions: k && L ? /* @__PURE__ */ e.createElement(de, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Every30Days,
           onClick: () => S(b.Every30Days)
         },
-        m.Monthly
+        y.Monthly
       ), /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Annual,
           onClick: () => S(b.Annual)
         },
-        m.Yearly
+        y.Yearly
       )) : void 0,
       fullWidth: x === "full",
       narrowWidth: x === "narrow"
     },
-    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(f, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
       pe,
       {
         tone: "success",
-        title: m.SubscribeSuccessTitle,
+        title: y.SubscribeSuccessTitle,
         onDismiss: () => {
           R(!1), window.history.replaceState({}, document.title, window.location.pathname);
         }
       },
-      m.SubscribeSuccessBody
+      y.SubscribeSuccessBody
     ), /* @__PURE__ */ e.createElement(
       Ee,
       {
         plans: j,
-        onSelectPlan: u,
+        onSelectPlan: m,
         planInterval: w,
         cardType: q.Horizontal,
-        keyForRecommended: v,
-        keyForCustomButtonLabel: d,
+        keyForRecommended: f,
+        keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
         useShortFormPlanIntervals: C,
-        showRecommendedPlanBadge: y
+        showRecommendedPlanBadge: g
       }
-    ), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(f, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd" }, m.CustomPlans)), /* @__PURE__ */ e.createElement(
+    ), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(v, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, y.CustomPlans)), /* @__PURE__ */ e.createElement(
       Ee,
       {
         plans: A,
-        onSelectPlan: u,
+        onSelectPlan: m,
         planInterval: w,
         cardType: q.Horizontal,
-        keyForRecommended: v,
-        keyForCustomButtonLabel: d,
+        keyForRecommended: f,
+        keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
         useShortFormPlanIntervals: C,
-        showRecommendedPlanBadge: y
+        showRecommendedPlanBadge: g
       }
     )))))
   );
-}, ze = ({ plan: t, isRecommendedPlan: i = !1 }) => /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(H, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(o, { variant: "bodyLg" }, t.name), i && /* @__PURE__ */ e.createElement(be, { tone: "success" }, m.MostPopular)), t.description && /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, t.description)), je = ({ plan: t, discount: i, useShortFormPlanIntervals: u = !0 }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, !!i && /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { variant: "headingXl" }, G(i.discountedAmount, t.currency)), /* @__PURE__ */ e.createElement(
-  o,
+}, ze = ({ plan: t, isRecommendedPlan: c = !1 }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(H, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, t.name), c && /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)), t.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, t.description)), je = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, G(c.discountedAmount, t.currency)), /* @__PURE__ */ e.createElement(
+  u,
   {
     variant: "headingXl",
     tone: "subdued",
@@ -316,48 +316,48 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
     textDecorationLine: "line-through"
   },
   t.amount
-), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: t.interval, useShortFormPlanIntervals: u }))), !i && /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "headingXl" }, G(t.amount, t.currency)), /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: t.interval, useShortFormPlanIntervals: u }))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(f, null, t.usageCharges.map((g, y) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${y}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg" }, g.terms))))), Ue = ({ plan: t, trialDaysAsFeature: i = !1 }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, i && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(H, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, m.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((u, g) => {
-  const y = t.features[u];
-  if (y.type !== "boolean" || y.value === !0)
-    return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${g}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), y.type === "boolean" ? /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, y.name) : /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, y.value, " ", y.name));
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, G(t.amount, t.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${g}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), Ue = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(H, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
+  const g = t.features[m];
+  if (g.type !== "boolean" || g.value === !0)
+    return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${d}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.value, " ", g.name));
 })), Re = ({
   plan: t,
-  discount: i,
-  buttonLabel: u,
-  onSelectPlan: g,
-  useShortFormPlanIntervals: y = !0,
-  trialDaysAsFeature: d = !1,
-  isRecommendedPlan: v = !1,
+  discount: c,
+  buttonLabel: m,
+  onSelectPlan: d,
+  useShortFormPlanIntervals: g = !0,
+  trialDaysAsFeature: o = !1,
+  isRecommendedPlan: f = !1,
   isActivePlan: k = !1
-}) => /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(f, { gap: "400" }, /* @__PURE__ */ e.createElement(ze, { plan: t, isRecommendedPlan: v }), /* @__PURE__ */ e.createElement(
+}) => /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(ze, { plan: t, isRecommendedPlan: f }), /* @__PURE__ */ e.createElement(
   je,
   {
     plan: t,
-    discount: i,
-    useShortFormPlanIntervals: y
+    discount: c,
+    useShortFormPlanIntervals: g
   }
 ), /* @__PURE__ */ e.createElement(
   K,
   {
     size: "large",
-    variant: v ? "primary" : "secondary",
+    variant: f ? "primary" : "secondary",
     onClick: () => {
-      g ? g({ plan: t, discount: i }) : console.log("No onSelectPlan callback provided");
+      d ? d({ plan: t, discount: c }) : console.log("No onSelectPlan callback provided");
     },
     disabled: k
   },
-  k ? m.CurrentPlan : u || m.SelectPlan
-), /* @__PURE__ */ e.createElement(Ue, { plan: t, trialDaysAsFeature: d }))), qe = ({
+  k ? y.CurrentPlan : m || y.SelectPlan
+), /* @__PURE__ */ e.createElement(Ue, { plan: t, trialDaysAsFeature: o }))), qe = ({
   customer: t,
-  plans: i,
-  onSubscribe: u,
-  backUrl: g = "",
+  plans: c,
+  onSubscribe: m,
+  backUrl: d = "",
   // string: URL to use as "back" breadcrumb URL. leave as empty string or null to hide the back button
-  showRecommendedBadge: y = !0,
+  showRecommendedBadge: g = !0,
   // boolean
-  customFieldCta: d = null,
+  customFieldCta: o = null,
   // string: value of the custom plan field to use as the CTA. e.g. "cta"
-  customFieldPlanRecommended: v = "Recommended",
+  customFieldPlanRecommended: f = "Recommended",
   // string: value of the custom plan field to use as the recommended badge
   showPlanIntervalToggle: k = !0,
   // boolean
@@ -370,83 +370,83 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
   showCustomPlans: M = !0
   // boolean: show custom plans
 }) => {
-  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = i.some((p) => p.interval === b.Annual) && i.some((p) => p.interval === b.Every30Days), B = i.find((p) => p.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
+  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = c.some((p) => p.interval === b.Annual) && c.some((p) => p.interval === b.Every30Days), B = c.find((p) => p.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
     B ? B.interval : L ? b.Annual : b.Every30Days
-  ), j = i.filter((p) => p.availability === ge.Public), A = M ? i.filter((p) => p.availability !== ge.Public) : [], [W, R] = Q(
+  ), j = c.filter((p) => p.availability === ge.Public), A = M ? c.filter((p) => p.availability !== ge.Public) : [], [W, R] = Q(
     O.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
     ye,
     {
-      title: m.Plans,
-      backAction: g && g !== "" ? { content: m.Back, url: g } : void 0,
+      title: y.Plans,
+      backAction: d && d !== "" ? { content: y.Back, url: d } : void 0,
       secondaryActions: k && L ? /* @__PURE__ */ e.createElement(de, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Every30Days,
           onClick: () => S(b.Every30Days)
         },
-        m.Monthly
+        y.Monthly
       ), /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Annual,
           onClick: () => S(b.Annual)
         },
-        m.Yearly
+        y.Yearly
       )) : void 0,
       fullWidth: x === "full",
       narrowWidth: x === "narrow"
     },
-    /* @__PURE__ */ e.createElement(I, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(f, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(I, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
       pe,
       {
         tone: "success",
-        title: m.SubscribeSuccessTitle,
+        title: y.SubscribeSuccessTitle,
         onDismiss: () => {
           R(!1), window.history.replaceState({}, document.title, window.location.pathname);
         }
       },
-      m.SubscribeSuccessBody
+      y.SubscribeSuccessBody
     ), /* @__PURE__ */ e.createElement(
       Ee,
       {
         plans: j,
-        onSelectPlan: u,
+        onSelectPlan: m,
         planInterval: w,
         cardType: q.Highlighted,
-        keyForRecommended: v,
-        keyForCustomButtonLabel: d,
+        keyForRecommended: f,
+        keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
         useShortFormPlanIntervals: C,
-        showRecommendedPlanBadge: y
+        showRecommendedPlanBadge: g
       }
-    ), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(f, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd" }, m.CustomPlans)), /* @__PURE__ */ e.createElement(
+    ), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (A == null ? void 0 : A.length) > 0 && /* @__PURE__ */ e.createElement(v, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, y.CustomPlans)), /* @__PURE__ */ e.createElement(
       Ee,
       {
         plans: A,
-        onSelectPlan: u,
+        onSelectPlan: m,
         planInterval: w,
         cardType: q.Highlighted,
-        keyForRecommended: v,
-        keyForCustomButtonLabel: d,
+        keyForRecommended: f,
+        keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
         useShortFormPlanIntervals: C,
-        showRecommendedPlanBadge: y
+        showRecommendedPlanBadge: g
       }
     ))))))
   );
 }, Qe = ({
   customer: t,
-  plans: i,
-  onSubscribe: u,
-  backUrl: g = "",
+  plans: c,
+  onSubscribe: m,
+  backUrl: d = "",
   // string: URL to use as "back" breadcrumb URL. leave as empty string or null to hide the back button
-  showRecommendedBadge: y = !0,
+  showRecommendedBadge: g = !0,
   // boolean
-  customFieldCta: d = null,
+  customFieldCta: o = null,
   // string: value of the custom plan field to use as the CTA. e.g. "cta"
-  customFieldPlanRecommended: v = "Recommended",
+  customFieldPlanRecommended: f = "Recommended",
   // string: value of the custom plan field to use as the recommended badge
   showPlanIntervalToggle: k = !1,
   // boolean
@@ -459,20 +459,20 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
   showCustomPlans: M = !0
   // boolean: show custom plans
 }) => {
-  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = i.some((n) => n.interval === b.Annual) && i.some((n) => n.interval === b.Every30Days), B = i.find((n) => n.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
+  const $ = t == null ? void 0 : t.subscription, O = new URLSearchParams(window.location.search), L = c.some((n) => n.interval === b.Annual) && c.some((n) => n.interval === b.Every30Days), B = c.find((n) => n.id === ($ == null ? void 0 : $.plan.id)), [w, S] = Q(
     B ? B.interval : L ? b.Annual : b.Every30Days
-  ), j = i.filter(
+  ), j = c.filter(
     (n) => n.availability !== "customerTag" && n.availability !== "customer"
-  ), A = k && L ? j.filter((n) => n.interval === w) : j, W = M ? i.filter(
+  ), A = k && L ? j.filter((n) => n.interval === w) : j, W = M ? c.filter(
     (n) => n.availability === "customerTag" || n.availability === "customer"
   ) : [], [R, p] = Q(
     O.get("subscribed") === "true"
-  ), se = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(o, { variant: "bodyLg" }, n.name), n.description && /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, n.description)), le = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(f, { gap: "200" }, /* @__PURE__ */ e.createElement(o, { fontWeight: "medium" }, m.Features), /* @__PURE__ */ e.createElement(f, { gap: "100" }, P && n.trialDays !== 0 && /* @__PURE__ */ e.createElement(H, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, m.FreeTrialLength.replace("{{ trialDays }}", n.trialDays))), n.featuresOrder.map((_, c) => {
-    const a = n.features[_];
-    if (a.type !== "boolean" || a.value === !0)
-      return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${c}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: ae, tone: "positive" })), a.type === "boolean" ? /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, a.name) : /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, a.value, " ", a.name));
-  }))), ee = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, N ? /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { variant: "headingXl" }, G(N.discountedAmount, n.currency)), /* @__PURE__ */ e.createElement(
-    o,
+  ), se = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, n.name), n.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, n.description)), le = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { fontWeight: "medium" }, y.Features), /* @__PURE__ */ e.createElement(v, { gap: "100" }, P && n.trialDays !== 0 && /* @__PURE__ */ e.createElement(H, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", n.trialDays))), n.featuresOrder.map((_, i) => {
+    const r = n.features[_];
+    if (r.type !== "boolean" || r.value === !0)
+      return /* @__PURE__ */ e.createElement(H, { key: `plan-feature-${i}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), r.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, r.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, r.value, " ", r.name));
+  }))), ee = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, N ? /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, G(N.discountedAmount, n.currency)), /* @__PURE__ */ e.createElement(
+    u,
     {
       variant: "headingXl",
       tone: "subdued",
@@ -480,64 +480,64 @@ const Ye = ({ plan: t }) => /* @__PURE__ */ e.createElement(f, { gap: "100" }, /
       textDecorationLine: "line-through"
     },
     n.amount
-  ), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: n.interval, useShortFormPlanIntervals: C }))) : /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "headingXl" }, G(n.amount, n.currency)), /* @__PURE__ */ e.createElement(o, { alignment: "center", variant: "bodyLg", tone: "subdued" }, m.Per, " ", ce({ interval: n.interval, useShortFormPlanIntervals: C }))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(f, null, n.usageCharges.map((_, c) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${c}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(o, { variant: "bodyLg" }, _.terms))))), T = ({ plan: n, discount: N }) => {
-    const _ = d && n.customFields[d], c = n.customFields && n.customFields[v];
+  ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: C }))) : /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, G(n.amount, n.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: C }))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, n.usageCharges.map((_, i) => /* @__PURE__ */ e.createElement(H, { key: `plan-usageCharge-${i}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, _.terms))))), T = ({ plan: n, discount: N }) => {
+    const _ = o && n.customFields[o], i = n.customFields && n.customFields[f];
     return /* @__PURE__ */ e.createElement(H, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
       K,
       {
         size: "large",
-        variant: c ? "primary" : "secondary",
-        onClick: () => u({ planId: n.id, discountId: N == null ? void 0 : N.id }),
+        variant: i ? "primary" : "secondary",
+        onClick: () => m({ planId: n.id, discountId: N == null ? void 0 : N.id }),
         disabled: (B == null ? void 0 : B.id) === n.id
       },
-      (B == null ? void 0 : B.id) === n.id ? m.CurrentPlan : _ ? n.customFields[d] : m.SelectPlan
-    ), c && y && /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(be, { tone: "success" }, m.MostPopular)));
+      (B == null ? void 0 : B.id) === n.id ? y.CurrentPlan : _ ? n.customFields[o] : y.SelectPlan
+    ), i && g && /* @__PURE__ */ e.createElement(I, null, /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)));
   };
   return /* @__PURE__ */ e.createElement(
     ye,
     {
-      title: m.Plans,
-      backAction: g !== "" ? { content: m.Back, url: g } : void 0,
+      title: y.Plans,
+      backAction: d !== "" ? { content: y.Back, url: d } : void 0,
       secondaryActions: k && L ? /* @__PURE__ */ e.createElement(de, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Every30Days,
           onClick: () => S(b.Every30Days)
         },
-        m.Monthly
+        y.Monthly
       ), /* @__PURE__ */ e.createElement(
         K,
         {
           pressed: w === b.Annual,
           onClick: () => S(b.Annual)
         },
-        m.Year
+        y.Year
       )) : void 0,
       fullWidth: x === "full",
       narrowWidth: x === "narrow"
     },
-    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(f, { gap: "400" }, R && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, R && /* @__PURE__ */ e.createElement(
       pe,
       {
         tone: "success",
-        title: m.SubscribeSuccessTitle,
+        title: y.SubscribeSuccessTitle,
         onDismiss: () => {
           p(!1), window.history.replaceState({}, document.title, window.location.pathname);
         }
       },
-      m.SubscribeSuccessBody
+      y.SubscribeSuccessBody
     ), A.map((n, N) => {
-      var c;
-      const _ = ((c = n.discounts) == null ? void 0 : c.length) > 0 ? n.discounts.reduce(
-        (a, r) => a.discountedAmount < r.discountedAmount ? a : r
+      var i;
+      const _ = ((i = n.discounts) == null ? void 0 : i.length) > 0 ? n.discounts.reduce(
+        (r, a) => r.discountedAmount < a.discountedAmount ? r : a
       ) : null;
-      return /* @__PURE__ */ e.createElement(me, { key: `plan-${N}` }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, /* @__PURE__ */ e.createElement(f, { gap: "400" }, /* @__PURE__ */ e.createElement(f, { gap: "200" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ })), /* @__PURE__ */ e.createElement(I, null, T({ plan: n, discount: _ })))), /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, le({ plan: n, discount: _ }))));
-    }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(f, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd" }, m.CustomPlans)), /* @__PURE__ */ e.createElement(re, null, W.map((n, N) => {
-      var c;
-      const _ = ((c = n.discounts) == null ? void 0 : c.length) > 0 ? n.discounts.reduce(
-        (a, r) => a.discountedAmount < r.discountedAmount ? a : r
+      return /* @__PURE__ */ e.createElement(me, { key: `plan-${N}` }, /* @__PURE__ */ e.createElement(ae, null, /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(v, { gap: "200" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ })), /* @__PURE__ */ e.createElement(I, null, T({ plan: n, discount: _ })))), /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, le({ plan: n, discount: _ }))));
+    }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(v, { gap: "300" }, /* @__PURE__ */ e.createElement(I, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, y.CustomPlans)), /* @__PURE__ */ e.createElement(ae, null, W.map((n, N) => {
+      var i;
+      const _ = ((i = n.discounts) == null ? void 0 : i.length) > 0 ? n.discounts.reduce(
+        (r, a) => r.discountedAmount < a.discountedAmount ? r : a
       ) : null;
-      return /* @__PURE__ */ e.createElement(re.Cell, { key: `custom-plan-${N}`, columnSpan: columnSpan() }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(f, { gap: "400" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ }), T({ plan: n, discount: _ }), le({ plan: n, discount: _ }))));
+      return /* @__PURE__ */ e.createElement(ae.Cell, { key: `custom-plan-${N}`, columnSpan: columnSpan() }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ }), T({ plan: n, discount: _ }), le({ plan: n, discount: _ }))));
     }))))))
   );
 };
@@ -546,64 +546,64 @@ function Ke(t) {
   return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
 }
 var Pe = { exports: {} };
-(function(t, i) {
-  (function(u, g) {
-    t.exports = g();
+(function(t, c) {
+  (function(m, d) {
+    t.exports = d();
   })(Ve, function() {
-    var u = 1e3, g = 6e4, y = 36e5, d = "millisecond", v = "second", k = "minute", P = "hour", C = "day", x = "week", M = "month", $ = "quarter", O = "year", L = "date", B = "Invalid Date", w = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, S = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, j = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(c) {
-      var a = ["th", "st", "nd", "rd"], r = c % 100;
-      return "[" + c + (a[(r - 20) % 10] || a[r] || a[0]) + "]";
-    } }, A = function(c, a, r) {
-      var s = String(c);
-      return !s || s.length >= a ? c : "" + Array(a + 1 - s.length).join(r) + c;
-    }, W = { s: A, z: function(c) {
-      var a = -c.utcOffset(), r = Math.abs(a), s = Math.floor(r / 60), l = r % 60;
-      return (a <= 0 ? "+" : "-") + A(s, 2, "0") + ":" + A(l, 2, "0");
-    }, m: function c(a, r) {
-      if (a.date() < r.date())
-        return -c(r, a);
-      var s = 12 * (r.year() - a.year()) + (r.month() - a.month()), l = a.clone().add(s, M), h = r - l < 0, E = a.clone().add(s + (h ? -1 : 1), M);
-      return +(-(s + (r - l) / (h ? l - E : E - l)) || 0);
-    }, a: function(c) {
-      return c < 0 ? Math.ceil(c) || 0 : Math.floor(c);
-    }, p: function(c) {
-      return { M, y: O, w: x, d: C, D: L, h: P, m: k, s: v, ms: d, Q: $ }[c] || String(c || "").toLowerCase().replace(/s$/, "");
-    }, u: function(c) {
-      return c === void 0;
+    var m = 1e3, d = 6e4, g = 36e5, o = "millisecond", f = "second", k = "minute", P = "hour", C = "day", x = "week", M = "month", $ = "quarter", O = "year", L = "date", B = "Invalid Date", w = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, S = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, j = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(i) {
+      var r = ["th", "st", "nd", "rd"], a = i % 100;
+      return "[" + i + (r[(a - 20) % 10] || r[a] || r[0]) + "]";
+    } }, A = function(i, r, a) {
+      var s = String(i);
+      return !s || s.length >= r ? i : "" + Array(r + 1 - s.length).join(a) + i;
+    }, W = { s: A, z: function(i) {
+      var r = -i.utcOffset(), a = Math.abs(r), s = Math.floor(a / 60), l = a % 60;
+      return (r <= 0 ? "+" : "-") + A(s, 2, "0") + ":" + A(l, 2, "0");
+    }, m: function i(r, a) {
+      if (r.date() < a.date())
+        return -i(a, r);
+      var s = 12 * (a.year() - r.year()) + (a.month() - r.month()), l = r.clone().add(s, M), h = a - l < 0, E = r.clone().add(s + (h ? -1 : 1), M);
+      return +(-(s + (a - l) / (h ? l - E : E - l)) || 0);
+    }, a: function(i) {
+      return i < 0 ? Math.ceil(i) || 0 : Math.floor(i);
+    }, p: function(i) {
+      return { M, y: O, w: x, d: C, D: L, h: P, m: k, s: f, ms: o, Q: $ }[i] || String(i || "").toLowerCase().replace(/s$/, "");
+    }, u: function(i) {
+      return i === void 0;
     } }, R = "en", p = {};
     p[R] = j;
-    var se = "$isDayjsObject", le = function(c) {
-      return c instanceof N || !(!c || !c[se]);
-    }, ee = function c(a, r, s) {
+    var se = "$isDayjsObject", le = function(i) {
+      return i instanceof N || !(!i || !i[se]);
+    }, ee = function i(r, a, s) {
       var l;
-      if (!a)
+      if (!r)
         return R;
-      if (typeof a == "string") {
-        var h = a.toLowerCase();
-        p[h] && (l = h), r && (p[h] = r, l = h);
-        var E = a.split("-");
+      if (typeof r == "string") {
+        var h = r.toLowerCase();
+        p[h] && (l = h), a && (p[h] = a, l = h);
+        var E = r.split("-");
         if (!l && E.length > 1)
-          return c(E[0]);
+          return i(E[0]);
       } else {
-        var D = a.name;
-        p[D] = a, l = D;
+        var D = r.name;
+        p[D] = r, l = D;
       }
       return !s && l && (R = l), l || !s && R;
-    }, T = function(c, a) {
-      if (le(c))
-        return c.clone();
-      var r = typeof a == "object" ? a : {};
-      return r.date = c, r.args = arguments, new N(r);
+    }, T = function(i, r) {
+      if (le(i))
+        return i.clone();
+      var a = typeof r == "object" ? r : {};
+      return a.date = i, a.args = arguments, new N(a);
     }, n = W;
-    n.l = ee, n.i = le, n.w = function(c, a) {
-      return T(c, { locale: a.$L, utc: a.$u, x: a.$x, $offset: a.$offset });
+    n.l = ee, n.i = le, n.w = function(i, r) {
+      return T(i, { locale: r.$L, utc: r.$u, x: r.$x, $offset: r.$offset });
     };
     var N = function() {
-      function c(r) {
-        this.$L = ee(r.locale, null, !0), this.parse(r), this.$x = this.$x || r.x || {}, this[se] = !0;
+      function i(a) {
+        this.$L = ee(a.locale, null, !0), this.parse(a), this.$x = this.$x || a.x || {}, this[se] = !0;
       }
-      var a = c.prototype;
-      return a.parse = function(r) {
+      var r = i.prototype;
+      return r.parse = function(a) {
         this.$d = function(s) {
           var l = s.date, h = s.utc;
           if (l === null)
@@ -620,34 +620,34 @@ var Pe = { exports: {} };
             }
           }
           return new Date(l);
-        }(r), this.init();
-      }, a.init = function() {
-        var r = this.$d;
-        this.$y = r.getFullYear(), this.$M = r.getMonth(), this.$D = r.getDate(), this.$W = r.getDay(), this.$H = r.getHours(), this.$m = r.getMinutes(), this.$s = r.getSeconds(), this.$ms = r.getMilliseconds();
-      }, a.$utils = function() {
+        }(a), this.init();
+      }, r.init = function() {
+        var a = this.$d;
+        this.$y = a.getFullYear(), this.$M = a.getMonth(), this.$D = a.getDate(), this.$W = a.getDay(), this.$H = a.getHours(), this.$m = a.getMinutes(), this.$s = a.getSeconds(), this.$ms = a.getMilliseconds();
+      }, r.$utils = function() {
         return n;
-      }, a.isValid = function() {
+      }, r.isValid = function() {
         return this.$d.toString() !== B;
-      }, a.isSame = function(r, s) {
-        var l = T(r);
+      }, r.isSame = function(a, s) {
+        var l = T(a);
         return this.startOf(s) <= l && l <= this.endOf(s);
-      }, a.isAfter = function(r, s) {
-        return T(r) < this.startOf(s);
-      }, a.isBefore = function(r, s) {
-        return this.endOf(s) < T(r);
-      }, a.$g = function(r, s, l) {
-        return n.u(r) ? this[s] : this.set(l, r);
-      }, a.unix = function() {
+      }, r.isAfter = function(a, s) {
+        return T(a) < this.startOf(s);
+      }, r.isBefore = function(a, s) {
+        return this.endOf(s) < T(a);
+      }, r.$g = function(a, s, l) {
+        return n.u(a) ? this[s] : this.set(l, a);
+      }, r.unix = function() {
         return Math.floor(this.valueOf() / 1e3);
-      }, a.valueOf = function() {
+      }, r.valueOf = function() {
         return this.$d.getTime();
-      }, a.startOf = function(r, s) {
-        var l = this, h = !!n.u(s) || s, E = n.p(r), D = function(ne, U) {
+      }, r.startOf = function(a, s) {
+        var l = this, h = !!n.u(s) || s, E = n.p(a), D = function(ne, U) {
           var J = n.w(l.$u ? Date.UTC(l.$y, U, ne) : new Date(l.$y, U, ne), l);
           return h ? J : J.endOf(C);
         }, F = function(ne, U) {
           return n.w(l.toDate()[ne].apply(l.toDate("s"), (h ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(U)), l);
-        }, Y = this.$W, z = this.$M, V = this.$D, ie = "set" + (this.$u ? "UTC" : "");
+        }, Y = this.$W, z = this.$M, V = this.$D, ce = "set" + (this.$u ? "UTC" : "");
         switch (E) {
           case O:
             return h ? D(1, 0) : D(31, 11);
@@ -658,58 +658,58 @@ var Pe = { exports: {} };
             return D(h ? V - oe : V + (6 - oe), z);
           case C:
           case L:
-            return F(ie + "Hours", 0);
+            return F(ce + "Hours", 0);
           case P:
-            return F(ie + "Minutes", 1);
+            return F(ce + "Minutes", 1);
           case k:
-            return F(ie + "Seconds", 2);
-          case v:
-            return F(ie + "Milliseconds", 3);
+            return F(ce + "Seconds", 2);
+          case f:
+            return F(ce + "Milliseconds", 3);
           default:
             return this.clone();
         }
-      }, a.endOf = function(r) {
-        return this.startOf(r, !1);
-      }, a.$set = function(r, s) {
-        var l, h = n.p(r), E = "set" + (this.$u ? "UTC" : ""), D = (l = {}, l[C] = E + "Date", l[L] = E + "Date", l[M] = E + "Month", l[O] = E + "FullYear", l[P] = E + "Hours", l[k] = E + "Minutes", l[v] = E + "Seconds", l[d] = E + "Milliseconds", l)[h], F = h === C ? this.$D + (s - this.$W) : s;
+      }, r.endOf = function(a) {
+        return this.startOf(a, !1);
+      }, r.$set = function(a, s) {
+        var l, h = n.p(a), E = "set" + (this.$u ? "UTC" : ""), D = (l = {}, l[C] = E + "Date", l[L] = E + "Date", l[M] = E + "Month", l[O] = E + "FullYear", l[P] = E + "Hours", l[k] = E + "Minutes", l[f] = E + "Seconds", l[o] = E + "Milliseconds", l)[h], F = h === C ? this.$D + (s - this.$W) : s;
         if (h === M || h === O) {
           var Y = this.clone().set(L, 1);
           Y.$d[D](F), Y.init(), this.$d = Y.set(L, Math.min(this.$D, Y.daysInMonth())).$d;
         } else
           D && this.$d[D](F);
         return this.init(), this;
-      }, a.set = function(r, s) {
-        return this.clone().$set(r, s);
-      }, a.get = function(r) {
-        return this[n.p(r)]();
-      }, a.add = function(r, s) {
+      }, r.set = function(a, s) {
+        return this.clone().$set(a, s);
+      }, r.get = function(a) {
+        return this[n.p(a)]();
+      }, r.add = function(a, s) {
         var l, h = this;
-        r = Number(r);
+        a = Number(a);
         var E = n.p(s), D = function(z) {
           var V = T(h);
-          return n.w(V.date(V.date() + Math.round(z * r)), h);
+          return n.w(V.date(V.date() + Math.round(z * a)), h);
         };
         if (E === M)
-          return this.set(M, this.$M + r);
+          return this.set(M, this.$M + a);
         if (E === O)
-          return this.set(O, this.$y + r);
+          return this.set(O, this.$y + a);
         if (E === C)
           return D(1);
         if (E === x)
           return D(7);
-        var F = (l = {}, l[k] = g, l[P] = y, l[v] = u, l)[E] || 1, Y = this.$d.getTime() + r * F;
+        var F = (l = {}, l[k] = d, l[P] = g, l[f] = m, l)[E] || 1, Y = this.$d.getTime() + a * F;
         return n.w(Y, this);
-      }, a.subtract = function(r, s) {
-        return this.add(-1 * r, s);
-      }, a.format = function(r) {
+      }, r.subtract = function(a, s) {
+        return this.add(-1 * a, s);
+      }, r.format = function(a) {
         var s = this, l = this.$locale();
         if (!this.isValid())
           return l.invalidDate || B;
-        var h = r || "YYYY-MM-DDTHH:mm:ssZ", E = n.z(this), D = this.$H, F = this.$m, Y = this.$M, z = l.weekdays, V = l.months, ie = l.meridiem, te = function(U, J, ue, he) {
+        var h = a || "YYYY-MM-DDTHH:mm:ssZ", E = n.z(this), D = this.$H, F = this.$m, Y = this.$M, z = l.weekdays, V = l.months, ce = l.meridiem, te = function(U, J, ue, he) {
           return U && (U[J] || U(s, h)) || ue[J].slice(0, he);
         }, oe = function(U) {
           return n.s(D % 12 || 12, U, "0");
-        }, ne = ie || function(U, J, ue) {
+        }, ne = ce || function(U, J, ue) {
           var he = U < 12 ? "AM" : "PM";
           return ue ? he.toLowerCase() : he;
         };
@@ -768,10 +768,10 @@ var Pe = { exports: {} };
             return null;
           }(U) || E.replace(":", "");
         });
-      }, a.utcOffset = function() {
+      }, r.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-      }, a.diff = function(r, s, l) {
-        var h, E = this, D = n.p(s), F = T(r), Y = (F.utcOffset() - this.utcOffset()) * g, z = this - F, V = function() {
+      }, r.diff = function(a, s, l) {
+        var h, E = this, D = n.p(s), F = T(a), Y = (F.utcOffset() - this.utcOffset()) * d, z = this - F, V = function() {
           return n.m(E, F);
         };
         switch (D) {
@@ -791,145 +791,163 @@ var Pe = { exports: {} };
             h = (z - Y) / 864e5;
             break;
           case P:
-            h = z / y;
-            break;
-          case k:
             h = z / g;
             break;
-          case v:
-            h = z / u;
+          case k:
+            h = z / d;
+            break;
+          case f:
+            h = z / m;
             break;
           default:
             h = z;
         }
         return l ? h : n.a(h);
-      }, a.daysInMonth = function() {
+      }, r.daysInMonth = function() {
         return this.endOf(M).$D;
-      }, a.$locale = function() {
+      }, r.$locale = function() {
         return p[this.$L];
-      }, a.locale = function(r, s) {
-        if (!r)
+      }, r.locale = function(a, s) {
+        if (!a)
           return this.$L;
-        var l = this.clone(), h = ee(r, s, !0);
+        var l = this.clone(), h = ee(a, s, !0);
         return h && (l.$L = h), l;
-      }, a.clone = function() {
+      }, r.clone = function() {
         return n.w(this.$d, this);
-      }, a.toDate = function() {
+      }, r.toDate = function() {
         return new Date(this.valueOf());
-      }, a.toJSON = function() {
+      }, r.toJSON = function() {
         return this.isValid() ? this.toISOString() : null;
-      }, a.toISOString = function() {
+      }, r.toISOString = function() {
         return this.$d.toISOString();
-      }, a.toString = function() {
+      }, r.toString = function() {
         return this.$d.toUTCString();
-      }, c;
+      }, i;
     }(), _ = N.prototype;
-    return T.prototype = _, [["$ms", d], ["$s", v], ["$m", k], ["$H", P], ["$W", C], ["$M", M], ["$y", O], ["$D", L]].forEach(function(c) {
-      _[c[1]] = function(a) {
-        return this.$g(a, c[0], c[1]);
+    return T.prototype = _, [["$ms", o], ["$s", f], ["$m", k], ["$H", P], ["$W", C], ["$M", M], ["$y", O], ["$D", L]].forEach(function(i) {
+      _[i[1]] = function(r) {
+        return this.$g(r, i[0], i[1]);
       };
-    }), T.extend = function(c, a) {
-      return c.$i || (c(a, N, T), c.$i = !0), T;
-    }, T.locale = ee, T.isDayjs = le, T.unix = function(c) {
-      return T(1e3 * c);
+    }), T.extend = function(i, r) {
+      return i.$i || (i(r, N, T), i.$i = !0), T;
+    }, T.locale = ee, T.isDayjs = le, T.unix = function(i) {
+      return T(1e3 * i);
     }, T.en = p[R], T.Ls = p, T.p = {}, T;
   });
 })(Pe);
 var Xe = Pe.exports;
 const De = /* @__PURE__ */ Ke(Xe), ve = ({
   orientation: t = "horizontal",
-  onShowPlans: i,
-  onCancelPlan: u,
-  onPlanCancelled: g = () => {
+  onShowPlans: c,
+  onCancelPlan: m,
+  onPlanCancelled: d = () => {
+  },
+  cancelSubscription: g = async () => {
+  },
+  i18n: o,
+  subscription: f,
+  refetch: k = async () => {
   }
 }) => {
   var W;
-  const { cancelSubscription: y, i18n: d, subscription: v, refetch: k } = Le(), [P, C] = Q(!1), [x, M] = Q(!1);
-  if (!v)
-    return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(f, { gap: "200" }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd" }, d.Subscription), /* @__PURE__ */ e.createElement(o, null, d.NotSubscribed), /* @__PURE__ */ e.createElement(H, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
+  const [P, C] = Q(!1), [x, M] = Q(!1);
+  if (!f)
+    return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, o.Subscription), /* @__PURE__ */ e.createElement(u, null, o.NotSubscribed), /* @__PURE__ */ e.createElement(H, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
       K,
       {
         variant: "primary",
-        onClick: i,
-        accessibilityLabel: d.ChangePlan
+        onClick: c,
+        accessibilityLabel: o.ChangePlan
       },
-      d.SelectPlan
+      o.SelectPlan
     )))));
-  const { plan: $ } = v, O = G(v.total, $.currency), L = $.interval === b.Annual ? d.Year : d.Month, B = t === "horizontal" ? Ae : f, w = (W = v == null ? void 0 : v.appliedDiscount) == null ? void 0 : W.discount, S = w ? w.percentage ? `${w.percentage}%` : G(w.amount, $.currency) : null, j = w && v.appliedDiscount.discountEndsAt && De().isAfter(De(v.appliedDiscount.discountEndsAt)), A = w ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
-  return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(f, { gap: "200" }, /* @__PURE__ */ e.createElement(o, { variant: "headingMd" }, d.Subscription), /* @__PURE__ */ e.createElement(f, { gap: "400" }, /* @__PURE__ */ e.createElement(B, { columns: A, gap: "300" }, /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(o, null, d.CurrentPlan), /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, $.name)), /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(o, null, d.Price), /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(o, { tone: "subdued" }, d.AmountPerInterval.replace("{{ amount }}", O).replace("{{ interval }}", L)), w && !j && /* @__PURE__ */ e.createElement(o, { tone: "success" }, d.DiscountAmount.replace("{{ amount }}", S)), w && j && /* @__PURE__ */ e.createElement(o, { tone: "subdued", textDecorationLine: "line-through" }, d.DiscountAmountExpired.replace("{{ amount }}", S)))), $.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(f, null, /* @__PURE__ */ e.createElement(o, null, d.UsageCharges || "Usage charges"), $.usageCharges.map((R, p) => /* @__PURE__ */ e.createElement(o, { key: `usage-charge-${p}`, tone: "subdued" }, R.terms)))), /* @__PURE__ */ e.createElement(H, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
+  const { plan: $ } = f, O = G(f.total, $.currency), L = $.interval === b.Annual ? o.Year : o.Month, B = t === "horizontal" ? Ae : v, w = (W = f == null ? void 0 : f.appliedDiscount) == null ? void 0 : W.discount, S = w ? w.percentage ? `${w.percentage}%` : G(w.amount, $.currency) : null, j = w && f.appliedDiscount.discountEndsAt && De().isAfter(De(f.appliedDiscount.discountEndsAt)), A = w ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, o.Subscription), /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(B, { columns: A, gap: "300" }, /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.CurrentPlan), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, $.name)), /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.Price), /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, o.AmountPerInterval.replace("{{ amount }}", O).replace("{{ interval }}", L)), w && !j && /* @__PURE__ */ e.createElement(u, { tone: "success" }, o.DiscountAmount.replace("{{ amount }}", S)), w && j && /* @__PURE__ */ e.createElement(u, { tone: "subdued", textDecorationLine: "line-through" }, o.DiscountAmountExpired.replace("{{ amount }}", S)))), $.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.UsageCharges || "Usage charges"), $.usageCharges.map((R, p) => /* @__PURE__ */ e.createElement(u, { key: `usage-charge-${p}`, tone: "subdued" }, R.terms)))), /* @__PURE__ */ e.createElement(H, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
     K,
     {
       onClick: () => {
-        u ? u() : C(!0);
+        m ? m() : C(!0);
       },
-      accessibilityLabel: d.CancelPlan,
+      accessibilityLabel: o.CancelPlan,
       tone: "critical"
     },
-    d.CancelPlan
+    o.CancelPlan
   ), /* @__PURE__ */ e.createElement(
     K,
     {
       variant: "primary",
-      onClick: i,
-      accessibilityLabel: d.ChangePlan
+      onClick: c,
+      accessibilityLabel: o.ChangePlan
     },
-    d.ChangePlan
+    o.ChangePlan
   ))))), P && /* @__PURE__ */ e.createElement(
     $e,
     {
       open: !0,
       onClose: () => C(!1),
-      title: d.CancelPlan,
+      title: o.CancelPlan,
       primaryAction: {
-        content: d.CancelPlan,
+        content: o.CancelPlan,
         destructive: !0,
         loading: x,
         disabled: x,
         onAction: async () => {
-          M(!0), await y(), await k(), M(!1), C(!1), g();
+          M(!0), await g(), await k(), M(!1), C(!1), d();
         }
       },
       secondaryActions: [
         {
-          content: d.Back,
+          content: o.Back,
           disabled: x,
           onAction: () => C(!1)
         }
       ]
     },
-    /* @__PURE__ */ e.createElement($e.Section, null, d.CancelConfirmation)
+    /* @__PURE__ */ e.createElement($e.Section, null, o.CancelConfirmation)
   ));
 }, et = ({
   backUrl: t = "",
   // string: URL to use as "back" breadcrumb URL. leave as empty string or null to hide the back button
-  pageWidth: i = "narrow"
+  pageWidth: c = "narrow"
   // string: "full", "narrow", or "default"
 }) => {
-  const u = () => {
+  const { cancelSubscription: m, i18n: d, subscription: g, refetch: o } = Le(), f = () => {
     console.log("Show plans. Navigate to the plans page, open a modal, etc.");
   };
   return /* @__PURE__ */ e.createElement(
     ye,
     {
-      title: m.Subscription,
-      backAction: t ? { content: m.Back, url: t } : void 0,
-      fullWidth: i === "full",
-      narrowWidth: i === "narrow"
+      title: d.Subscription,
+      backAction: t ? { content: d.Back, url: t } : void 0,
+      fullWidth: c === "full",
+      narrowWidth: c === "narrow"
     },
-    /* @__PURE__ */ e.createElement(f, { gap: "400" }, /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(
       ve,
       {
-        onShowPlans: u
+        onShowPlans: f,
+        cancelSubscription: m,
+        i18n: d,
+        subscription: g,
+        refetch: o
       }
     ), /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(
       ve,
       {
-        onShowPlans: u
+        onShowPlans: f,
+        cancelSubscription: m,
+        i18n: d,
+        subscription: g,
+        refetch: o
       }
     )), /* @__PURE__ */ e.createElement(Z.Section, { variant: "oneThird" }, /* @__PURE__ */ e.createElement(
       ve,
       {
-        onShowPlans: u,
+        onShowPlans: f,
+        cancelSubscription: m,
+        i18n: d,
+        subscription: g,
+        refetch: o,
         orientation: "vertical"
       }
     ))))
@@ -944,6 +962,7 @@ export {
   Ue as PlanFeaturesSection,
   je as PlanPricingSection,
   ze as PlanTitleSection,
+  ve as SubscriptionSummaryCard,
   et as SubscriptionSummaryPage,
   Qe as VerticalPlanCards
 };
