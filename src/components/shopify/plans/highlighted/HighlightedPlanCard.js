@@ -40,7 +40,7 @@ export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals =
   <BlockStack gap="100">
     {!!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
-        <Text variant="heading3xl">{money(discountedAmount, plan.currency, true)}</Text>
+        <Text variant="heading3xl">{money(discount.discountedAmount, plan.currency, true)}</Text>
         <Text
           variant="heading3xl"
           tone="subdued"

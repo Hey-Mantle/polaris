@@ -1,8 +1,5 @@
+import { Subscriptions } from './subscription';
+
 export const Customer = {
-  subscription: {
-    id: "123",
-    plan: {
-      id: "123",
-    },
-  },
+  subscription: Subscriptions[0],
 };
