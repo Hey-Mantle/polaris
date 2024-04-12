@@ -78,7 +78,7 @@ export const SubscriptionSummaryCard = ({
   const discount = subscription?.appliedDiscount?.discount;
   const discountAmount = discount ? discount.percentage ? `${discount.percentage}%` : money(discount.amount, plan.currency) : null;
   const discountIsExpired = discount && subscription.appliedDiscount.discountEndsAt && dayjs().isAfter(dayjs(subscription.appliedDiscount.discountEndsAt));
-  const columns = discount ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  const columns = plan.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
 
   return (
     <Card>
