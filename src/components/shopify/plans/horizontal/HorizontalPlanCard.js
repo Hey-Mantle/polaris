@@ -144,30 +144,37 @@ export const HorizontalPlanCard = ({
   trialDaysAsFeature = false,
   isRecommendedPlan = false,
   isActivePlan = false,
-}) => (
-  <Card>
-    <BlockStack gap="400">
-      <PlanTitleSection plan={plan} isRecommendedPlan={isRecommendedPlan} />
-      <PlanPricingSection
-        plan={plan}
-        discount={discount}
-        useShortFormPlanIntervals={useShortFormPlanIntervals}
-      />
-      <Button
-        size="large"
-        variant={isRecommendedPlan ? "primary" : "secondary"}
-        onClick={() => {
-          if (onSelectPlan) {
-            onSelectPlan({ plan, discount });
-          } else {
-            console.log("No onSelectPlan callback provided");
-          }
-        }}
-        disabled={isActivePlan}
-      >
-        {isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan}
-      </Button>
-      <PlanFeaturesSection plan={plan} trialDaysAsFeature={trialDaysAsFeature} />
-    </BlockStack>
-  </Card>
-);
+}) => {
+  const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
+
+  return (
+    <Card>
+      <BlockStack gap="400">
+        <PlanTitleSection plan={plan} isRecommendedPlan={isRecommendedPlan} />
+        <PlanPricingSection
+          plan={plan}
+          discount={discount}
+          useShortFormPlanIntervals={useShortFormPlanIntervals}
+        />
+        <Button
+          size="large"
+          variant={isRecommendedPlan ? "primary" : "secondary"}
+          onClick={async () => {
+            if (onSelectPlan) {
+              setIsSelectingPlan(true);
+              onSelectPlan({ plan, discount });
+              setIsSelectingPlan(false);
+            } else {
+              console.log("No onSelectPlan callback provided");
+            }
+          }}
+          disabled={isActivePlan}
+          loading={isSelectingPlan}
+        >
+          {isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan}
+        </Button>
+        <PlanFeaturesSection plan={plan} trialDaysAsFeature={trialDaysAsFeature} />
+      </BlockStack>
+    </Card>
+  );
+}

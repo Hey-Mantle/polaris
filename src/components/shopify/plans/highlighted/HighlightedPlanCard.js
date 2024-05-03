@@ -152,6 +152,8 @@ export const HighlightedPlanCard = ({
   isCustomPlan = false,
   showRecommendedPlanBadge = true,
 }) => {
+  const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
+
   return (
     <Box position="relative" minHeight="100%">
       <Box paddingBlock={expanded || isRecommendedPlan ? undefined : "800"} minHeight="100%">
@@ -177,14 +179,17 @@ export const HighlightedPlanCard = ({
             <Button
               size="large"
               variant={isRecommendedPlan ? "primary" : "secondary"}
-              onClick={() => {
+              onClick={async () => {
                 if (onSelectPlan) {
-                  onSelectPlan({ plan, discount });
+                  setIsSelectingPlan(true);
+                  await onSelectPlan({ plan, discount });
+                  setIsSelectingPlan(false);
                 } else {
                   console.log("No onSelectPlan callback provided");
                 }
               }}
               disabled={isActivePlan}
+              loading={isSelectingPlan}
             >
               {buttonLabel || Labels.SelectPlan}
             </Button>
