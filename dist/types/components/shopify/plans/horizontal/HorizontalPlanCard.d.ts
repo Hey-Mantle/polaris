@@ -18,7 +18,7 @@ export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, 
     onSelectPlan?: ({ plan: Plan, discount: Discount }: {
         plan: any;
         discount: any;
-    }) => void;
+    }) => Promise<void>;
     useShortFormPlanIntervals?: boolean;
     trialDaysAsFeature?: boolean;
     isActivePlan?: boolean;

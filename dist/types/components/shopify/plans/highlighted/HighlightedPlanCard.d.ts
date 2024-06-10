@@ -17,7 +17,7 @@ export function HighlightedPlanCard({ plan, discount, buttonLabel, onSelectPlan,
     onSelectPlan?: ({ plan: Plan, discount: Discount }: {
         plan: any;
         discount: any;
-    }) => void;
+    }) => Promise<void>;
     useShortFormPlanIntervals?: boolean;
     trialDaysAsFeature?: boolean;
     expanded?: boolean;

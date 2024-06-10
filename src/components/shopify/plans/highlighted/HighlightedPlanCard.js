@@ -129,7 +129,7 @@ export const PlanFeaturesSection = ({ plan, trialDaysAsFeature = false }) => (
  * @param {Plan} props.plan - The Mantle Plan object.
  * @param {Discount} props.discount - The Mantle Discount object.
  * @param {string} [props.buttonLabel] - The label for the button.
- * @param {({ plan: Plan, discount: Discount }) => void} [props.onSelectPlan] - The callback for selecting a plan.
+ * @param {({ plan: Plan, discount: Discount }) => Promise<void>} [props.onSelectPlan] - The callback for selecting a plan. Return true if successful, false if not.
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @param {boolean} [props.trialDaysAsFeature] - Whether to show the trial days as a feature.
  * @param {boolean} [props.expanded] - Whether the card is expanded to match recommended plans.
@@ -153,6 +153,20 @@ export const HighlightedPlanCard = ({
   showRecommendedPlanBadge = true,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
+
+  const handleSelectPlan = async ({ plan, discount }) => {
+    if (onSelectPlan) {
+      setIsSelectingPlan(true);
+
+      const result = await onSelectPlan({ plan, discount });
+
+      if (true !== result) {
+        setIsSelectingPlan(false);
+      }
+    } else {
+      console.log("No onSelectPlan callback provided");
+    }
+  };
 
   return (
     <Box position="relative" minHeight="100%">
@@ -180,13 +194,7 @@ export const HighlightedPlanCard = ({
               size="large"
               variant={isRecommendedPlan ? "primary" : "secondary"}
               onClick={async () => {
-                if (onSelectPlan) {
-                  setIsSelectingPlan(true);
-                  await onSelectPlan({ plan, discount });
-                  setIsSelectingPlan(false);
-                } else {
-                  console.log("No onSelectPlan callback provided");
-                }
+                await handleSelectPlan({ plan, discount });
               }}
               disabled={isActivePlan}
               loading={isSelectingPlan}
