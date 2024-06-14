@@ -1,4 +1,4 @@
-import e, { createContext as Me, useContext as ke, useState as Q } from "react";
+import e, { createContext as Me, useContext as ke, useState as q } from "react";
 import { Box as Y, BlockStack as v, Button as K, InlineStack as O, Badge as be, Text as u, Icon as X, Grid as ae, Page as ye, ButtonGroup as de, Layout as Z, Banner as pe, Divider as Se, Card as me, Modal as $e, InlineGrid as Ae } from "@shopify/polaris";
 const p = {
   Annual: "ANNUAL",
@@ -50,7 +50,7 @@ const p = {
   style: "currency",
   currency: t,
   notation: "standard"
-}), G = (t, c = "USD", m = !0) => {
+}), J = (t, c = "USD", m = !0) => {
   let d = Be(c).format(t);
   return m && (d = d.replace(/\.00$/, "")), d;
 }, Te = (t = p.Every30Days) => {
@@ -101,7 +101,7 @@ var fe = function(c) {
   }));
 };
 fe.displayName = "PlusIcon";
-const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd", alignment: "center" }, t.name), t.description && /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued", alignment: "center" }, t.description)), Ye = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "heading3xl" }, G(c.discountedAmount, t.currency, !0)), /* @__PURE__ */ e.createElement(
+const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd", alignment: "center" }, t.name), t.description && /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued", alignment: "center" }, t.description)), Ye = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "heading3xl" }, J(c.discountedAmount, t.currency, !0)), /* @__PURE__ */ e.createElement(
   u,
   {
     variant: "heading3xl",
@@ -109,12 +109,12 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
     fontWeight: "medium",
     textDecorationLine: "line-through"
   },
-  G(t.amount, t.currency, !0)
-), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "heading3xl" }, G(t.amount, t.currency, !0)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${g}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), Ne = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "300" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
+  J(t.amount, t.currency, !0)
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "heading3xl" }, J(t.amount, t.currency, !0)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${g}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), We = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "300" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(O, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
   const g = t.features[m];
   if (g.type !== "boolean" || g.value === !0)
     return /* @__PURE__ */ e.createElement(O, { key: `plan-feature-${d}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.value, " ", g.name));
-})), We = ({
+})), ze = ({
   plan: t,
   discount: c,
   buttonLabel: m,
@@ -161,9 +161,9 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         loading: w
       },
       m || y.SelectPlan
-    ), /* @__PURE__ */ e.createElement(Ne, { plan: t, trialDaysAsFeature: o }), P && A && /* @__PURE__ */ e.createElement(O, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)))
+    ), /* @__PURE__ */ e.createElement(We, { plan: t, trialDaysAsFeature: o }), P && A && /* @__PURE__ */ e.createElement(O, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)))
   )));
-}, q = {
+}, Q = {
   /**
    * Recommended plans will be highlighted and optionally expanded
    */
@@ -181,7 +181,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   customer: c,
   onSelectPlan: m,
   planInterval: d,
-  cardType: g = q.Horizontal,
+  cardType: g = Q.Horizontal,
   trialDaysAsFeature: o = !0,
   useShortFormPlanIntervals: f = !0,
   keyForRecommended: k = "recommended",
@@ -190,11 +190,11 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   applyDiscount: A = !0
 }) => {
   var D;
-  const w = (D = c == null ? void 0 : c.subscription) != null && D.active ? c.subscription : void 0, b = w == null ? void 0 : w.plan, T = d ? t.filter((C) => C.interval === d) : t, x = g === q.Vertical ? 1 : _e(T.length), L = Oe(x);
+  const w = (D = c == null ? void 0 : c.subscription) != null && D.active ? c.subscription : void 0, b = w == null ? void 0 : w.plan, T = d ? t.filter((C) => C.interval === d) : t, x = g === Q.Vertical ? 1 : _e(T.length), L = Oe(x);
   return /* @__PURE__ */ e.createElement(ae, { columns: x }, T.map((C) => {
     const j = A ? He({ plan: C }) : void 0;
-    return /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: L, key: C.id }, g === q.Highlighted && /* @__PURE__ */ e.createElement(
-      We,
+    return /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: L, key: C.id }, g === Q.Highlighted && /* @__PURE__ */ e.createElement(
+      ze,
       {
         key: `HighlightedPlanCard-${C.id}`,
         plan: C,
@@ -208,7 +208,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         buttonLabel: we({ plan: C, customFieldKey: P }),
         showRecommendedPlanBadge: $
       }
-    ), g === q.Horizontal && /* @__PURE__ */ e.createElement(
+    ), g === Q.Horizontal && /* @__PURE__ */ e.createElement(
       Re,
       {
         key: `HorizontalPlanCard-${C.id}`,
@@ -224,7 +224,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       }
     ));
   }));
-}, Je = ({
+}, Ge = ({
   customer: t,
   plans: c,
   onSubscribe: m,
@@ -247,9 +247,9 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   showCustomPlans: w = !0
   // boolean: show custom plans
 }) => {
-  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((S) => S.interval === p.Annual) && c.some((S) => S.interval === p.Every30Days), L = c.find((S) => S.id === (b == null ? void 0 : b.plan.id)), [D, C] = Q(
+  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((S) => S.interval === p.Annual) && c.some((S) => S.interval === p.Every30Days), L = c.find((S) => S.id === (b == null ? void 0 : b.plan.id)), [D, C] = q(
     L ? L.interval : x ? p.Annual : p.Every30Days
-  ), j = c.filter((S) => S.availability === ge.Public), B = w ? c.filter((S) => S.availability !== ge.Public) : [], [W, R] = Q(
+  ), j = c.filter((S) => S.availability === ge.Public), B = w ? c.filter((S) => S.availability !== ge.Public) : [], [z, R] = q(
     T.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
@@ -275,7 +275,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       fullWidth: A === "full",
       narrowWidth: A === "narrow"
     },
-    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, z && /* @__PURE__ */ e.createElement(
       pe,
       {
         tone: "success",
@@ -291,7 +291,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         plans: j,
         onSelectPlan: m,
         planInterval: D,
-        cardType: q.Horizontal,
+        cardType: Q.Horizontal,
         keyForRecommended: f,
         keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
@@ -304,7 +304,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         plans: B,
         onSelectPlan: m,
         planInterval: D,
-        cardType: q.Horizontal,
+        cardType: Q.Horizontal,
         keyForRecommended: f,
         keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
@@ -313,7 +313,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       }
     )))))
   );
-}, ze = ({ plan: t, isRecommendedPlan: c = !1 }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(O, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, t.name), c && /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)), t.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, t.description)), je = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, G(c.discountedAmount, t.currency)), /* @__PURE__ */ e.createElement(
+}, Ne = ({ plan: t, isRecommendedPlan: c = !1 }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(O, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, t.name), c && /* @__PURE__ */ e.createElement(be, { tone: "success" }, y.MostPopular)), t.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, t.description)), je = ({ plan: t, discount: c, useShortFormPlanIntervals: m = !0 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, !!c && /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, J(c.discountedAmount, t.currency)), /* @__PURE__ */ e.createElement(
   u,
   {
     variant: "headingXl",
@@ -322,7 +322,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
     textDecorationLine: "line-through"
   },
   t.amount
-), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, G(t.amount, t.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${g}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), Ue = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(O, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), !c && /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, J(t.amount, t.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: t.interval, useShortFormPlanIntervals: m }))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, t.usageCharges.map((d, g) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${g}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, d.terms))))), Ue = ({ plan: t, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(O, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((m, d) => {
   const g = t.features[m];
   if (g.type !== "boolean" || g.value === !0)
     return /* @__PURE__ */ e.createElement(O, { key: `plan-feature-${d}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g.value, " ", g.name));
@@ -339,7 +339,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   const [P, $] = e.useState(!1), A = async ({ plan: w, discount: b }) => {
     d ? ($(!0), await d({ plan: w, discount: b }) !== !0 && $(!1)) : console.log("No onSelectPlan callback provided");
   };
-  return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(ze, { plan: t, isRecommendedPlan: f }), /* @__PURE__ */ e.createElement(
+  return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(Ne, { plan: t, isRecommendedPlan: f }), /* @__PURE__ */ e.createElement(
     je,
     {
       plan: t,
@@ -359,7 +359,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
     },
     k ? y.CurrentPlan : m || y.SelectPlan
   ), /* @__PURE__ */ e.createElement(Ue, { plan: t, trialDaysAsFeature: o })));
-}, qe = ({
+}, Qe = ({
   customer: t,
   plans: c,
   onSubscribe: m,
@@ -382,9 +382,9 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   showCustomPlans: w = !0
   // boolean: show custom plans
 }) => {
-  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((S) => S.interval === p.Annual) && c.some((S) => S.interval === p.Every30Days), L = c.find((S) => S.id === (b == null ? void 0 : b.plan.id)), [D, C] = Q(
+  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((S) => S.interval === p.Annual) && c.some((S) => S.interval === p.Every30Days), L = c.find((S) => S.id === (b == null ? void 0 : b.plan.id)), [D, C] = q(
     L ? L.interval : x ? p.Annual : p.Every30Days
-  ), j = c.filter((S) => S.availability === ge.Public), B = w ? c.filter((S) => S.availability !== ge.Public) : [], [W, R] = Q(
+  ), j = c.filter((S) => S.availability === ge.Public), B = w ? c.filter((S) => S.availability !== ge.Public) : [], [z, R] = q(
     T.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
@@ -410,7 +410,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       fullWidth: A === "full",
       narrowWidth: A === "narrow"
     },
-    /* @__PURE__ */ e.createElement(Y, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, W && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Y, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Z, null, /* @__PURE__ */ e.createElement(Z.Section, null, /* @__PURE__ */ e.createElement(v, { gap: "1000" }, z && /* @__PURE__ */ e.createElement(
       pe,
       {
         tone: "success",
@@ -426,7 +426,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         plans: j,
         onSelectPlan: m,
         planInterval: D,
-        cardType: q.Highlighted,
+        cardType: Q.Highlighted,
         keyForRecommended: f,
         keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
@@ -439,7 +439,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         plans: B,
         onSelectPlan: m,
         planInterval: D,
-        cardType: q.Highlighted,
+        cardType: Q.Highlighted,
         keyForRecommended: f,
         keyForCustomButtonLabel: o,
         trialDaysAsFeature: P,
@@ -448,7 +448,7 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       }
     ))))))
   );
-}, Qe = ({
+}, qe = ({
   customer: t,
   plans: c,
   onSubscribe: m,
@@ -471,19 +471,19 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
   showCustomPlans: w = !0
   // boolean: show custom plans
 }) => {
-  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((n) => n.interval === p.Annual) && c.some((n) => n.interval === p.Every30Days), L = c.find((n) => n.id === (b == null ? void 0 : b.plan.id)), [D, C] = Q(
+  const b = t == null ? void 0 : t.subscription, T = new URLSearchParams(window.location.search), x = c.some((n) => n.interval === p.Annual) && c.some((n) => n.interval === p.Every30Days), L = c.find((n) => n.id === (b == null ? void 0 : b.plan.id)), [D, C] = q(
     L ? L.interval : x ? p.Annual : p.Every30Days
   ), j = c.filter(
     (n) => n.availability !== "customerTag" && n.availability !== "customer"
-  ), B = k && x ? j.filter((n) => n.interval === D) : j, W = w ? c.filter(
+  ), B = k && x ? j.filter((n) => n.interval === D) : j, z = w ? c.filter(
     (n) => n.availability === "customerTag" || n.availability === "customer"
-  ) : [], [R, S] = Q(
+  ) : [], [R, S] = q(
     T.get("subscribed") === "true"
-  ), se = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, n.name), n.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, n.description)), le = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { fontWeight: "medium" }, y.Features), /* @__PURE__ */ e.createElement(v, { gap: "100" }, P && n.trialDays !== 0 && /* @__PURE__ */ e.createElement(O, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", n.trialDays))), n.featuresOrder.map((_, i) => {
+  ), se = ({ plan: n, discount: W }) => /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, n.name), n.description && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, n.description)), le = ({ plan: n, discount: W }) => /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { fontWeight: "medium" }, y.Features), /* @__PURE__ */ e.createElement(v, { gap: "100" }, P && n.trialDays !== 0 && /* @__PURE__ */ e.createElement(O, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, y.FreeTrialLength.replace("{{ trialDays }}", n.trialDays))), n.featuresOrder.map((_, i) => {
     const r = n.features[_];
     if (r.type !== "boolean" || r.value === !0)
       return /* @__PURE__ */ e.createElement(O, { key: `plan-feature-${i}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: re, tone: "positive" })), r.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, r.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, r.value, " ", r.name));
-  }))), ee = ({ plan: n, discount: N }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, N ? /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, G(N.discountedAmount, n.currency)), /* @__PURE__ */ e.createElement(
+  }))), ee = ({ plan: n, discount: W }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, W ? /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingXl" }, J(W.discountedAmount, n.currency)), /* @__PURE__ */ e.createElement(
     u,
     {
       variant: "headingXl",
@@ -492,14 +492,14 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
       textDecorationLine: "line-through"
     },
     n.amount
-  ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: $ }))) : /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, G(n.amount, n.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: $ }))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, n.usageCharges.map((_, i) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${i}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, _.terms))))), F = ({ plan: n, discount: N }) => {
+  ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: $ }))) : /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "headingXl" }, J(n.amount, n.currency)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, y.Per, " ", ie({ interval: n.interval, useShortFormPlanIntervals: $ }))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, n.usageCharges.map((_, i) => /* @__PURE__ */ e.createElement(O, { key: `plan-usageCharge-${i}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(Y, null, /* @__PURE__ */ e.createElement(X, { source: fe, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, _.terms))))), F = ({ plan: n, discount: W }) => {
     const _ = o && n.customFields[o], i = n.customFields && n.customFields[f];
     return /* @__PURE__ */ e.createElement(O, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
       K,
       {
         size: "large",
         variant: i ? "primary" : "secondary",
-        onClick: () => m({ planId: n.id, discountId: N == null ? void 0 : N.id }),
+        onClick: () => m({ planId: n.id, discountId: W == null ? void 0 : W.id }),
         disabled: (L == null ? void 0 : L.id) === n.id
       },
       (L == null ? void 0 : L.id) === n.id ? y.CurrentPlan : _ ? n.customFields[o] : y.SelectPlan
@@ -538,18 +538,18 @@ const Ie = ({ plan: t }) => /* @__PURE__ */ e.createElement(v, { gap: "100" }, /
         }
       },
       y.SubscribeSuccessBody
-    ), B.map((n, N) => {
+    ), B.map((n, W) => {
       var i;
       const _ = ((i = n.discounts) == null ? void 0 : i.length) > 0 ? n.discounts.reduce(
         (r, a) => r.discountedAmount < a.discountedAmount ? r : a
       ) : null;
-      return /* @__PURE__ */ e.createElement(me, { key: `plan-${N}` }, /* @__PURE__ */ e.createElement(ae, null, /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(v, { gap: "200" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ })), /* @__PURE__ */ e.createElement(Y, null, F({ plan: n, discount: _ })))), /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, le({ plan: n, discount: _ }))));
-    }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (W == null ? void 0 : W.length) > 0 && /* @__PURE__ */ e.createElement(v, { gap: "300" }, /* @__PURE__ */ e.createElement(Y, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, y.CustomPlans)), /* @__PURE__ */ e.createElement(ae, null, W.map((n, N) => {
+      return /* @__PURE__ */ e.createElement(me, { key: `plan-${W}` }, /* @__PURE__ */ e.createElement(ae, null, /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(v, { gap: "200" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ })), /* @__PURE__ */ e.createElement(Y, null, F({ plan: n, discount: _ })))), /* @__PURE__ */ e.createElement(ae.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 12 } }, le({ plan: n, discount: _ }))));
+    }), (z == null ? void 0 : z.length) > 0 && /* @__PURE__ */ e.createElement(Se, { borderColor: "border" }), (z == null ? void 0 : z.length) > 0 && /* @__PURE__ */ e.createElement(v, { gap: "300" }, /* @__PURE__ */ e.createElement(Y, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, y.CustomPlans)), /* @__PURE__ */ e.createElement(ae, null, z.map((n, W) => {
       var i;
       const _ = ((i = n.discounts) == null ? void 0 : i.length) > 0 ? n.discounts.reduce(
         (r, a) => r.discountedAmount < a.discountedAmount ? r : a
       ) : null;
-      return /* @__PURE__ */ e.createElement(ae.Cell, { key: `custom-plan-${N}`, columnSpan: columnSpan() }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ }), F({ plan: n, discount: _ }), le({ plan: n, discount: _ }))));
+      return /* @__PURE__ */ e.createElement(ae.Cell, { key: `custom-plan-${W}`, columnSpan: columnSpan() }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "400" }, se({ plan: n, discount: _ }), ee({ plan: n, discount: _ }), F({ plan: n, discount: _ }), le({ plan: n, discount: _ }))));
     }))))))
   );
 };
@@ -568,7 +568,7 @@ var Pe = { exports: {} };
     } }, B = function(i, r, a) {
       var s = String(i);
       return !s || s.length >= r ? i : "" + Array(r + 1 - s.length).join(a) + i;
-    }, W = { s: B, z: function(i) {
+    }, z = { s: B, z: function(i) {
       var r = -i.utcOffset(), a = Math.abs(r), s = Math.floor(a / 60), l = a % 60;
       return (r <= 0 ? "+" : "-") + B(s, 2, "0") + ":" + B(l, 2, "0");
     }, m: function i(r, a) {
@@ -585,7 +585,7 @@ var Pe = { exports: {} };
     } }, R = "en", S = {};
     S[R] = j;
     var se = "$isDayjsObject", le = function(i) {
-      return i instanceof N || !(!i || !i[se]);
+      return i instanceof W || !(!i || !i[se]);
     }, ee = function i(r, a, s) {
       var l;
       if (!r)
@@ -605,12 +605,12 @@ var Pe = { exports: {} };
       if (le(i))
         return i.clone();
       var a = typeof r == "object" ? r : {};
-      return a.date = i, a.args = arguments, new N(a);
-    }, n = W;
+      return a.date = i, a.args = arguments, new W(a);
+    }, n = z;
     n.l = ee, n.i = le, n.w = function(i, r) {
       return F(i, { locale: r.$L, utc: r.$u, x: r.$x, $offset: r.$offset });
     };
-    var N = function() {
+    var W = function() {
       function i(a) {
         this.$L = ee(a.locale, null, !0), this.parse(a), this.$x = this.$x || a.x || {}, this[se] = !0;
       }
@@ -655,19 +655,19 @@ var Pe = { exports: {} };
         return this.$d.getTime();
       }, r.startOf = function(a, s) {
         var l = this, h = !!n.u(s) || s, E = n.p(a), M = function(ne, U) {
-          var J = n.w(l.$u ? Date.UTC(l.$y, U, ne) : new Date(l.$y, U, ne), l);
-          return h ? J : J.endOf($);
+          var G = n.w(l.$u ? Date.UTC(l.$y, U, ne) : new Date(l.$y, U, ne), l);
+          return h ? G : G.endOf($);
         }, H = function(ne, U) {
           return n.w(l.toDate()[ne].apply(l.toDate("s"), (h ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(U)), l);
-        }, I = this.$W, z = this.$M, V = this.$D, ce = "set" + (this.$u ? "UTC" : "");
+        }, I = this.$W, N = this.$M, V = this.$D, ce = "set" + (this.$u ? "UTC" : "");
         switch (E) {
           case T:
             return h ? M(1, 0) : M(31, 11);
           case w:
-            return h ? M(1, z) : M(0, z + 1);
+            return h ? M(1, N) : M(0, N + 1);
           case A:
             var te = this.$locale().weekStart || 0, oe = (I < te ? I + 7 : I) - te;
-            return M(h ? V - oe : V + (6 - oe), z);
+            return M(h ? V - oe : V + (6 - oe), N);
           case $:
           case x:
             return H(ce + "Hours", 0);
@@ -697,9 +697,9 @@ var Pe = { exports: {} };
       }, r.add = function(a, s) {
         var l, h = this;
         a = Number(a);
-        var E = n.p(s), M = function(z) {
+        var E = n.p(s), M = function(N) {
           var V = F(h);
-          return n.w(V.date(V.date() + Math.round(z * a)), h);
+          return n.w(V.date(V.date() + Math.round(N * a)), h);
         };
         if (E === w)
           return this.set(w, this.$M + a);
@@ -717,16 +717,16 @@ var Pe = { exports: {} };
         var s = this, l = this.$locale();
         if (!this.isValid())
           return l.invalidDate || L;
-        var h = a || "YYYY-MM-DDTHH:mm:ssZ", E = n.z(this), M = this.$H, H = this.$m, I = this.$M, z = l.weekdays, V = l.months, ce = l.meridiem, te = function(U, J, ue, he) {
-          return U && (U[J] || U(s, h)) || ue[J].slice(0, he);
+        var h = a || "YYYY-MM-DDTHH:mm:ssZ", E = n.z(this), M = this.$H, H = this.$m, I = this.$M, N = l.weekdays, V = l.months, ce = l.meridiem, te = function(U, G, ue, he) {
+          return U && (U[G] || U(s, h)) || ue[G].slice(0, he);
         }, oe = function(U) {
           return n.s(M % 12 || 12, U, "0");
-        }, ne = ce || function(U, J, ue) {
+        }, ne = ce || function(U, G, ue) {
           var he = U < 12 ? "AM" : "PM";
           return ue ? he.toLowerCase() : he;
         };
-        return h.replace(C, function(U, J) {
-          return J || function(ue) {
+        return h.replace(C, function(U, G) {
+          return G || function(ue) {
             switch (ue) {
               case "YY":
                 return String(s.$y).slice(-2);
@@ -747,11 +747,11 @@ var Pe = { exports: {} };
               case "d":
                 return String(s.$W);
               case "dd":
-                return te(l.weekdaysMin, s.$W, z, 2);
+                return te(l.weekdaysMin, s.$W, N, 2);
               case "ddd":
-                return te(l.weekdaysShort, s.$W, z, 3);
+                return te(l.weekdaysShort, s.$W, N, 3);
               case "dddd":
-                return z[s.$W];
+                return N[s.$W];
               case "H":
                 return String(M);
               case "HH":
@@ -783,7 +783,7 @@ var Pe = { exports: {} };
       }, r.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, r.diff = function(a, s, l) {
-        var h, E = this, M = n.p(s), H = F(a), I = (H.utcOffset() - this.utcOffset()) * d, z = this - H, V = function() {
+        var h, E = this, M = n.p(s), H = F(a), I = (H.utcOffset() - this.utcOffset()) * d, N = this - H, V = function() {
           return n.m(E, H);
         };
         switch (M) {
@@ -797,22 +797,22 @@ var Pe = { exports: {} };
             h = V() / 3;
             break;
           case A:
-            h = (z - I) / 6048e5;
+            h = (N - I) / 6048e5;
             break;
           case $:
-            h = (z - I) / 864e5;
+            h = (N - I) / 864e5;
             break;
           case P:
-            h = z / g;
+            h = N / g;
             break;
           case k:
-            h = z / d;
+            h = N / d;
             break;
           case f:
-            h = z / m;
+            h = N / m;
             break;
           default:
-            h = z;
+            h = N;
         }
         return l ? h : n.a(h);
       }, r.daysInMonth = function() {
@@ -835,13 +835,13 @@ var Pe = { exports: {} };
       }, r.toString = function() {
         return this.$d.toUTCString();
       }, i;
-    }(), _ = N.prototype;
+    }(), _ = W.prototype;
     return F.prototype = _, [["$ms", o], ["$s", f], ["$m", k], ["$H", P], ["$W", $], ["$M", w], ["$y", T], ["$D", x]].forEach(function(i) {
       _[i[1]] = function(r) {
         return this.$g(r, i[0], i[1]);
       };
     }), F.extend = function(i, r) {
-      return i.$i || (i(r, N, F), i.$i = !0), F;
+      return i.$i || (i(r, W, F), i.$i = !0), F;
     }, F.locale = ee, F.isDayjs = le, F.unix = function(i) {
       return F(1e3 * i);
     }, F.en = S[R], F.Ls = S, F.p = {}, F;
@@ -861,8 +861,8 @@ const De = /* @__PURE__ */ Ke(Xe), ve = ({
   refetch: k = async () => {
   }
 }) => {
-  var W;
-  const [P, $] = Q(!1), [A, w] = Q(!1);
+  var z;
+  const [P, $] = q(!1), [A, w] = q(!1);
   if (!f)
     return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, o.Subscription), /* @__PURE__ */ e.createElement(u, null, o.NotSubscribed), /* @__PURE__ */ e.createElement(O, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
       K,
@@ -873,7 +873,7 @@ const De = /* @__PURE__ */ Ke(Xe), ve = ({
       },
       o.SelectPlan
     )))));
-  const { plan: b } = f, T = G(f.total, b.currency), x = b.interval === p.Annual ? o.Year : o.Month, L = t === "horizontal" ? Ae : v, D = (W = f == null ? void 0 : f.appliedDiscount) == null ? void 0 : W.discount, C = D ? D.percentage ? `${D.percentage}%` : G(D.amount, b.currency) : null, j = D && f.appliedDiscount.discountEndsAt && De().isAfter(De(f.appliedDiscount.discountEndsAt)), B = D ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  const { plan: b } = f, T = J(f.total, b.currency), x = b.interval === p.Annual ? o.Year : o.Month, L = t === "horizontal" ? Ae : v, D = (z = f == null ? void 0 : f.appliedDiscount) == null ? void 0 : z.discount, C = D ? D.percentage ? `${D.percentage}%` : J(D.amount, b.currency) : null, j = D && f.appliedDiscount.discountEndsAt && De().isAfter(De(f.appliedDiscount.discountEndsAt)), B = D ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
   return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(v, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, o.Subscription), /* @__PURE__ */ e.createElement(v, { gap: "400" }, /* @__PURE__ */ e.createElement(L, { columns: B, gap: "300" }, /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.CurrentPlan), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, b.name)), /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.Price), /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, o.AmountPerInterval.replace("{{ amount }}", T).replace("{{ interval }}", x)), D && !j && /* @__PURE__ */ e.createElement(u, { tone: "success" }, o.DiscountAmount.replace("{{ amount }}", C)), D && j && /* @__PURE__ */ e.createElement(u, { tone: "subdued", textDecorationLine: "line-through" }, o.DiscountAmountExpired.replace("{{ amount }}", C)))), b.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(v, null, /* @__PURE__ */ e.createElement(u, null, o.UsageCharges || "Usage charges"), b.usageCharges.map((R, S) => /* @__PURE__ */ e.createElement(u, { key: `usage-charge-${S}`, tone: "subdued" }, R.terms)))), /* @__PURE__ */ e.createElement(O, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
     K,
     {
@@ -966,15 +966,15 @@ const De = /* @__PURE__ */ Ke(Xe), ve = ({
   );
 };
 export {
-  qe as HighlightedPlanCards,
+  Qe as HighlightedPlanCards,
   Re as HorizontalPlanCard,
-  Je as HorizontalPlanCards,
+  Ge as HorizontalPlanCards,
   Ee as PlanCardStack,
-  q as PlanCardType,
+  Q as PlanCardType,
   Ue as PlanFeaturesSection,
   je as PlanPricingSection,
-  ze as PlanTitleSection,
+  Ne as PlanTitleSection,
   ve as SubscriptionSummaryCard,
   et as SubscriptionSummaryPage,
-  Qe as VerticalPlanCards
+  qe as VerticalPlanCards
 };
