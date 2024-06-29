@@ -43,7 +43,7 @@ export const SubscriptionSummaryCard = ({
   const t = _t ? _t : (key) => key;
   const i18n = {
     ...Labels,
-    ...(i18n || {}),
+    ...(_i18n || {}),
   };
 
   if (!subscription) {

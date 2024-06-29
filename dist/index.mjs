@@ -878,7 +878,7 @@ const De = /* @__PURE__ */ Ke(Xe), ve = ({
   var Z;
   const [F, w] = te(!1), [M, L] = te(!1), o = D || ((X) => X), m = {
     ...f,
-    ...m || {}
+    ...h || {}
   };
   if (!b)
     return /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(p, { gap: "200" }, /* @__PURE__ */ e.createElement(g, { variant: "headingMd" }, o(m.Subscription)), /* @__PURE__ */ e.createElement(g, null, o(m.NotSubscribed)), /* @__PURE__ */ e.createElement(O, { align: "end" }, /* @__PURE__ */ e.createElement(de, null, /* @__PURE__ */ e.createElement(
