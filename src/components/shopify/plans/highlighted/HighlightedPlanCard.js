@@ -15,14 +15,14 @@ import { Labels, intervalLabel, money } from "@heymantle/react";
  * @param {Plan} props.plan - The Mantle Plan object.
  * @returns {JSX.Element}
  */
-export const PlanTitleSection = ({ plan }) => (
+export const PlanTitleSection = ({ plan, t, translatePlanName }) => (
   <BlockStack gap="100">
     <Text variant="headingMd" alignment="center">
-      {plan.name}
+      {translatePlanName ? t(plan.name) : plan.name}
     </Text>
     {plan.description && (
       <Text variant="bodyLg" tone="subdued" alignment="center">
-        {plan.description}
+        {t(plan.description)}
       </Text>
     )}
   </BlockStack>
@@ -36,7 +36,7 @@ export const PlanTitleSection = ({ plan }) => (
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals = true }) => (
+export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true }) => (
   <BlockStack gap="100">
     {!!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
@@ -50,7 +50,7 @@ export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals =
           {money(plan.amount, plan.currency, true)}
         </Text>
         <Text variant="bodyLg" tone="subdued">
-          {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}
+          {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
         </Text>
       </InlineStack>
     )}
@@ -60,7 +60,7 @@ export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals =
           {money(plan.amount, plan.currency, true)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
-          {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}
+          {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
         </Text>
       </InlineStack>
     )}
@@ -72,7 +72,7 @@ export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals =
               <Box>
                 <Icon source={PlusIcon} tone="positive" />
               </Box>
-              <Text variant="bodyLg">{usageCharge.terms}</Text>
+              <Text variant="bodyLg">{t(usageCharge.terms)}</Text>
             </InlineStack>
           );
         })}
@@ -88,7 +88,7 @@ export const PlanPricingSection = ({ plan, discount, useShortFormPlanIntervals =
  * @param {boolean} [props.trialDaysAsFeature] - Whether to show the trial days as a feature.
  * @returns {JSX.Element}
  */
-export const PlanFeaturesSection = ({ plan, trialDaysAsFeature = false }) => (
+export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => (
   <BlockStack gap="300">
     {trialDaysAsFeature && plan.trialDays && plan.trialDays > 0 ? (
       <InlineStack align="center" blockAlign="center" gap="100">
@@ -96,7 +96,7 @@ export const PlanFeaturesSection = ({ plan, trialDaysAsFeature = false }) => (
           <Icon source={CheckIcon} tone="positive" />
         </Box>
         <Text tone="subdued">
-          {Labels.FreeTrialLength.replace("{{ trialDays }}", plan.trialDays)}
+          {t(Labels.FreeTrialLength).replace("{{ trialDays }}", plan.trialDays)}
         </Text>
       </InlineStack>
     ) : null}
@@ -110,10 +110,10 @@ export const PlanFeaturesSection = ({ plan, trialDaysAsFeature = false }) => (
               <Icon source={CheckIcon} tone="positive" />
             </Box>
             {planFeature.type === "boolean" ? (
-              <Text tone="subdued">{planFeature.name}</Text>
+              <Text tone="subdued">{t(planFeature.name)}</Text>
             ) : (
               <Text tone="subdued">
-                {planFeature.value} {planFeature.name}
+                {planFeature.value} {t(planFeature.name)}
               </Text>
             )}
           </InlineStack>
@@ -151,8 +151,12 @@ export const HighlightedPlanCard = ({
   isRecommendedPlan = false,
   isCustomPlan = false,
   showRecommendedPlanBadge = true,
+  t: _t,
+  translatePlanName = true,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
+
+  const t = _t ? _t : (key) => key;
 
   const handleSelectPlan = async ({ plan, discount }) => {
     if (onSelectPlan) {
@@ -183,11 +187,12 @@ export const HighlightedPlanCard = ({
         >
           <BlockStack gap="800">
             <BlockStack gap="400">
-              <PlanTitleSection plan={plan} />
+              <PlanTitleSection plan={plan} t={t} translatePlanName={translatePlanName} />
               <PlanPricingSection
                 plan={plan}
                 discount={discount}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
+                t={t}
               />
             </BlockStack>
             <Button
@@ -199,12 +204,12 @@ export const HighlightedPlanCard = ({
               disabled={isActivePlan}
               loading={isSelectingPlan}
             >
-              {buttonLabel || Labels.SelectPlan}
+              {t(buttonLabel || Labels.SelectPlan)}
             </Button>
-            <PlanFeaturesSection plan={plan} trialDaysAsFeature={trialDaysAsFeature} />
+            <PlanFeaturesSection plan={plan} t={t} trialDaysAsFeature={trialDaysAsFeature} />
             {isRecommendedPlan && showRecommendedPlanBadge && (
               <InlineStack align="center" gap="100">
-                <Badge tone="success">{Labels.MostPopular}</Badge>
+                <Badge tone="success">{t(Labels.MostPopular)}</Badge>
               </InlineStack>
             )}
           </BlockStack>

@@ -10,7 +10,7 @@ import {
   Modal,
   Text,
 } from "@shopify/polaris";
-import { money, PlanInterval } from "@heymantle/react";
+import { money, PlanInterval, Labels } from "@heymantle/react";
 
 /**
  * Subscription summary component
@@ -31,27 +31,35 @@ export const SubscriptionSummaryCard = ({
   onCancelPlan,
   onPlanCancelled = () => { },
   cancelSubscription = async () => { },
-  i18n,
+  i18n: _i18n,
   subscription,
   refetch = async () => { },
+  t: _t,
+  translatePlanName = true,
 }) => {
   const [showCancelPlanModal, setShowCancelPlanModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
+
+  const t = _t ? _t : (key) => key;
+  const i18n = {
+    ...Labels,
+    ...(i18n || {}),
+  };
 
   if (!subscription) {
     return (
       <Card>
         <BlockStack gap="200">
-          <Text variant="headingMd">{i18n.Subscription}</Text>
-          <Text>{i18n.NotSubscribed}</Text>
+          <Text variant="headingMd">{t(i18n.Subscription)}</Text>
+          <Text>{t(i18n.NotSubscribed)}</Text>
           <InlineStack align="end">
             <ButtonGroup>
               <Button
                 variant="primary"
                 onClick={onShowPlans}
-                accessibilityLabel={i18n.ChangePlan}
+                accessibilityLabel={t(i18n.ChangePlan)}
               >
-                {i18n.SelectPlan}
+                {t(i18n.SelectPlan)}
               </Button>
             </ButtonGroup>
           </InlineStack>
@@ -62,7 +70,7 @@ export const SubscriptionSummaryCard = ({
 
   const { plan } = subscription;
   const planAmount = money(subscription.total, plan.currency);
-  const planInterval = plan.interval === PlanInterval.Annual ? i18n.Year : i18n.Month;
+  const planInterval = t(plan.interval === PlanInterval.Annual ? i18n.Year : i18n.Month);
   const Tag = orientation === "horizontal" ? InlineGrid : BlockStack;
   const discount = subscription?.appliedDiscount?.discount;
   const discountAmount = discount ? discount.percentage ? `${discount.percentage}%` : money(discount.amount, plan.currency) : null;
@@ -72,31 +80,31 @@ export const SubscriptionSummaryCard = ({
   return (
     <Card>
       <BlockStack gap="200">
-        <Text variant="headingMd">{i18n.Subscription}</Text>
+        <Text variant="headingMd">{t(i18n.Subscription)}</Text>
         <BlockStack gap="400">
           <Tag columns={columns} gap="300">
             <BlockStack>
-              <Text>{i18n.CurrentPlan}</Text>
-              <Text tone="subdued">{plan.name}</Text>
+              <Text>{t(i18n.CurrentPlan)}</Text>
+              <Text tone="subdued">{translatePlanName ? t(plan.name) : plan.name}</Text>
             </BlockStack>
             <BlockStack>
-              <Text>{i18n.Price}</Text>
+              <Text>{t(i18n.Price)}</Text>
               <BlockStack>
-                <Text tone="subdued">{i18n.AmountPerInterval.replace('{{ amount }}', planAmount).replace('{{ interval }}', planInterval)}</Text>
+                <Text tone="subdued">{t(i18n.AmountPerInterval).replace('{{ amount }}', planAmount).replace('{{ interval }}', planInterval)}</Text>
                 {discount && !discountIsExpired && (
-                  <Text tone="success">{i18n.DiscountAmount.replace('{{ amount }}', discountAmount)}</Text>
+                  <Text tone="success">{t(i18n.DiscountAmount).replace('{{ amount }}', discountAmount)}</Text>
                 )}
                 {discount && discountIsExpired && (
-                  <Text tone="subdued" textDecorationLine="line-through">{i18n.DiscountAmountExpired.replace('{{ amount }}', discountAmount)}</Text>
+                  <Text tone="subdued" textDecorationLine="line-through">{t(i18n.DiscountAmountExpired).replace('{{ amount }}', discountAmount)}</Text>
                 )}
               </BlockStack>
             </BlockStack>
             {plan.usageCharges.length > 0 && (
               <BlockStack>
-                <Text>{i18n.UsageCharges || "Usage charges"}</Text>
+                <Text>{t(i18n.UsageCharges || "Usage charges")}</Text>
                 {plan.usageCharges.map((charge, index) => {
                   return (
-                    <Text key={`usage-charge-${index}`} tone="subdued">{charge.terms}</Text>
+                    <Text key={`usage-charge-${index}`} tone="subdued">{t(charge.terms)}</Text>
                   )
                 })}
               </BlockStack>
@@ -112,17 +120,17 @@ export const SubscriptionSummaryCard = ({
                     setShowCancelPlanModal(true);
                   }
                 }}
-                accessibilityLabel={i18n.CancelPlan}
+                accessibilityLabel={t(i18n.CancelPlan)}
                 tone="critical"
               >
-                {i18n.CancelPlan}
+                {t(i18n.CancelPlan)}
               </Button>
               <Button
                 variant="primary"
                 onClick={onShowPlans}
-                accessibilityLabel={i18n.ChangePlan}
+                accessibilityLabel={t(i18n.ChangePlan)}
               >
-                {i18n.ChangePlan}
+                {t(i18n.ChangePlan)}
               </Button>
             </ButtonGroup>
           </InlineStack>
@@ -132,9 +140,9 @@ export const SubscriptionSummaryCard = ({
         <Modal
           open
           onClose={() => setShowCancelPlanModal(false)}
-          title={i18n.CancelPlan}
+          title={t(i18n.CancelPlan)}
           primaryAction={{
-            content: i18n.CancelPlan,
+            content: t(i18n.CancelPlan),
             destructive: true,
             loading: cancelling,
             disabled: cancelling,
@@ -149,14 +157,14 @@ export const SubscriptionSummaryCard = ({
           }}
           secondaryActions={[
             {
-              content: i18n.Back,
+              content: t(i18n.Back),
               disabled: cancelling,
               onAction: () => setShowCancelPlanModal(false)
             },
           ]}
         >
           <Modal.Section>
-            {i18n.CancelConfirmation}
+            {t(i18n.CancelConfirmation)}
           </Modal.Section>
         </Modal>
       )}

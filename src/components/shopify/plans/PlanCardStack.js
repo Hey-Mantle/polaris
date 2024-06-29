@@ -66,6 +66,8 @@ export const PlanCardStack = ({
   keyForCustomButtonLabel = "buttonLabel",
   showRecommendedPlanBadge = true,
   applyDiscount = true,
+  t: _t,
+  translatePlanName = true,
 }) => {
   const activeSubscription = customer?.subscription?.active ? customer.subscription : undefined;
   const currentPlan = activeSubscription?.plan;
@@ -76,6 +78,8 @@ export const PlanCardStack = ({
 
   const _columnCount = cardType === PlanCardType.Vertical ? 1 : columnCount(plansToShow.length);
   const _columnSpan = columnSpan(_columnCount);
+
+  const t = _t ? _t : (key) => key;
 
   return (
     <Grid columns={_columnCount}>
@@ -97,6 +101,8 @@ export const PlanCardStack = ({
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                 buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
+                t={t}
+                translatePlanName={translatePlanName}
               />
             )}
             {cardType === PlanCardType.Horizontal && (
@@ -111,6 +117,8 @@ export const PlanCardStack = ({
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                 buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
+                t={t}
+                translatePlanName={translatePlanName}
               />
             )}
           </Grid.Cell>

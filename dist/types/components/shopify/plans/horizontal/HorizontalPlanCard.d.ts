@@ -1,17 +1,17 @@
-export function PlanTitleSection({ plan, isRecommendedPlan }: {
+export function PlanTitleSection({ plan, t, translatePlanName, isRecommendedPlan }: {
     plan: Plan;
     isRecommendedPlan?: boolean;
 }): JSX.Element;
-export function PlanPricingSection({ plan, discount, useShortFormPlanIntervals }: {
+export function PlanPricingSection({ plan, discount, t, useShortFormPlanIntervals }: {
     plan: Plan;
     discount: Discount;
     useShortFormPlanIntervals?: boolean;
 }): JSX.Element;
-export function PlanFeaturesSection({ plan, trialDaysAsFeature }: {
+export function PlanFeaturesSection({ plan, t, trialDaysAsFeature }: {
     plan: Plan;
     trialDaysAsFeature?: boolean;
 }): JSX.Element;
-export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, }: {
+export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, t: _t, translatePlanName, }: {
     plan: Plan;
     discount: Discount;
     buttonLabel?: string;
