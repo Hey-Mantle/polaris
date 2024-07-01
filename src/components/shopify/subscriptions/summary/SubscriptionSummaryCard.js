@@ -90,7 +90,7 @@ export const SubscriptionSummaryCard = ({
               <Text>{t(i18n.CurrentPlan)}</Text>
               <Text tone="subdued">{translatePlanName ? t(plan.name) : plan.name}</Text>
               {subscription.cancelOn && (
-                <Text tone="subdued">{t('Scheduled to cancel on {{ date }}').replace('{{ date }}', dayjs(subscription.cancelOn).format('LL'))}</Text>
+                <Text tone="subdued">{t('Canceled, active until {{ date }}').replace('{{ date }}', dayjs(subscription.cancelOn).format('LL'))}</Text>
               )}
             </BlockStack>
             <BlockStack>
@@ -128,7 +128,7 @@ export const SubscriptionSummaryCard = ({
                 }}
                 accessibilityLabel={t(i18n.CancelPlan)}
                 tone="critical"
-                disable={!!subscription.cancelOn}
+                disabled={!!subscription.cancelOn}
               >
                 {t(i18n.CancelPlan)}
               </Button>
