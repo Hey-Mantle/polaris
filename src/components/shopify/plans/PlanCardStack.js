@@ -85,6 +85,7 @@ export const PlanCardStack = ({
     <Grid columns={_columnCount}>
       {plansToShow.map((plan) => {
         const discount = applyDiscount ? highestDiscount({ plan }) : undefined;
+        const isActivePlan = currentPlan?.id === plan.id && !!activeSubscription?.cancelOn;
 
         return (
           <Grid.Cell columnSpan={_columnSpan} key={plan.id}>
@@ -94,7 +95,7 @@ export const PlanCardStack = ({
                 plan={plan}
                 discount={discount}
                 onSelectPlan={onSelectPlan}
-                isActivePlan={currentPlan?.id === plan.id}
+                isActivePlan={isActivePlan}
                 trialDaysAsFeature={trialDaysAsFeature}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 isCustomPlan={plan.availability !== PlanAvailability.Public}
@@ -111,7 +112,7 @@ export const PlanCardStack = ({
                 plan={plan}
                 discount={discount}
                 onSelectPlan={onSelectPlan}
-                isActivePlan={currentPlan?.id === plan.id}
+                isActivePlan={isActivePlan}
                 trialDaysAsFeature={trialDaysAsFeature}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
