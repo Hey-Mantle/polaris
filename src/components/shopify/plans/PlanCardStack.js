@@ -85,7 +85,7 @@ export const PlanCardStack = ({
     <Grid columns={_columnCount}>
       {plansToShow.map((plan) => {
         const discount = applyDiscount ? highestDiscount({ plan }) : undefined;
-        const isActivePlan = currentPlan?.id === plan.id && !!activeSubscription?.cancelOn;
+        const isActivePlan = currentPlan?.id === plan.id && !activeSubscription?.cancelOn;
 
         return (
           <Grid.Cell columnSpan={_columnSpan} key={plan.id}>

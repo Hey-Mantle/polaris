@@ -197,7 +197,7 @@ const We = ({ plan: t, t: l, translatePlanName: i }) => /* @__PURE__ */ e.create
   var L;
   const A = (L = l == null ? void 0 : l.subscription) != null && L.active ? l.subscription : void 0, d = A == null ? void 0 : A.plan, o = u ? t.filter((b) => b.interval === u) : t, P = S === ee.Vertical ? 1 : ze(o.length), H = _e(P), W = D || ((b) => b);
   return /* @__PURE__ */ e.createElement(le, { columns: P }, o.map((b) => {
-    const N = T ? Ie({ plan: b }) : void 0, p = (d == null ? void 0 : d.id) === b.id && !!(A != null && A.cancelOn);
+    const N = T ? Ie({ plan: b }) : void 0, p = (d == null ? void 0 : d.id) === b.id && !(A != null && A.cancelOn);
     return /* @__PURE__ */ e.createElement(le.Cell, { columnSpan: H, key: b.id }, S === ee.Highlighted && /* @__PURE__ */ e.createElement(
       Ue,
       {
