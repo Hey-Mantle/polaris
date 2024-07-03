@@ -3,3 +3,4 @@ src/.DS_Store
 storybook-static
 .DS_Store
 *.tgz
+.env
