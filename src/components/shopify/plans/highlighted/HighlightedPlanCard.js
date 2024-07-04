@@ -13,15 +13,18 @@ import { Labels, intervalLabel, money } from "@heymantle/react";
  * @component
  * @param {Object} props
  * @param {Plan} props.plan - The Mantle Plan object.
+ * @param {boolean} [props.translatePlanName] - Whether to translate the plan name.
+ * @param {string} [props.planNameTextVariant] - The text variant for the plan name.
+ * @param {string} [props.planDescriptionTextVariant] - The text variant for the plan description.
  * @returns {JSX.Element}
  */
-export const PlanTitleSection = ({ plan, t, translatePlanName }) => (
+export const PlanTitleSection = ({ plan, t, translatePlanName, planNameTextVariant, planDescriptionTextVariant }) => (
   <BlockStack gap="100">
-    <Text variant="headingMd" alignment="center">
+    <Text variant={planNameTextVariant} alignment="center">
       {translatePlanName ? t(plan.name) : plan.name}
     </Text>
     {plan.description && (
-      <Text variant="bodyLg" tone="subdued" alignment="center">
+      <Text variant={planDescriptionTextVariant} tone="subdued" alignment="center">
         {t(plan.description)}
       </Text>
     )}
@@ -33,16 +36,17 @@ export const PlanTitleSection = ({ plan, t, translatePlanName }) => (
  * @param {Object} props
  * @param {Plan} props.plan - The Mantle Plan object.
  * @param {Discount} props.discount - The Mantle Discount object.
+ * @param {string} [props.priceTextVariant] - The text variant for the price.
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true }) => (
+export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals = true }) => (
   <BlockStack gap="100">
     {!!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
-        <Text variant="heading3xl">{money(discount.discountedAmount, plan.currency, true)}</Text>
+        <Text variant={priceTextVariant}>{money(discount.discountedAmount, plan.currency, true)}</Text>
         <Text
-          variant="heading3xl"
+          variant={priceTextVariant}
           tone="subdued"
           fontWeight="medium"
           textDecorationLine="line-through"
@@ -56,7 +60,7 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
     )}
     {!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
-        <Text alignment="center" variant="heading3xl">
+        <Text alignment="center" variant={priceTextVariant}>
           {money(plan.amount, plan.currency, true)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
@@ -70,7 +74,7 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
           return (
             <InlineStack key={`plan-usageCharge-${index}`} align="center" gap="100">
               <Box>
-                <Icon source={PlusIcon} tone="positive" />
+                <Icon source={PlusIcon} tone="subdued" />
               </Box>
               <Text variant="bodyLg">{t(usageCharge.terms)}</Text>
             </InlineStack>
@@ -93,9 +97,9 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
     {trialDaysAsFeature && plan.trialDays && plan.trialDays > 0 ? (
       <InlineStack align="center" blockAlign="center" gap="100">
         <Box>
-          <Icon source={CheckIcon} tone="positive" />
+          <Icon source={CheckIcon} tone="subdued" />
         </Box>
-        <Text tone="subdued">
+        <Text>
           {t(Labels.FreeTrialLength).replace("{{ trialDays }}", plan.trialDays)}
         </Text>
       </InlineStack>
@@ -107,12 +111,12 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
         return (
           <InlineStack key={`plan-feature-${index}`} align="center" gap="100">
             <Box>
-              <Icon source={CheckIcon} tone="positive" />
+              <Icon source={CheckIcon} tone="subdued" />
             </Box>
             {planFeature.type === "boolean" ? (
-              <Text tone="subdued">{t(planFeature.name)}</Text>
+              <Text>{t(planFeature.name)}</Text>
             ) : (
-              <Text tone="subdued">
+              <Text>
                 {planFeature.value} {t(planFeature.name)}
               </Text>
             )}
@@ -153,6 +157,9 @@ export const HighlightedPlanCard = ({
   showRecommendedPlanBadge = true,
   t: _t,
   translatePlanName = true,
+  planNameTextVariant = "headingMd",
+  planDescriptionTextVariant = "bodyLg",
+  priceTextVariant = "heading3xl",
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -187,12 +194,19 @@ export const HighlightedPlanCard = ({
         >
           <BlockStack gap="800">
             <BlockStack gap="400">
-              <PlanTitleSection plan={plan} t={t} translatePlanName={translatePlanName} />
+              <PlanTitleSection
+                plan={plan}
+                t={t}
+                translatePlanName={translatePlanName}
+                planNameTextVariant={planNameTextVariant}
+                planDescriptionTextVariant={planDescriptionTextVariant}
+              />
               <PlanPricingSection
                 plan={plan}
                 discount={discount}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 t={t}
+                priceTextVariant={priceTextVariant}
               />
             </BlockStack>
             <Button

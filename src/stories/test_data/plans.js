@@ -93,7 +93,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -196,7 +196,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": true,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -287,7 +287,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -390,7 +390,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Request demo"
+          "buttonLabel": "Request demo"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -493,7 +493,7 @@ export const Plans = [
     "usageChargeCappedAmount": null,
     "customFields": {
         "Recommended": false,
-        "cta": "Request demo"
+        "buttonLabel": "Request demo"
     },
     "discounts": [],
     "autoAppliedDiscount": null,
@@ -584,7 +584,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": true,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -675,7 +675,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -766,7 +766,7 @@ export const Plans = [
     "usageChargeCappedAmount": null,
     "customFields": {
         "Recommended": false,
-        "cta": "Select plan"
+        "buttonLabel": "Select plan"
     },
     "discounts": [],
     "autoAppliedDiscount": null,
@@ -857,7 +857,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
@@ -948,7 +948,7 @@ export const Plans = [
       "usageChargeCappedAmount": null,
       "customFields": {
           "Recommended": false,
-          "cta": "Select plan"
+          "buttonLabel": "Select plan"
       },
       "discounts": [],
       "autoAppliedDiscount": null,
