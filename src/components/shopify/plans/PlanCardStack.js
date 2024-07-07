@@ -68,6 +68,7 @@ export const PlanCardStack = ({
   applyDiscount = true,
   t: _t,
   translatePlanName = true,
+  currency: _currency,
 }) => {
   const activeSubscription = customer?.subscription?.active ? customer.subscription : undefined;
   const currentPlan = activeSubscription?.plan;
@@ -86,6 +87,7 @@ export const PlanCardStack = ({
       {plansToShow.map((plan) => {
         const discount = applyDiscount ? highestDiscount({ plan }) : undefined;
         const isActivePlan = currentPlan?.id === plan.id && !activeSubscription?.cancelOn;
+        const currency = _currency || plan.currency;
 
         return (
           <Grid.Cell columnSpan={_columnSpan} key={plan.id}>
@@ -104,6 +106,7 @@ export const PlanCardStack = ({
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
                 t={t}
                 translatePlanName={translatePlanName}
+                currency={currency}
               />
             )}
             {cardType === PlanCardType.Horizontal && (
@@ -120,6 +123,7 @@ export const PlanCardStack = ({
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
                 t={t}
                 translatePlanName={translatePlanName}
+                currency={currency}
               />
             )}
           </Grid.Cell>

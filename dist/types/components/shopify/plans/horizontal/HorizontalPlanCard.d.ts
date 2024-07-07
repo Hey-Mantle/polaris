@@ -6,7 +6,7 @@ export function PlanTitleSection({ plan, t, translatePlanName, isRecommendedPlan
     planDescriptionTextVariant?: string;
     showRecommendedPlanBadge?: boolean;
 }): JSX.Element;
-export function PlanPricingSection({ plan, discount, t, useShortFormPlanIntervals, priceTextVariant }: {
+export function PlanPricingSection({ plan, discount, t, currency, useShortFormPlanIntervals, priceTextVariant }: {
     plan: Plan;
     discount: Discount;
     useShortFormPlanIntervals?: boolean;
@@ -16,7 +16,7 @@ export function PlanFeaturesSection({ plan, t, trialDaysAsFeature }: {
     plan: Plan;
     trialDaysAsFeature?: boolean;
 }): JSX.Element;
-export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, t: _t, translatePlanName, showRecommendedPlanBadge, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, }: {
+export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, t: _t, translatePlanName, showRecommendedPlanBadge, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, currency, }: {
     plan: Plan;
     discount: Discount;
     buttonLabel?: string;
@@ -28,6 +28,7 @@ export function HorizontalPlanCard({ plan, discount, buttonLabel, onSelectPlan, 
     trialDaysAsFeature?: boolean;
     isActivePlan?: boolean;
     isRecommendedPlan?: boolean;
+    currency?: string;
 }): JSX.Element;
 export type Plan = import('@heymantle/client').Plan;
 export type Discount = import('@heymantle/client').Discount;

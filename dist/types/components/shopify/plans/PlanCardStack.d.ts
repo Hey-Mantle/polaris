@@ -7,7 +7,7 @@ export namespace PlanCardType {
     let Horizontal: string;
     let Vertical: string;
 }
-export function PlanCardStack({ plans, customer, onSelectPlan, planInterval, cardType, trialDaysAsFeature, useShortFormPlanIntervals, keyForRecommended, keyForCustomButtonLabel, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, }: {
+export function PlanCardStack({ plans, customer, onSelectPlan, planInterval, cardType, trialDaysAsFeature, useShortFormPlanIntervals, keyForRecommended, keyForCustomButtonLabel, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, currency: _currency, }: {
     plans: Array<Plan>;
     customer: Customer;
     onSelectPlan?: ({ plan: Plan, discount: Discount }: {

@@ -23,8 +23,9 @@ dayjs.extend(localizedFormat);
  * @param {Function} props.onCancelPlan - Optional callback function to cancel plan.
  * @param {Function} props.onPlanCancelled - Optional callback function when plan is cancelled.
  * @param {Function} props.cancelSubscription - Optional async function to cancel subscription.
- * @param {Object} props.i18n - The internationalization object.
  * @param {Object} props.subscription - The subscription object.
+ * @param {Object} props.i18n - The internationalization object.
+ * @param {string} props.currency - The currency to display the plan amount in.
  * @param {Function} props.refetch - Optional async function to refetch subscription data.
  * @returns {JSX.Element}
  */
@@ -39,6 +40,7 @@ export const SubscriptionSummaryCard = ({
   refetch = async () => { },
   t: _t,
   translatePlanName = true,
+  currency,
 }) => {
   const [showCancelPlanModal, setShowCancelPlanModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
@@ -72,11 +74,12 @@ export const SubscriptionSummaryCard = ({
   }
 
   const { plan } = subscription;
-  const planAmount = money(subscription.total, plan.currency);
+  currency = currency || plan.currency;
+  const planAmount = money(subscription.total, currency);
   const planInterval = t(plan.interval === PlanInterval.Annual ? i18n.Year : i18n.Month);
   const Tag = orientation === "horizontal" ? InlineGrid : BlockStack;
   const discount = subscription?.appliedDiscount?.discount;
-  const discountAmount = discount ? discount.percentage ? `${discount.percentage}%` : money(discount.amount, plan.currency) : null;
+  const discountAmount = discount ? discount.percentage ? `${discount.percentage}%` : money(discount.amount, currency) : null;
   const discountIsExpired = discount && subscription.appliedDiscount.discountEndsAt && dayjs().isAfter(dayjs(subscription.appliedDiscount.discountEndsAt));
   const columns = plan.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
 

@@ -38,6 +38,7 @@ export const VerticalPlanCards = ({
   applyDiscount = true,
   t: _t,
   translatePlanName = true,
+  currency,
 }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const hasMonthlyAndYearlyPlans =
@@ -129,6 +130,7 @@ export const VerticalPlanCards = ({
                   showRecommendedPlanBadge={showRecommendedPlanBadge}
                   t={t}
                   translatePlanName={translatePlanName}
+                  currency={currency || plan.currency}
                 />
               );
             })}
