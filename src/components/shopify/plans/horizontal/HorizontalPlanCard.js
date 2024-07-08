@@ -49,7 +49,7 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
           fontWeight="medium"
           textDecorationLine="line-through"
         >
-          {plan.amount}
+          {plan.presentmentAmount}
         </Text>
         <Text variant="bodyLg" tone="subdued">
           {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}

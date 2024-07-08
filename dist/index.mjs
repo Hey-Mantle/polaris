@@ -658,7 +658,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     fontWeight: "medium",
     textDecorationLine: "line-through"
   },
-  t.amount
+  t.presentmentAmount
 ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), !n && /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: f }, Q(t.presentmentAmount, t.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(D, null, t.usageCharges.map((m, o) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${o}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, c(m.terms)))))), Ge = ({ plan: t, t: n, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement(D, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(I, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, null, n(S.FreeTrialLength).replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((s, f) => {
   const m = t.features[s];
   if (m.type !== "boolean" || m.value === !0)
@@ -834,7 +834,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       fontWeight: "medium",
       textDecorationLine: "line-through"
     },
-    y.amount
+    y.presentmentAmount
   ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))) : /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: A }, Q(y.presentmentAmount, y.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))), y.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(D, null, y.usageCharges.map((N, j) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${j}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, N.terms))))), C = ({ plan: y, discount: E }) => /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
     Z,
     {

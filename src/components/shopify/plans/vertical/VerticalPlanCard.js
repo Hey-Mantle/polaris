@@ -107,7 +107,7 @@ export const VerticalPlanCard = ({
               fontWeight="medium"
               textDecorationLine="line-through"
             >
-              {plan.amount}
+              {plan.presentmentAmount}
             </Text>
             <Text variant="bodyLg" tone="subdued">
               {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}
