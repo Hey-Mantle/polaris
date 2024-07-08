@@ -28,7 +28,6 @@ export const VerticalPlanCard = ({
   planNameTextVariant = "bodyLg",
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
-  currency,
 }) => {
 
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
@@ -101,7 +100,7 @@ export const VerticalPlanCard = ({
       <BlockStack gap="100">
         {discount ? (
           <InlineStack blockAlign="center" gap="200">
-            <Text variant={priceTextVariant}>{money(discount.discountedAmount, currency)}</Text>
+            <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode)}</Text>
             <Text
               variant={priceTextVariant}
               tone="subdued"
@@ -117,7 +116,7 @@ export const VerticalPlanCard = ({
         ) : (
           <InlineStack blockAlign="center" gap="200">
             <Text alignment="center" variant={priceTextVariant}>
-              {money(plan.amount, currency)}
+              {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
             </Text>
             <Text alignment="center" variant="bodyLg" tone="subdued">
               {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}

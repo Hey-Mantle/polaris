@@ -38,11 +38,11 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, isRecommendedPlan
  * @param {string} [props.priceTextVariant] - The text variant for the price.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, currency, useShortFormPlanIntervals = true, priceTextVariant }) => (
+export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true, priceTextVariant }) => (
   <BlockStack>
     {!!discount && (
       <InlineStack blockAlign="center" gap="200">
-        <Text variant={priceTextVariant}>{money(discount.discountedAmount, currency)}</Text>
+        <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode)}</Text>
         <Text
           variant={priceTextVariant}
           tone="subdued"
@@ -59,7 +59,7 @@ export const PlanPricingSection = ({ plan, discount, t, currency, useShortFormPl
     {!discount && (
       <InlineStack blockAlign="center" gap="200">
         <Text alignment="center" variant={priceTextVariant}>
-          {money(plan.amount, currency)}
+          {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
           {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
@@ -138,7 +138,6 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
  * @param {boolean} [props.trialDaysAsFeature] - Whether to show the trial days as a feature.
  * @param {boolean} [props.isActivePlan] - Whether the plan is the active plan.
  * @param {boolean} [props.isRecommendedPlan] - Whether the plan is recommended, shows a badge.
- * @param {string}  [props.currency] - The currency to display the plan in.
  * @returns {JSX.Element}
  */
 export const HorizontalPlanCard = ({
@@ -156,7 +155,6 @@ export const HorizontalPlanCard = ({
   planNameTextVariant = "bodyLg",
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
-  currency,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -194,7 +192,6 @@ export const HorizontalPlanCard = ({
           useShortFormPlanIntervals={useShortFormPlanIntervals}
           t={t}
           priceTextVariant={priceTextVariant}
-          currency={currency}
         />
         <Button
           size="large"

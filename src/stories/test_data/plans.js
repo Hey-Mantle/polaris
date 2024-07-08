@@ -4,6 +4,7 @@ export const Plans = [
       "name": "Basic",
       "description": "For new businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "EVERY_30_DAYS",
@@ -98,8 +99,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 9,
+      "presentmentTotal": 9,
       "subtotal": 9,
+      "presentmentSubtotal": 9,
       "amount": 9,
+      "presentmentAmount": 9,
       "eligible": true
   },
   {
@@ -107,6 +111,7 @@ export const Plans = [
       "name": "Pro",
       "description": "For growing businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "EVERY_30_DAYS",
@@ -201,8 +206,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 49,
+      "presentmentTotal": 49,
       "subtotal": 49,
+      "presentmentSubtotal": 49,
       "amount": 49,
+      "presentmentAmount": 49,
       "eligible": true
   },
   {
@@ -210,6 +218,7 @@ export const Plans = [
       "name": "Basic",
       "description": "For new businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "ANNUAL",
@@ -292,8 +301,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 99,
+      "presentmentTotal": 99,
       "subtotal": 99,
+      "presentmentSubtotal": 99,
       "amount": 99,
+      "presentmentAmount": 99,
       "eligible": true
   },
   {
@@ -301,6 +313,7 @@ export const Plans = [
       "name": "Advanced",
       "description": "For established businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "EVERY_30_DAYS",
@@ -395,8 +408,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 99,
+      "presentmentTotal": 99,
       "subtotal": 99,
+      "presentmentSubtotal": 99,
       "amount": 99,
+      "presentmentAmount": 99,
       "eligible": true
   },
   {
@@ -404,6 +420,7 @@ export const Plans = [
     "name": "Ultra",
     "description": "For enterprise businesses",
     "currencyCode": "USD",
+    "presentmentCurrencyCode": "USD",
     "public": true,
     "trialDays": 30,
     "interval": "EVERY_30_DAYS",
@@ -498,8 +515,11 @@ export const Plans = [
     "discounts": [],
     "autoAppliedDiscount": null,
     "total": 129,
+    "presentmentTotal": 129,
     "subtotal": 129,
+    "presentmentSubtotal": 129,
     "amount": 129,
+    "presentmentAmount": 129,
     "eligible": true
   },
   {
@@ -507,6 +527,7 @@ export const Plans = [
       "name": "Pro",
       "description": "For growing businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "ANNUAL",
@@ -589,8 +610,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 499,
+      "presentmentTotal": 499,
       "subtotal": 499,
+      "presentmentSubtotal": 499,
       "amount": 499,
+      "presentmentAmount": 499,
       "eligible": true
   },
   {
@@ -598,6 +622,7 @@ export const Plans = [
       "name": "Advanced",
       "description": "For established businesses",
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": true,
       "trialDays": 30,
       "interval": "ANNUAL",
@@ -680,8 +705,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 999,
+      "presentmentTotal": 999,
       "subtotal": 999,
+      "presentmentSubtotal": 999,
       "amount": 999,
+      "presentmentAmount": 999,
       "eligible": true
   },
   {
@@ -689,6 +717,7 @@ export const Plans = [
     "name": "Ultra",
     "description": "For enterprise businesses",
     "currencyCode": "USD",
+    "presentmentCurrencyCode": "USD",
     "public": true,
     "trialDays": 30,
     "interval": "ANNUAL",
@@ -771,8 +800,11 @@ export const Plans = [
     "discounts": [],
     "autoAppliedDiscount": null,
     "total": 1290,
+    "presentmentTotal": 1290,
     "subtotal": 1290,
+    "presentmentSubtotal": 1290,
     "amount": 1290,
+    "presentmentAmount": 1290,
     "eligible": true
 },
   {
@@ -780,6 +812,7 @@ export const Plans = [
       "name": "VIP customers",
       "description": null,
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": false,
       "trialDays": 0,
       "interval": "ANNUAL",
@@ -862,8 +895,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 1299,
+      "presentmentTotal": 1299,
       "subtotal": 1299,
+      "presentmentSubtotal": 1299,
       "amount": 1299,
+      "presentmentAmount": 1299,
       "eligible": true
   },
   {
@@ -871,6 +907,7 @@ export const Plans = [
       "name": "Custom",
       "description": null,
       "currencyCode": "USD",
+      "presentmentCurrencyCode": "USD",
       "public": false,
       "trialDays": 0,
       "interval": "ANNUAL",
@@ -953,8 +990,11 @@ export const Plans = [
       "discounts": [],
       "autoAppliedDiscount": null,
       "total": 1999,
+      "presentmentTotal": 1999,
       "subtotal": 1999,
+      "presentmentSubtotal": 1999,
       "amount": 1999,
+      "presentmentAmount": 1999,
       "eligible": true
   }
 ];

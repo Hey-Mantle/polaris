@@ -40,18 +40,18 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, planNameTextVaria
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, currency, useShortFormPlanIntervals = true }) => (
+export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals = true }) => (
   <BlockStack gap="100">
     {!!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
-        <Text variant={priceTextVariant}>{money(discount.discountedAmount, currency, true)}</Text>
+        <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode, true)}</Text>
         <Text
           variant={priceTextVariant}
           tone="subdued"
           fontWeight="medium"
           textDecorationLine="line-through"
         >
-          {money(plan.amount, currency, true)}
+          {money(plan.presentmentAmount, plan.presentmentCurrencyCode, true)}
         </Text>
         <Text variant="bodyLg" tone="subdued">
           {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
@@ -61,7 +61,7 @@ export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, curren
     {!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
         <Text alignment="center" variant={priceTextVariant}>
-          {money(plan.amount, currency, true)}
+          {money(plan.presentmentAmount, plan.presentmentCurrencyCode, true)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
           {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
@@ -141,7 +141,6 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
  * @param {boolean} [props.isActivePlan] - Whether the plan is the active plan.
  * @param {boolean} [props.isCustomPlan] - Whether the plan is a custom plan.
  * @param {boolean} [props.showRecommendedPlanBadge] - Whether to show the recommended plan badge.
- * @param {string}  [props.currency] - The currency to display the plan in.
  * @returns {JSX.Element}
  */
 export const HighlightedPlanCard = ({
@@ -161,7 +160,6 @@ export const HighlightedPlanCard = ({
   planNameTextVariant = "headingMd",
   planDescriptionTextVariant = "bodyLg",
   priceTextVariant = "heading3xl",
-  currency,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -209,7 +207,6 @@ export const HighlightedPlanCard = ({
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 t={t}
                 priceTextVariant={priceTextVariant}
-                currency={currency}
               />
             </BlockStack>
             <Button
