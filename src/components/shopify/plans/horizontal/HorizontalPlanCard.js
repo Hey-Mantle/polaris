@@ -40,7 +40,7 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, isRecommendedPlan
  */
 export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true, priceTextVariant }) => (
   <BlockStack>
-    {!!discount && (
+    {!!discount && discount.presentmentDiscountedAmount > 0 && (
       <InlineStack blockAlign="center" gap="200">
         <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode)}</Text>
         <Text
