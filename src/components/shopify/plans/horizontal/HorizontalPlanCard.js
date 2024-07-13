@@ -56,7 +56,7 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
         </Text>
       </InlineStack>
     )}
-    {!discount && (
+    {(!discount || discount.presentmentDiscountedAmount == 0) && (
       <InlineStack blockAlign="center" gap="200">
         <Text alignment="center" variant={priceTextVariant}>
           {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
