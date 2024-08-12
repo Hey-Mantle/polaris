@@ -1,5 +1,5 @@
 import e, { createContext as Ye, useContext as xe, useState as te } from "react";
-import { Banner as ye, BlockStack as $, Text as u, InlineStack as I, Thumbnail as Be, Button as Z, Divider as ve, Box as U, Badge as $e, Icon as V, Grid as re, Page as pe, ButtonGroup as me, Layout as X, Card as ge, Modal as Me, InlineGrid as Oe } from "@shopify/polaris";
+import { Banner as ye, BlockStack as $, Text as u, InlineStack as I, Thumbnail as Be, Button as Z, Divider as ve, Box as U, Badge as $e, Icon as V, Grid as re, Page as pe, ButtonGroup as me, Layout as Q, Card as ge, Modal as Me, InlineGrid as Oe } from "@shopify/polaris";
 var we = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function Pe(t) {
   return t && t.__esModule && Object.prototype.hasOwnProperty.call(t, "default") ? t.default : t;
@@ -33,7 +33,7 @@ var Ae = { exports: {} };
     E[y] = x;
     var N = "$isDayjsObject", j = function(d) {
       return d instanceof k || !(!d || !d[N]);
-    }, G = function d(r, a, i) {
+    }, J = function d(r, a, i) {
       var l;
       if (!r)
         return y;
@@ -54,12 +54,12 @@ var Ae = { exports: {} };
       var a = typeof r == "object" ? r : {};
       return a.date = d, a.args = arguments, new k(a);
     }, Y = C;
-    Y.l = G, Y.i = j, Y.w = function(d, r) {
+    Y.l = J, Y.i = j, Y.w = function(d, r) {
       return _(d, { locale: r.$L, utc: r.$u, x: r.$x, $offset: r.$offset });
     };
     var k = function() {
       function d(a) {
-        this.$L = G(a.locale, null, !0), this.parse(a), this.$x = this.$x || a.x || {}, this[N] = !0;
+        this.$L = J(a.locale, null, !0), this.parse(a), this.$x = this.$x || a.x || {}, this[N] = !0;
       }
       var r = d.prototype;
       return r.parse = function(a) {
@@ -106,7 +106,7 @@ var Ae = { exports: {} };
           return p ? q : q.endOf(M);
         }, z = function(ae, R) {
           return Y.w(l.toDate()[ae].apply(l.toDate("s"), (p ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(R)), l);
-        }, W = this.$W, K = this.$M, J = this.$D, se = "set" + (this.$u ? "UTC" : "");
+        }, W = this.$W, K = this.$M, G = this.$D, se = "set" + (this.$u ? "UTC" : "");
         switch (b) {
           case A:
             return p ? T(1, 0) : T(31, 11);
@@ -114,7 +114,7 @@ var Ae = { exports: {} };
             return p ? T(1, K) : T(0, K + 1);
           case F:
             var ne = this.$locale().weekStart || 0, ue = (W < ne ? W + 7 : W) - ne;
-            return T(p ? J - ue : J + (6 - ue), K);
+            return T(p ? G - ue : G + (6 - ue), K);
           case M:
           case g:
             return z(se + "Hours", 0);
@@ -145,8 +145,8 @@ var Ae = { exports: {} };
         var l, p = this;
         a = Number(a);
         var b = Y.p(i), T = function(K) {
-          var J = _(p);
-          return Y.w(J.date(J.date() + Math.round(K * a)), p);
+          var G = _(p);
+          return Y.w(G.date(G.date() + Math.round(K * a)), p);
         };
         if (b === P)
           return this.set(P, this.$M + a);
@@ -164,7 +164,7 @@ var Ae = { exports: {} };
         var i = this, l = this.$locale();
         if (!this.isValid())
           return l.invalidDate || h;
-        var p = a || "YYYY-MM-DDTHH:mm:ssZ", b = Y.z(this), T = this.$H, z = this.$m, W = this.$M, K = l.weekdays, J = l.months, se = l.meridiem, ne = function(R, q, de, he) {
+        var p = a || "YYYY-MM-DDTHH:mm:ssZ", b = Y.z(this), T = this.$H, z = this.$m, W = this.$M, K = l.weekdays, G = l.months, se = l.meridiem, ne = function(R, q, de, he) {
           return R && (R[q] || R(i, p)) || de[q].slice(0, he);
         }, ue = function(R) {
           return Y.s(T % 12 || 12, R, "0");
@@ -184,9 +184,9 @@ var Ae = { exports: {} };
               case "MM":
                 return Y.s(W + 1, 2, "0");
               case "MMM":
-                return ne(l.monthsShort, W, J, 3);
+                return ne(l.monthsShort, W, G, 3);
               case "MMMM":
-                return ne(J, W);
+                return ne(G, W);
               case "D":
                 return i.$D;
               case "DD":
@@ -230,18 +230,18 @@ var Ae = { exports: {} };
       }, r.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, r.diff = function(a, i, l) {
-        var p, b = this, T = Y.p(i), z = _(a), W = (z.utcOffset() - this.utcOffset()) * s, K = this - z, J = function() {
+        var p, b = this, T = Y.p(i), z = _(a), W = (z.utcOffset() - this.utcOffset()) * s, K = this - z, G = function() {
           return Y.m(b, z);
         };
         switch (T) {
           case A:
-            p = J() / 12;
+            p = G() / 12;
             break;
           case P:
-            p = J();
+            p = G();
             break;
           case O:
-            p = J() / 3;
+            p = G() / 3;
             break;
           case F:
             p = (K - W) / 6048e5;
@@ -269,7 +269,7 @@ var Ae = { exports: {} };
       }, r.locale = function(a, i) {
         if (!a)
           return this.$L;
-        var l = this.clone(), p = G(a, i, !0);
+        var l = this.clone(), p = J(a, i, !0);
         return p && (l.$L = p), l;
       }, r.clone = function() {
         return Y.w(this.$d, this);
@@ -289,7 +289,7 @@ var Ae = { exports: {} };
       };
     }), _.extend = function(d, r) {
       return d.$i || (d(r, k, _), d.$i = !0), _;
-    }, _.locale = G, _.isDayjs = j, _.unix = function(d) {
+    }, _.locale = J, _.isDayjs = j, _.unix = function(d) {
       return _(1e3 * d);
     }, _.en = E[y], _.Ls = E, _.p = {}, _;
   });
@@ -345,7 +345,7 @@ const fe = /* @__PURE__ */ Pe(Fe), L = {
   style: "currency",
   currency: t,
   notation: "standard"
-}), Q = (t, n = "USD", c = !0) => {
+}), X = (t, n = "USD", c = !0) => {
   let s = Ie(n).format(t);
   return c && (s = s.replace(/\.00$/, "")), s;
 }, _e = (t = L.Every30Days) => {
@@ -416,7 +416,7 @@ var be = function(n) {
   }));
 };
 be.displayName = "PlusIcon";
-const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planDescriptionTextVariant: f }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: s, alignment: "center" }, c ? n(t.name) : t.name), t.description && /* @__PURE__ */ e.createElement(u, { variant: f, tone: "subdued", alignment: "center" }, n(t.description))), Ue = ({ plan: t, discount: n, t: c, priceTextVariant: s, useShortFormPlanIntervals: f = !0 }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, !!n && /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: s }, Q(n.presentmentDiscountedAmount, t.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(
+const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planDescriptionTextVariant: f }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: s, alignment: "center" }, c ? n(t.name) : t.name), t.description && /* @__PURE__ */ e.createElement(u, { variant: f, tone: "subdued", alignment: "center" }, n(t.description))), Ue = ({ plan: t, discount: n, t: c, priceTextVariant: s, useShortFormPlanIntervals: f = !0 }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, !!n && /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: s }, X(n.presentmentDiscountedAmount, t.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(
   u,
   {
     variant: s,
@@ -424,8 +424,8 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     fontWeight: "medium",
     textDecorationLine: "line-through"
   },
-  Q(t.presentmentAmount, t.presentmentCurrencyCode, !0)
-), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: f })))), !n && /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: s }, Q(t.presentmentAmount, t.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: f })))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, t.usageCharges.map((m, o) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${o}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, c(m.terms)))))), Ke = ({ plan: t, t: n, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement($, { gap: "300" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, null, n(S.FreeTrialLength).replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((s, f) => {
+  X(t.presentmentAmount, t.presentmentCurrencyCode, !0)
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: f })))), !n && /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: s }, X(t.presentmentAmount, t.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: f })))), t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, t.usageCharges.map((m, o) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${o}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, c(m.terms)))))), Ke = ({ plan: t, t: n, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement($, { gap: "300" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(I, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, null, n(S.FreeTrialLength).replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((s, f) => {
   const m = t.features[s];
   if (m.type !== "boolean" || m.value === !0)
     return /* @__PURE__ */ e.createElement(I, { key: `plan-feature-${f}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), m.type === "boolean" ? /* @__PURE__ */ e.createElement(u, null, n(m.name)) : /* @__PURE__ */ e.createElement(u, null, m.value, " ", n(m.name)));
@@ -612,7 +612,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       fullWidth: F === "full",
       narrowWidth: F === "narrow"
     },
-    /* @__PURE__ */ e.createElement(X, null, /* @__PURE__ */ e.createElement(X.Section, null, /* @__PURE__ */ e.createElement($, { gap: "1000" }, C && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement($, { gap: "1000" }, C && /* @__PURE__ */ e.createElement(
       ye,
       {
         tone: "success",
@@ -650,7 +650,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       }
     )))))
   );
-}, Ze = ({ plan: t, t: n, translatePlanName: c, isRecommendedPlan: s = !1, planNameTextVariant: f, planDescriptionTextVariant: m, showRecommendedPlanBadge: o }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, /* @__PURE__ */ e.createElement(I, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: f }, c ? n(t.name) : t.name), s && o && /* @__PURE__ */ e.createElement($e, { tone: "success" }, n(S.MostPopular))), t.description && /* @__PURE__ */ e.createElement(u, { variant: m, tone: "subdued" }, n(t.description))), Je = ({ plan: t, discount: n, t: c, useShortFormPlanIntervals: s = !0, priceTextVariant: f }) => /* @__PURE__ */ e.createElement($, null, !!n && n.presentmentDiscountedAmount > 0 && /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: f }, Q(n.presentmentDiscountedAmount, t.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
+}, Ze = ({ plan: t, t: n, translatePlanName: c, isRecommendedPlan: s = !1, planNameTextVariant: f, planDescriptionTextVariant: m, showRecommendedPlanBadge: o }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, /* @__PURE__ */ e.createElement(I, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(u, { variant: f }, c ? n(t.name) : t.name), s && o && /* @__PURE__ */ e.createElement($e, { tone: "success" }, n(S.MostPopular))), t.description && /* @__PURE__ */ e.createElement(u, { variant: m, tone: "subdued" }, n(t.description))), Ge = ({ plan: t, discount: n, t: c, useShortFormPlanIntervals: s = !0, priceTextVariant: f }) => /* @__PURE__ */ e.createElement($, null, !!n && n.presentmentDiscountedAmount > 0 && /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: f }, X(n.presentmentDiscountedAmount, t.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
   u,
   {
     variant: f,
@@ -659,7 +659,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     textDecorationLine: "line-through"
   },
   t.presentmentAmount
-), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), (!n || n.presentmentDiscountedAmount == 0) && /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: f }, Q(t.presentmentAmount, t.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, t.usageCharges.map((m, o) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${o}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, c(m.terms)))))), Ge = ({ plan: t, t: n, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(I, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, null, n(S.FreeTrialLength).replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((s, f) => {
+), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), (!n || n.presentmentDiscountedAmount == 0) && /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: f }, X(t.presentmentAmount, t.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, c(S.Per), " ", c(oe({ interval: t.interval, useShortFormPlanIntervals: s })))), t.usageCharges && t.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, t.usageCharges.map((m, o) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${o}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, c(m.terms)))))), Je = ({ plan: t, t: n, trialDaysAsFeature: c = !1 }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, c && t.trialDays && t.trialDays > 0 ? /* @__PURE__ */ e.createElement(I, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), /* @__PURE__ */ e.createElement(u, null, n(S.FreeTrialLength).replace("{{ trialDays }}", t.trialDays))) : null, t.featuresOrder.map((s, f) => {
   const m = t.features[s];
   if (m.type !== "boolean" || m.value === !0)
     return /* @__PURE__ */ e.createElement(I, { key: `plan-feature-${f}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "subdued" })), m.type === "boolean" ? /* @__PURE__ */ e.createElement(u, null, n(m.name)) : /* @__PURE__ */ e.createElement(u, null, m.value, " ", n(m.name)));
@@ -694,7 +694,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       planDescriptionTextVariant: O
     }
   ), /* @__PURE__ */ e.createElement(
-    Je,
+    Ge,
     {
       plan: t,
       discount: n,
@@ -714,7 +714,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       loading: g
     },
     D(B ? S.CurrentPlan : c || S.SelectPlan)
-  ), /* @__PURE__ */ e.createElement(Ge, { plan: t, trialDaysAsFeature: m, t: D })));
+  ), /* @__PURE__ */ e.createElement(Je, { plan: t, trialDaysAsFeature: m, t: D })));
 }, rt = ({
   customer: t,
   plans: n,
@@ -766,7 +766,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       fullWidth: F === "full",
       narrowWidth: F === "narrow"
     },
-    /* @__PURE__ */ e.createElement(U, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(X, null, /* @__PURE__ */ e.createElement(X.Section, null, /* @__PURE__ */ e.createElement($, { gap: "1000" }, C && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(U, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement($, { gap: "1000" }, C && /* @__PURE__ */ e.createElement(
       ye,
       {
         tone: "success",
@@ -804,7 +804,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       }
     ))))))
   );
-}, Xe = ({
+}, Qe = ({
   plan: t,
   discount: n,
   buttonLabel: c,
@@ -826,7 +826,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     const j = y.features[E];
     if (j.type !== "boolean" || j.value === !0)
       return /* @__PURE__ */ e.createElement(I, { key: `plan-feature-${N}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: le, tone: "positive" })), j.type === "boolean" ? /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, j.name) : /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, j.value, " ", j.name));
-  }))), w = ({ plan: y, discount: E }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, E ? /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: A }, Q(E.presentmentDiscountedAmount, y.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
+  }))), w = ({ plan: y, discount: E }) => /* @__PURE__ */ e.createElement($, { gap: "100" }, E ? /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: A }, X(E.presentmentDiscountedAmount, y.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
     u,
     {
       variant: A,
@@ -835,7 +835,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       textDecorationLine: "line-through"
     },
     y.presentmentAmount
-  ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))) : /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: A }, Q(y.presentmentAmount, y.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))), y.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, y.usageCharges.map((N, j) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${j}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, N.terms))))), C = ({ plan: y, discount: E }) => /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
+  ), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))) : /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: A }, X(y.presentmentAmount, y.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(u, { alignment: "center", variant: "bodyLg", tone: "subdued" }, S.Per, " ", oe({ interval: y.interval, useShortFormPlanIntervals: f }))), y.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, y.usageCharges.map((N, j) => /* @__PURE__ */ e.createElement(I, { key: `plan-usageCharge-${j}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(U, null, /* @__PURE__ */ e.createElement(V, { source: be, tone: "positive" })), /* @__PURE__ */ e.createElement(u, { variant: "bodyLg" }, N.terms))))), C = ({ plan: y, discount: E }) => /* @__PURE__ */ e.createElement(I, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
     Z,
     {
       size: "large",
@@ -880,7 +880,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     (k) => k.availability !== "customerTag" && k.availability !== "customer"
   ), E = o && D ? y.filter((k) => k.interval === w) : y, N = F ? t.filter(
     (k) => k.availability === "customerTag" || k.availability === "customer"
-  ) : [], [j, G] = te(
+  ) : [], [j, J] = te(
     h.get("subscribed") === "true"
   ), _ = A || ((k) => k);
   return /* @__PURE__ */ e.createElement(
@@ -906,20 +906,20 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       fullWidth: M === "full",
       narrowWidth: M === "narrow"
     },
-    /* @__PURE__ */ e.createElement(X, null, /* @__PURE__ */ e.createElement(X.Section, null, /* @__PURE__ */ e.createElement($, { gap: "400" }, j && /* @__PURE__ */ e.createElement(
+    /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement($, { gap: "400" }, j && /* @__PURE__ */ e.createElement(
       ye,
       {
         tone: "success",
         title: S.SubscribeSuccessTitle,
         onDismiss: () => {
-          G(!1), window.history.replaceState({}, document.title, window.location.pathname);
+          J(!1), window.history.replaceState({}, document.title, window.location.pathname);
         }
       },
       S.SubscribeSuccessBody
     ), E.map((k, ce) => {
       const d = O ? ke({ plan: k }) : void 0, r = (x == null ? void 0 : x.id) === k.id && !(H != null && H.cancelOn);
       return /* @__PURE__ */ e.createElement(
-        Xe,
+        Qe,
         {
           key: `plan-${ce}`,
           plan: k,
@@ -968,8 +968,8 @@ var Le = { exports: {} };
     };
   });
 })(Le);
-var Qe = Le.exports;
-const qe = /* @__PURE__ */ Pe(Qe);
+var Xe = Le.exports;
+const qe = /* @__PURE__ */ Pe(Xe);
 fe.extend(qe);
 const Se = ({
   orientation: t = "horizontal",
@@ -987,7 +987,7 @@ const Se = ({
   translatePlanName: M = !0
 }) => {
   var j;
-  const [F, P] = te(!1), [O, A] = te(!1), g = v || ((G) => G), h = {
+  const [F, P] = te(!1), [O, A] = te(!1), g = v || ((J) => J), h = {
     ...S,
     ...m || {}
   };
@@ -1001,8 +1001,8 @@ const Se = ({
       },
       g(h.SelectPlan)
     )))));
-  const { plan: D } = o, H = Q(o.presentmentTotal, D.presentmentCurrencyCode), x = g(D.interval === L.Annual ? h.Year : h.Month), w = t === "horizontal" ? Oe : $, C = (j = o == null ? void 0 : o.appliedDiscount) == null ? void 0 : j.discount, y = C ? C.percentage ? `${C.percentage}%` : Q(C.presentmentAmount, D.presentmentCurrencyCode) : null, E = C && o.appliedDiscount.discountEndsAt && fe().isAfter(fe(o.appliedDiscount.discountEndsAt)), N = D.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
-  return /* @__PURE__ */ e.createElement(ge, null, /* @__PURE__ */ e.createElement($, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, g(h.Subscription)), /* @__PURE__ */ e.createElement($, { gap: "400" }, /* @__PURE__ */ e.createElement(w, { columns: N, gap: "300" }, /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.CurrentPlan)), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, M ? g(D.name) : D.name), o.cancelOn && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g("Canceled, active until {{ date }}").replace("{{ date }}", fe(o.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.Price)), /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g(h.AmountPerInterval).replace("{{ amount }}", H).replace("{{ interval }}", x)), C && !E && /* @__PURE__ */ e.createElement(u, { tone: "success" }, g(h.DiscountAmount).replace("{{ amount }}", y)), C && E && /* @__PURE__ */ e.createElement(u, { tone: "subdued", textDecorationLine: "line-through" }, g(h.DiscountAmountExpired).replace("{{ amount }}", y)))), D.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.UsageCharges || "Usage charges")), D.usageCharges.map((G, _) => /* @__PURE__ */ e.createElement(u, { key: `usage-charge-${_}`, tone: "subdued" }, g(G.terms))))), /* @__PURE__ */ e.createElement(I, { align: "end" }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(
+  const { plan: D } = o, H = X(o.presentmentTotal, D.presentmentCurrencyCode), x = g(D.interval === L.Annual ? h.Year : h.Month), w = t === "horizontal" ? Oe : $, C = (j = o == null ? void 0 : o.appliedDiscount) == null ? void 0 : j.discount, y = C ? C.percentage ? `${C.percentage}%` : X(C.presentmentAmount, D.presentmentCurrencyCode) : null, E = C && o.appliedDiscount.discountEndsAt && fe().isAfter(fe(o.appliedDiscount.discountEndsAt)), N = D.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  return /* @__PURE__ */ e.createElement(ge, null, /* @__PURE__ */ e.createElement($, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, g(h.Subscription)), /* @__PURE__ */ e.createElement($, { gap: "400" }, /* @__PURE__ */ e.createElement(w, { columns: N, gap: "300" }, /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.CurrentPlan)), /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, M ? g(D.name) : D.name), o.cancelOn && /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g("Canceled, active until {{ date }}").replace("{{ date }}", fe(o.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.Price)), /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, g(h.AmountPerInterval).replace("{{ amount }}", H).replace("{{ interval }}", x)), C && !E && /* @__PURE__ */ e.createElement(u, { tone: "success" }, g(h.DiscountAmount).replace("{{ amount }}", y)), C && E && /* @__PURE__ */ e.createElement(u, { tone: "subdued", textDecorationLine: "line-through" }, g(h.DiscountAmountExpired).replace("{{ amount }}", y)))), D.usageCharges.length > 0 && /* @__PURE__ */ e.createElement($, null, /* @__PURE__ */ e.createElement(u, null, g(h.UsageCharges || "Usage charges")), D.usageCharges.map((J, _) => /* @__PURE__ */ e.createElement(u, { key: `usage-charge-${_}`, tone: "subdued" }, g(J.terms))))), /* @__PURE__ */ e.createElement(I, { align: "end" }, /* @__PURE__ */ e.createElement(me, null, /* @__PURE__ */ e.createElement(
     Z,
     {
       onClick: () => {
@@ -1072,7 +1072,7 @@ const Se = ({
         subscription: f,
         refetch: m
       }
-    ), /* @__PURE__ */ e.createElement(X, null, /* @__PURE__ */ e.createElement(X.Section, null, /* @__PURE__ */ e.createElement(
+    ), /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement(
       Se,
       {
         onShowPlans: o,
@@ -1081,7 +1081,7 @@ const Se = ({
         subscription: f,
         refetch: m
       }
-    )), /* @__PURE__ */ e.createElement(X.Section, { variant: "oneThird" }, /* @__PURE__ */ e.createElement(
+    )), /* @__PURE__ */ e.createElement(Q.Section, { variant: "oneThird" }, /* @__PURE__ */ e.createElement(
       Se,
       {
         onShowPlans: o,
@@ -1104,6 +1104,6 @@ export {
   ee as PlanCardType,
   Se as SubscriptionSummaryCard,
   ct as SubscriptionSummaryPage,
-  Xe as VerticalPlanCard,
+  Qe as VerticalPlanCard,
   lt as VerticalPlanCards
 };
