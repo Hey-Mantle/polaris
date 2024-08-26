@@ -39,6 +39,7 @@ export const SubscriptionSummaryCard = ({
   refetch = async () => { },
   t: _t,
   translatePlanName = true,
+  hideSelectPlanButton = false,
 }) => {
   const [showCancelPlanModal, setShowCancelPlanModal] = useState(false);
   const [cancelling, setCancelling] = useState(false);
@@ -57,13 +58,15 @@ export const SubscriptionSummaryCard = ({
           <Text>{t(i18n.NotSubscribed)}</Text>
           <InlineStack align="end">
             <ButtonGroup>
-              <Button
-                variant="primary"
+              {!hideSelectPlanButton && (
+                <Button
+                  variant="primary"
                 onClick={onShowPlans}
                 accessibilityLabel={t(i18n.ChangePlan)}
               >
-                {t(i18n.SelectPlan)}
-              </Button>
+                  {t(i18n.SelectPlan)}
+                </Button>
+              )}
             </ButtonGroup>
           </InlineStack>
         </BlockStack>
@@ -132,13 +135,15 @@ export const SubscriptionSummaryCard = ({
               >
                 {t(i18n.CancelPlan)}
               </Button>
-              <Button
-                variant="primary"
+              {!hideSelectPlanButton && (
+                <Button
+                  variant="primary"
                 onClick={onShowPlans}
                 accessibilityLabel={t(i18n.ChangePlan)}
               >
-                {t(i18n.ChangePlan)}
-              </Button>
+                  {t(i18n.ChangePlan)}
+                </Button>
+              )}
             </ButtonGroup>
           </InlineStack>
         </BlockStack>
