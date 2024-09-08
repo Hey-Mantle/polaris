@@ -108,7 +108,7 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
 
       if (showFeature) {
         return (
-          <InlineStack key={`plan-feature-${index}`} align="start" gap="100">
+          <InlineStack key={`plan-feature-${index}`} align="start" gap="100" wrap={false}>
             <Box>
               <Icon source={CheckIcon} tone="subdued" />
             </Box>
