@@ -1,7 +1,7 @@
 {
   "name": "@heymantle/polaris",
   "description": "Mantle's frontend component library",
-  "version": "12.0.35",
+  "version": "12.0.36",
   "private": false,
   "license": "MIT",
   "author": "Mantle <josh@heymantle.com>",
@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@heymantle/react": "^0.0.32",
+    "@heymantle/react": "^0.0.36",
     "@shopify/polaris-icons": "^8.1.0",
     "dayjs": "^1.11.10"
   },
