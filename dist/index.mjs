@@ -9,7 +9,7 @@ var Ae = { exports: {} };
   (function(c, s) {
     t.exports = s();
   })(we, function() {
-    var c = 1e3, s = 6e4, E = 36e5, g = "millisecond", o = "second", F = "minute", v = "hour", D = "day", H = "week", Y = "month", O = "quarter", M = "year", B = "date", h = "Invalid Date", d = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, P = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, x = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(m) {
+    var c = 1e3, s = 6e4, E = 36e5, g = "millisecond", o = "second", F = "minute", v = "hour", D = "day", T = "week", Y = "month", O = "quarter", M = "year", B = "date", h = "Invalid Date", d = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, P = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, x = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(m) {
       var r = ["th", "st", "nd", "rd"], a = m % 100;
       return "[" + m + (r[(a - 20) % 10] || r[a] || r[0]) + "]";
     } }, $ = function(m, r, a) {
@@ -26,7 +26,7 @@ var Ae = { exports: {} };
     }, a: function(m) {
       return m < 0 ? Math.ceil(m) || 0 : Math.floor(m);
     }, p: function(m) {
-      return { M: Y, y: M, w: H, d: D, D: B, h: v, m: F, s: o, ms: g, Q: O }[m] || String(m || "").toLowerCase().replace(/s$/, "");
+      return { M: Y, y: M, w: T, d: D, D: B, h: v, m: F, s: o, ms: g, Q: O }[m] || String(m || "").toLowerCase().replace(/s$/, "");
     }, u: function(m) {
       return m === void 0;
     } }, f = "en", y = {};
@@ -44,8 +44,8 @@ var Ae = { exports: {} };
         if (!l && b.length > 1)
           return m(b[0]);
       } else {
-        var T = r.name;
-        y[T] = r, l = T;
+        var H = r.name;
+        y[H] = r, l = H;
       }
       return !i && l && (f = l), l || !i && f;
     }, I = function(m, r) {
@@ -74,8 +74,8 @@ var Ae = { exports: {} };
           if (typeof l == "string" && !/Z$/i.test(l)) {
             var b = l.match(d);
             if (b) {
-              var T = b[2] - 1 || 0, z = (b[7] || "0").substring(0, 3);
-              return p ? new Date(Date.UTC(b[1], T, b[3] || 1, b[4] || 0, b[5] || 0, b[6] || 0, z)) : new Date(b[1], T, b[3] || 1, b[4] || 0, b[5] || 0, b[6] || 0, z);
+              var H = b[2] - 1 || 0, z = (b[7] || "0").substring(0, 3);
+              return p ? new Date(Date.UTC(b[1], H, b[3] || 1, b[4] || 0, b[5] || 0, b[6] || 0, z)) : new Date(b[1], H, b[3] || 1, b[4] || 0, b[5] || 0, b[6] || 0, z);
             }
           }
           return new Date(l);
@@ -101,7 +101,7 @@ var Ae = { exports: {} };
       }, r.valueOf = function() {
         return this.$d.getTime();
       }, r.startOf = function(a, i) {
-        var l = this, p = !!A.u(i) || i, b = A.p(a), T = function(ae, R) {
+        var l = this, p = !!A.u(i) || i, b = A.p(a), H = function(ae, R) {
           var q = A.w(l.$u ? Date.UTC(l.$y, R, ae) : new Date(l.$y, R, ae), l);
           return p ? q : q.endOf(D);
         }, z = function(ae, R) {
@@ -109,12 +109,12 @@ var Ae = { exports: {} };
         }, N = this.$W, K = this.$M, G = this.$D, se = "set" + (this.$u ? "UTC" : "");
         switch (b) {
           case M:
-            return p ? T(1, 0) : T(31, 11);
+            return p ? H(1, 0) : H(31, 11);
           case Y:
-            return p ? T(1, K) : T(0, K + 1);
-          case H:
+            return p ? H(1, K) : H(0, K + 1);
+          case T:
             var ne = this.$locale().weekStart || 0, ue = (N < ne ? N + 7 : N) - ne;
-            return T(p ? G - ue : G + (6 - ue), K);
+            return H(p ? G - ue : G + (6 - ue), K);
           case D:
           case B:
             return z(se + "Hours", 0);
@@ -130,12 +130,12 @@ var Ae = { exports: {} };
       }, r.endOf = function(a) {
         return this.startOf(a, !1);
       }, r.$set = function(a, i) {
-        var l, p = A.p(a), b = "set" + (this.$u ? "UTC" : ""), T = (l = {}, l[D] = b + "Date", l[B] = b + "Date", l[Y] = b + "Month", l[M] = b + "FullYear", l[v] = b + "Hours", l[F] = b + "Minutes", l[o] = b + "Seconds", l[g] = b + "Milliseconds", l)[p], z = p === D ? this.$D + (i - this.$W) : i;
+        var l, p = A.p(a), b = "set" + (this.$u ? "UTC" : ""), H = (l = {}, l[D] = b + "Date", l[B] = b + "Date", l[Y] = b + "Month", l[M] = b + "FullYear", l[v] = b + "Hours", l[F] = b + "Minutes", l[o] = b + "Seconds", l[g] = b + "Milliseconds", l)[p], z = p === D ? this.$D + (i - this.$W) : i;
         if (p === Y || p === M) {
           var N = this.clone().set(B, 1);
-          N.$d[T](z), N.init(), this.$d = N.set(B, Math.min(this.$D, N.daysInMonth())).$d;
+          N.$d[H](z), N.init(), this.$d = N.set(B, Math.min(this.$D, N.daysInMonth())).$d;
         } else
-          T && this.$d[T](z);
+          H && this.$d[H](z);
         return this.init(), this;
       }, r.set = function(a, i) {
         return this.clone().$set(a, i);
@@ -144,7 +144,7 @@ var Ae = { exports: {} };
       }, r.add = function(a, i) {
         var l, p = this;
         a = Number(a);
-        var b = A.p(i), T = function(K) {
+        var b = A.p(i), H = function(K) {
           var G = I(p);
           return A.w(G.date(G.date() + Math.round(K * a)), p);
         };
@@ -153,9 +153,9 @@ var Ae = { exports: {} };
         if (b === M)
           return this.set(M, this.$y + a);
         if (b === D)
-          return T(1);
-        if (b === H)
-          return T(7);
+          return H(1);
+        if (b === T)
+          return H(7);
         var z = (l = {}, l[F] = s, l[v] = E, l[o] = c, l)[b] || 1, N = this.$d.getTime() + a * z;
         return A.w(N, this);
       }, r.subtract = function(a, i) {
@@ -164,10 +164,10 @@ var Ae = { exports: {} };
         var i = this, l = this.$locale();
         if (!this.isValid())
           return l.invalidDate || h;
-        var p = a || "YYYY-MM-DDTHH:mm:ssZ", b = A.z(this), T = this.$H, z = this.$m, N = this.$M, K = l.weekdays, G = l.months, se = l.meridiem, ne = function(R, q, de, he) {
+        var p = a || "YYYY-MM-DDTHH:mm:ssZ", b = A.z(this), H = this.$H, z = this.$m, N = this.$M, K = l.weekdays, G = l.months, se = l.meridiem, ne = function(R, q, de, he) {
           return R && (R[q] || R(i, p)) || de[q].slice(0, he);
         }, ue = function(R) {
-          return A.s(T % 12 || 12, R, "0");
+          return A.s(H % 12 || 12, R, "0");
         }, ae = se || function(R, q, de) {
           var he = R < 12 ? "AM" : "PM";
           return de ? he.toLowerCase() : he;
@@ -200,17 +200,17 @@ var Ae = { exports: {} };
               case "dddd":
                 return K[i.$W];
               case "H":
-                return String(T);
+                return String(H);
               case "HH":
-                return A.s(T, 2, "0");
+                return A.s(H, 2, "0");
               case "h":
                 return ue(1);
               case "hh":
                 return ue(2);
               case "a":
-                return ae(T, z, !0);
+                return ae(H, z, !0);
               case "A":
-                return ae(T, z, !1);
+                return ae(H, z, !1);
               case "m":
                 return String(z);
               case "mm":
@@ -230,10 +230,10 @@ var Ae = { exports: {} };
       }, r.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, r.diff = function(a, i, l) {
-        var p, b = this, T = A.p(i), z = I(a), N = (z.utcOffset() - this.utcOffset()) * s, K = this - z, G = function() {
+        var p, b = this, H = A.p(i), z = I(a), N = (z.utcOffset() - this.utcOffset()) * s, K = this - z, G = function() {
           return A.m(b, z);
         };
-        switch (T) {
+        switch (H) {
           case M:
             p = G() / 12;
             break;
@@ -243,7 +243,7 @@ var Ae = { exports: {} };
           case O:
             p = G() / 3;
             break;
-          case H:
+          case T:
             p = (K - N) / 6048e5;
             break;
           case D:
@@ -336,8 +336,8 @@ const fe = /* @__PURE__ */ Pe(Fe), L = {
   Subscription: "Subscription",
   SubscriptionCancelled: "Subscription cancelled",
   UsageCharges: "Usage charges"
-}, He = Ye(), Te = () => {
-  const t = xe(He);
+}, Te = Ye(), He = () => {
+  const t = xe(Te);
   if (t === void 0)
     throw new Error("useMantle must be used within a MantleProvider");
   return t;
@@ -391,14 +391,14 @@ const fe = /* @__PURE__ */ Pe(Fe), L = {
   refetch: F = async () => {
   },
   apps: v = []
-}) => /* @__PURE__ */ e.createElement(ye, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(C, { gap: "400" }, /* @__PURE__ */ e.createElement(u, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(C, { gap: "300" }, v.map((D, H) => /* @__PURE__ */ e.createElement(C, { gap: "300" }, /* @__PURE__ */ e.createElement(_, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(_, { gap: "300" }, /* @__PURE__ */ e.createElement(
+}) => /* @__PURE__ */ e.createElement(ye, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(C, { gap: "400" }, /* @__PURE__ */ e.createElement(u, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(C, { gap: "300" }, v.map((D, T) => /* @__PURE__ */ e.createElement(C, { gap: "300" }, /* @__PURE__ */ e.createElement(_, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(_, { gap: "300" }, /* @__PURE__ */ e.createElement(
   Oe,
   {
     source: D.iconUrl,
     alt: D.name,
     size: "small"
   }
-), /* @__PURE__ */ e.createElement(C, null, /* @__PURE__ */ e.createElement(u, { variant: "headingSm" }, D.name), /* @__PURE__ */ e.createElement(u, null, D.description))), /* @__PURE__ */ e.createElement(_, { gap: "400" }, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(C, null, /* @__PURE__ */ e.createElement(Z, null, g.Install)))), H < v.length - 1 && /* @__PURE__ */ e.createElement(ve, null))))));
+), /* @__PURE__ */ e.createElement(C, null, /* @__PURE__ */ e.createElement(u, { variant: "headingSm" }, D.name), /* @__PURE__ */ e.createElement(u, null, D.description))), /* @__PURE__ */ e.createElement(_, { gap: "400" }, /* @__PURE__ */ e.createElement(u, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(C, null, /* @__PURE__ */ e.createElement(Z, null, g.Install)))), T < v.length - 1 && /* @__PURE__ */ e.createElement(ve, null))))));
 var le = function(n) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
@@ -440,7 +440,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   isActivePlan: F = !1,
   isRecommendedPlan: v = !1,
   isCustomPlan: D = !1,
-  showRecommendedPlanBadge: H = !0,
+  showRecommendedPlanBadge: T = !0,
   t: Y,
   translatePlanName: O = !0,
   planNameTextVariant: M = "headingMd",
@@ -492,7 +492,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
         loading: d
       },
       x(c || S.SelectPlan)
-    ), /* @__PURE__ */ e.createElement(Ke, { plan: t, t: x, trialDaysAsFeature: g }), v && H && /* @__PURE__ */ e.createElement(_, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement($e, { tone: "success" }, x(S.MostPopular))))
+    ), /* @__PURE__ */ e.createElement(Ke, { plan: t, t: x, trialDaysAsFeature: g }), v && T && /* @__PURE__ */ e.createElement(_, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement($e, { tone: "success" }, x(S.MostPopular))))
   )));
 }, ee = {
   /**
@@ -518,14 +518,14 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   keyForRecommended: F = "recommended",
   keyForCustomButtonLabel: v = "buttonLabel",
   showRecommendedPlanBadge: D = !0,
-  applyDiscount: H = !0,
+  applyDiscount: T = !0,
   t: Y,
   translatePlanName: O = !0
 }) => {
   var $;
   const M = ($ = n == null ? void 0 : n.subscription) != null && $.active ? n.subscription : void 0, B = M == null ? void 0 : M.plan, h = s ? t.filter((w) => w.interval === s) : t, d = E === ee.Vertical ? 1 : Ne(h.length), P = We(d), x = Y || ((w) => w);
   return /* @__PURE__ */ e.createElement(re, { columns: d }, h.map((w) => {
-    const f = H ? ke({ plan: w }) : void 0, y = (B == null ? void 0 : B.id) === w.id && !(M != null && M.cancelOn);
+    const f = T ? ke({ plan: w }) : void 0, y = (B == null ? void 0 : B.id) === w.id && !(M != null && M.cancelOn);
     return /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: P, key: w.id }, E === ee.Highlighted && /* @__PURE__ */ e.createElement(
       Re,
       {
@@ -579,7 +579,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   // boolean
   useShortFormPlanIntervals: D,
   // boolean: e.g. show "$ / mo" instead of "$ / month"
-  pageWidth: H = "default",
+  pageWidth: T = "default",
   // string: "full", "narrow", or "default"
   showCustomPlans: Y = !0
   // boolean: show custom plans
@@ -609,8 +609,8 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
         },
         S.Yearly
       )) : void 0,
-      fullWidth: H === "full",
-      narrowWidth: H === "narrow"
+      fullWidth: T === "full",
+      narrowWidth: T === "narrow"
     },
     /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement(C, { gap: "1000" }, w && /* @__PURE__ */ e.createElement(
       ye,
@@ -674,7 +674,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   isActivePlan: F = !1,
   t: v,
   translatePlanName: D = !0,
-  showRecommendedPlanBadge: H = !0,
+  showRecommendedPlanBadge: T = !0,
   planNameTextVariant: Y = "bodyLg",
   planDescriptionTextVariant: O = "bodyMd",
   priceTextVariant: M = "headingXl"
@@ -687,7 +687,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     {
       plan: t,
       isRecommendedPlan: o,
-      showRecommendedPlanBadge: H,
+      showRecommendedPlanBadge: T,
       t: d,
       translatePlanName: D,
       planNameTextVariant: Y,
@@ -733,7 +733,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   // boolean
   useShortFormPlanIntervals: D = !0,
   // boolean: e.g. show "$ / mo" instead of "$ / month"
-  pageWidth: H = "default",
+  pageWidth: T = "default",
   // string: "full", "narrow", or "default"
   showCustomPlans: Y = !0
   // boolean: show custom plans
@@ -763,8 +763,8 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
         },
         S.Yearly
       )) : void 0,
-      fullWidth: H === "full",
-      narrowWidth: H === "narrow"
+      fullWidth: T === "full",
+      narrowWidth: T === "narrow"
     },
     /* @__PURE__ */ e.createElement(j, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(Q, null, /* @__PURE__ */ e.createElement(Q.Section, null, /* @__PURE__ */ e.createElement(C, { gap: "1000" }, w && /* @__PURE__ */ e.createElement(
       ye,
@@ -815,7 +815,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   isActivePlan: F = !1,
   t: v = _t,
   translatePlanName: D = !0,
-  showRecommendedPlanBadge: H = !0,
+  showRecommendedPlanBadge: T = !0,
   planNameTextVariant: Y = "bodyLg",
   planDescriptionTextVariant: O = "bodyMd",
   priceTextVariant: M = "headingXl"
@@ -847,7 +847,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
       loading: B
     },
     v(F ? S.CurrentPlan : c || S.SelectPlan)
-  ), o && H && /* @__PURE__ */ e.createElement($e, { tone: "success" }, v(S.MostPopular)));
+  ), o && T && /* @__PURE__ */ e.createElement($e, { tone: "success" }, v(S.MostPopular)));
   return /* @__PURE__ */ e.createElement(ge, null, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, /* @__PURE__ */ e.createElement(C, { gap: "300" }, P({ plan: t }), $({ plan: t, discount: n }), /* @__PURE__ */ e.createElement(j, null, w({ plan: t, discount: n })))), /* @__PURE__ */ e.createElement(re.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, x({ plan: t }))));
 }, lt = ({
   plans: t,
@@ -865,7 +865,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
   // boolean: e.g. show "$ / mo" instead of "$ / month"
   pageWidth: D = "default",
   // string: "full", "narrow", or "default"
-  showCustomPlans: H = !0,
+  showCustomPlans: T = !0,
   // boolean: show custom plans
   showRecommendedPlanBadge: Y = !0,
   // boolean
@@ -878,7 +878,7 @@ const je = ({ plan: t, t: n, translatePlanName: c, planNameTextVariant: s, planD
     x ? x.interval : d ? L.Annual : L.Every30Days
   ), f = t.filter(
     (k) => k.availability !== "customerTag" && k.availability !== "customer"
-  ), y = o && d ? f.filter((k) => k.interval === $) : f, W = H ? t.filter(
+  ), y = o && d ? f.filter((k) => k.interval === $) : f, W = T ? t.filter(
     (k) => k.availability === "customerTag" || k.availability === "customer"
   ) : [], [U, J] = te(
     h.get("subscribed") === "true"
@@ -955,7 +955,7 @@ var Le = { exports: {} };
       var o = E.prototype, F = o.format;
       g.en.formats = c, o.format = function(v) {
         v === void 0 && (v = "YYYY-MM-DDTHH:mm:ssZ");
-        var D = this.$locale().formats, H = function(Y, O) {
+        var D = this.$locale().formats, T = function(Y, O) {
           return Y.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(M, B, h) {
             var d = h && h.toUpperCase();
             return B || O[h] || c[h] || O[d].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(P, x, $) {
@@ -963,7 +963,7 @@ var Le = { exports: {} };
             });
           });
         }(v, D === void 0 ? {} : D);
-        return F.call(this, H);
+        return F.call(this, T);
       };
     };
   });
@@ -985,7 +985,7 @@ const Se = ({
   },
   t: v,
   translatePlanName: D = !0,
-  hideSelectPlanButton: H = !1
+  hideSelectPlanButton: T = !1
 }) => {
   var J;
   const [Y, O] = te(!1), [M, B] = te(!1), h = v || ((I) => I), d = {
@@ -993,7 +993,7 @@ const Se = ({
     ...g || {}
   };
   if (!o)
-    return /* @__PURE__ */ e.createElement(ge, null, /* @__PURE__ */ e.createElement(C, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, h(d.Subscription)), /* @__PURE__ */ e.createElement(u, null, h(d.NotSubscribed)), /* @__PURE__ */ e.createElement(_, { align: "end" }, /* @__PURE__ */ e.createElement(me, null, !H && /* @__PURE__ */ e.createElement(
+    return /* @__PURE__ */ e.createElement(ge, null, /* @__PURE__ */ e.createElement(C, { gap: "200" }, /* @__PURE__ */ e.createElement(u, { variant: "headingMd" }, h(d.Subscription)), /* @__PURE__ */ e.createElement(u, null, h(d.NotSubscribed)), /* @__PURE__ */ e.createElement(_, { align: "end" }, /* @__PURE__ */ e.createElement(me, null, !T && /* @__PURE__ */ e.createElement(
       Z,
       {
         variant: "primary",
@@ -1014,7 +1014,7 @@ const Se = ({
       disabled: !!o.cancelOn
     },
     h(d.CancelPlan)
-  ), !H && /* @__PURE__ */ e.createElement(
+  ), !T && /* @__PURE__ */ e.createElement(
     Z,
     {
       variant: "primary",
@@ -1053,7 +1053,7 @@ const Se = ({
   pageWidth: n = "narrow"
   // string: "full", "narrow", or "default"
 }) => {
-  const { cancelSubscription: c, i18n: s, subscription: E, refetch: g } = Te(), o = () => {
+  const { cancelSubscription: c, i18n: s, subscription: E, refetch: g } = He(), o = () => {
     console.log("Show plans. Navigate to the plans page, open a modal, etc.");
   };
   return /* @__PURE__ */ e.createElement(
