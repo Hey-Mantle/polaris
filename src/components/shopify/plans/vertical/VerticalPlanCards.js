@@ -17,7 +17,6 @@ import {
   highestDiscount,
   isRecommendedPlan,
   Labels,
-  PlanAvailability,
   PlanInterval
 } from "@heymantle/react";
 import { VerticalPlanCard } from "./VerticalPlanCard";
@@ -123,7 +122,7 @@ export const VerticalPlanCards = ({
                   isActivePlan={isActivePlan}
                   trialDaysAsFeature={trialDaysAsFeature}
                   useShortFormPlanIntervals={useShortFormPlanIntervals}
-                  isCustomPlan={plan.availability !== PlanAvailability.Public}
+                  isCustomPlan={plan.availability !== "public"}
                   isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                   buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                   showRecommendedPlanBadge={showRecommendedPlanBadge}

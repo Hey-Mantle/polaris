@@ -10,7 +10,7 @@ import {
   Page,
   Text,
 } from "@shopify/polaris";
-import { Labels, PlanAvailability, PlanInterval } from "@heymantle/react";
+import { Labels, PlanInterval } from "@heymantle/react";
 import { PlanCardStack, PlanCardType } from "../PlanCardStack";
 
 export const HorizontalPlanCards = ({
@@ -43,9 +43,9 @@ export const HorizontalPlanCards = ({
       : PlanInterval.Every30Days
   );
 
-  const publicPlans = plans.filter((plan) => plan.availability === PlanAvailability.Public);
+  const publicPlans = plans.filter((plan) => plan.availability === "public");
   const customPlans = showCustomPlans
-    ? plans.filter((plan) => plan.availability !== PlanAvailability.Public)
+    ? plans.filter((plan) => plan.availability !== "public")
     : [];
 
   const [showSuccessBanner, setShowSuccessBanner] = useState(

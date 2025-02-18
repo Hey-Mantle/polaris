@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  PlanAvailability,
   customButtonLabel,
   highestDiscount,
   isRecommendedPlan,
@@ -98,7 +97,7 @@ export const PlanCardStack = ({
                 isActivePlan={isActivePlan}
                 trialDaysAsFeature={trialDaysAsFeature}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
-                isCustomPlan={plan.availability !== PlanAvailability.Public}
+                isCustomPlan={plan.availability !== "public"}
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                 buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
