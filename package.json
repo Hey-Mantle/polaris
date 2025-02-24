@@ -1,7 +1,7 @@
 {
   "name": "@heymantle/polaris",
   "description": "Mantle's frontend component library",
-  "version": "12.0.40",
+  "version": "12.0.41",
   "private": false,
   "license": "MIT",
   "author": "Mantle <josh@heymantle.com>",
@@ -22,7 +22,7 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "NODE_ENV=production vite build",
+    "build": "NODE_ENV=production vite build && npx tsc",
     "test": "exit 0",
     "build-and-publish": "npm install && npm run build && npx tsc && npm publish"
   },
