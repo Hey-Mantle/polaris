@@ -16,6 +16,7 @@ import { Labels, intervalLabel, money } from "@heymantle/react";
  * @param {boolean} [props.translatePlanName] - Whether to translate the plan name.
  * @param {string} [props.planNameTextVariant] - The text variant for the plan name.
  * @param {string} [props.planDescriptionTextVariant] - The text variant for the plan description.
+ * @param {boolean} [props.toggleYearlySubtitle] - Whether to show monthly pricing for annual plans.
  * @returns {JSX.Element}
  */
 export const PlanTitleSection = ({ plan, t, translatePlanName, planNameTextVariant, planDescriptionTextVariant }) => (
@@ -40,7 +41,7 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, planNameTextVaria
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals = true }) => (
+export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals = true, toggleYearlySubtitle = false }) => (
   <BlockStack gap="100">
     {!!discount && (
       <InlineStack align="center" blockAlign="center" gap="200">
@@ -81,6 +82,11 @@ export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useSho
           );
         })}
       </BlockStack>
+    )}
+    {toggleYearlySubtitle && plan.usageCharges.length === 0 && plan.interval === "ANNUAL" && (
+      <Text variant="bodyMd" tone="subdued" alignment="center">
+        Billed yearly
+      </Text>
     )}
   </BlockStack>
 );
@@ -160,6 +166,7 @@ export const HighlightedPlanCard = ({
   planNameTextVariant = "headingMd",
   planDescriptionTextVariant = "bodyLg",
   priceTextVariant = "heading3xl",
+  toggleYearlySubtitle = false,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -207,6 +214,7 @@ export const HighlightedPlanCard = ({
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 t={t}
                 priceTextVariant={priceTextVariant}
+                toggleYearlySubtitle={toggleYearlySubtitle}
               />
             </BlockStack>
             <Button

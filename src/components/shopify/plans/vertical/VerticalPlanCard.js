@@ -28,6 +28,7 @@ export const VerticalPlanCard = ({
   planNameTextVariant = "bodyLg",
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
+  toggleYearlySubtitle = false,
 }) => {
 
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
@@ -95,7 +96,7 @@ export const VerticalPlanCard = ({
     );
   };
 
-  const pricingComponent = ({ plan, discount }) => {
+  const pricingComponent = ({ plan, discount, toggleYearlySubtitle }) => {
     return (
       <BlockStack gap="100">
         {discount ? (
@@ -137,6 +138,11 @@ export const VerticalPlanCard = ({
             })}
           </BlockStack>
         )}
+        {toggleYearlySubtitle && plan.usageCharges.length === 0 && plan.interval === "ANNUAL" && (
+          <Text variant="bodyMd" tone="subdued" alignment="left">
+            Billed yearly
+          </Text>
+        )}
       </BlockStack>
     );
   };
@@ -166,7 +172,7 @@ export const VerticalPlanCard = ({
         <Grid.Cell columnSpan={{ xs: 6, sm: 6, md: 3, lg: 6, xl: 6 }}>
           <BlockStack gap="300">
             {titleComponent({ plan })}
-            {pricingComponent({ plan, discount })}
+            {pricingComponent({ plan, discount, toggleYearlySubtitle })}
             <Box>{ctaComponent({ plan, discount })}</Box>
           </BlockStack>
         </Grid.Cell>

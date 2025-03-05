@@ -37,6 +37,7 @@ export const VerticalPlanCards = ({
   applyDiscount = true,
   t: _t,
   translatePlanName = true,
+  toggleYearlySubtitle = false,
 }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const hasMonthlyAndYearlyPlans =
@@ -128,6 +129,7 @@ export const VerticalPlanCards = ({
                   showRecommendedPlanBadge={showRecommendedPlanBadge}
                   t={t}
                   translatePlanName={translatePlanName}
+                  toggleYearlySubtitle={toggleYearlySubtitle}
                 />
               );
             })}
@@ -150,7 +152,7 @@ export const VerticalPlanCards = ({
                         <Card>
                           <BlockStack gap="400">
                             {titleComponent({ plan, discount })}
-                            {pricingComponent({ plan, discount })}
+                            {pricingComponent({ plan, discount, toggleYearlySubtitle })}
                             {ctaComponent({ plan, discount })}
                             {featuresComponent({ plan, discount })}
                           </BlockStack>

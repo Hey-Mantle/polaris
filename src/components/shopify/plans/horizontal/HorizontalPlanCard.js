@@ -36,9 +36,10 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, isRecommendedPlan
  * @param {Discount} props.discount - The Mantle Discount object.
  * @param {boolean} [props.useShortFormPlanIntervals] - Whether to use short form plan intervals.
  * @param {string} [props.priceTextVariant] - The text variant for the price.
+ * @param {boolean} [props.toggleYearlySubtitle] - Whether to show monthly pricing for annual plans.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true, priceTextVariant }) => (
+export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true, priceTextVariant, toggleYearlySubtitle = false }) => (
   <BlockStack>
     {!!discount && discount.presentmentDiscountedAmount > 0 && (
       <InlineStack blockAlign="center" gap="200">
@@ -79,6 +80,11 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
           );
         })}
       </BlockStack>
+    )}
+    {toggleYearlySubtitle && plan.usageCharges.length === 0 && plan.interval === "ANNUAL" && (
+      <Text variant="bodyMd" tone="subdued" alignment="left">
+        Billed yearly
+      </Text>
     )}
   </BlockStack>
 );
@@ -155,6 +161,7 @@ export const HorizontalPlanCard = ({
   planNameTextVariant = "bodyLg",
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
+  toggleYearlySubtitle = false,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -192,6 +199,7 @@ export const HorizontalPlanCard = ({
           useShortFormPlanIntervals={useShortFormPlanIntervals}
           t={t}
           priceTextVariant={priceTextVariant}
+          toggleYearlySubtitle={toggleYearlySubtitle}
         />
         <Button
           size="large"

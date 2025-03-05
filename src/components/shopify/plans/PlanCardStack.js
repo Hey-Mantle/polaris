@@ -51,6 +51,7 @@ export const PlanCardType = {
  * @param {string} [props.keyForCustomButtonLabel="buttonLabel"] - The Plan custom field key to check for the custom button label
  * @param {boolean} [props.showRecommendedPlanBadge=true] - Whether to show the recommended plan badge
  * @param {boolean} [props.applyDiscount=true] - Whether to apply a valid discount to the plan card
+ * @param {boolean} [props.toggleYearlySubtitle=false] - Whether to show monthly pricing for annual plans
  * @returns {JSX.Element} The plan card stack component
  */
 export const PlanCardStack = ({
@@ -67,6 +68,7 @@ export const PlanCardStack = ({
   applyDiscount = true,
   t: _t,
   translatePlanName = true,
+  toggleYearlySubtitle = false,
 }) => {
   const activeSubscription = customer?.subscription?.active ? customer.subscription : undefined;
   const currentPlan = activeSubscription?.plan;
@@ -101,6 +103,7 @@ export const PlanCardStack = ({
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                 buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
+                toggleYearlySubtitle={toggleYearlySubtitle}
                 t={t}
                 translatePlanName={translatePlanName}
               />
@@ -117,6 +120,7 @@ export const PlanCardStack = ({
                 isRecommendedPlan={isRecommendedPlan({ plan, customFieldKey: keyForRecommended })}
                 buttonLabel={customButtonLabel({ plan, customFieldKey: keyForCustomButtonLabel })}
                 showRecommendedPlanBadge={showRecommendedPlanBadge}
+                toggleYearlySubtitle={toggleYearlySubtitle}
                 t={t}
                 translatePlanName={translatePlanName}
               />

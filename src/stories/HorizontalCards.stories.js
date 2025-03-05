@@ -17,6 +17,9 @@ export default {
     customFieldPlanRecommended: {
       control: { type: "text" },
     },
+    toggleYearlySubtitle: {
+      control: { type: "boolean" },
+    },
   },
   args: {
     pageWidth: "default",
@@ -31,6 +34,8 @@ export default {
     onSubscribe: () => {},
     customer: Customer,
     plans: Plans,
+    toggleYearlySubtitle: false,
+
   },
 };
 

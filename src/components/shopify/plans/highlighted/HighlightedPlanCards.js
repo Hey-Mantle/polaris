@@ -26,6 +26,7 @@ export const HighlightedPlanCards = ({
   useShortFormPlanIntervals = true, // boolean: e.g. show "$ / mo" instead of "$ / month"
   pageWidth = "default", // string: "full", "narrow", or "default"
   showCustomPlans = true, // boolean: show custom plans
+  toggleYearlySubtitle = false, // boolean: show monthly pricing for annual plans
 }) => {
   const subscription = customer?.subscription;
   const urlParams = new URLSearchParams(window.location.search);
@@ -103,6 +104,7 @@ export const HighlightedPlanCards = ({
                 trialDaysAsFeature={showTrialDaysAsFeature}
                 useShortFormPlanIntervals={useShortFormPlanIntervals}
                 showRecommendedPlanBadge={showRecommendedBadge}
+                toggleYearlySubtitle={toggleYearlySubtitle}
               />
               {customPlans?.length > 0 && <Divider borderColor="border" />}
               {customPlans?.length > 0 && (

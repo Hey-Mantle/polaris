@@ -11,6 +11,9 @@ export default {
       options: ["default", "narrow", "full"],
       control: { type: "radio" },
     },
+    toggleYearlySubtitle: {
+      control: { type: "boolean" },
+    },
   },
   args: {
     pageWidth: "default",
@@ -25,6 +28,7 @@ export default {
     onSubscribe: () => {},
     customer: Customer,
     plans: Plans,
+    toggleYearlySubtitle: false,
   },
 };
 
