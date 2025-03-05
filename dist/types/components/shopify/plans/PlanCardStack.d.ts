@@ -7,7 +7,7 @@ export namespace PlanCardType {
     let Horizontal: string;
     let Vertical: string;
 }
-export function PlanCardStack({ plans, customer, onSelectPlan, planInterval, cardType, trialDaysAsFeature, useShortFormPlanIntervals, keyForRecommended, keyForCustomButtonLabel, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, }: {
+export function PlanCardStack({ plans, customer, onSelectPlan, planInterval, cardType, trialDaysAsFeature, useShortFormPlanIntervals, keyForRecommended, keyForCustomButtonLabel, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, toggleYearlySubtitle, }: {
     plans: Array<Plan>;
     customer: Customer;
     onSelectPlan?: ({ plan: Plan, discount: Discount }: {
@@ -22,6 +22,7 @@ export function PlanCardStack({ plans, customer, onSelectPlan, planInterval, car
     keyForCustomButtonLabel?: string;
     showRecommendedPlanBadge?: boolean;
     applyDiscount?: boolean;
+    toggleYearlySubtitle?: boolean;
 }): JSX.Element;
 export type Plan = import('@heymantle/client').Plan;
 export type Customer = import('@heymantle/client').Customer;

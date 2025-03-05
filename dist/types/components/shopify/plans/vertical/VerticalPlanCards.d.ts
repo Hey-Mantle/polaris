@@ -1,4 +1,4 @@
-export function VerticalPlanCards({ plans, customer, onSubscribe, backUrl, keyForRecommended, keyForCustomButtonLabel, showPlanIntervalToggle, trialDaysAsFeature, useShortFormPlanIntervals, pageWidth, showCustomPlans, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, }: {
+export function VerticalPlanCards({ plans, customer, onSubscribe, backUrl, keyForRecommended, keyForCustomButtonLabel, showPlanIntervalToggle, trialDaysAsFeature, useShortFormPlanIntervals, pageWidth, showCustomPlans, showRecommendedPlanBadge, applyDiscount, t: _t, translatePlanName, toggleYearlySubtitle, }: {
     plans: any;
     customer: any;
     onSubscribe: any;
@@ -14,6 +14,7 @@ export function VerticalPlanCards({ plans, customer, onSubscribe, backUrl, keyFo
     applyDiscount?: boolean;
     t: any;
     translatePlanName?: boolean;
+    toggleYearlySubtitle?: boolean;
 }): React.JSX.Element;
 import React from "react";
 //# sourceMappingURL=VerticalPlanCards.d.ts.map
