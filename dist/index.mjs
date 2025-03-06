@@ -1,5 +1,5 @@
-import e, { createContext as It, useContext as Nt, useState as be } from "react";
-import { Banner as Fe, BlockStack as L, Text as v, InlineStack as q, Thumbnail as Bt, Button as ie, Divider as je, Box as re, Badge as qe, Icon as ve, Grid as Se, Page as Ie, ButtonGroup as Re, Layout as he, Card as ke, Modal as ct, InlineGrid as Wt } from "@shopify/polaris";
+import e, { createContext as It, useContext as Bt, useState as be } from "react";
+import { Banner as Fe, BlockStack as L, Text as v, InlineStack as q, Thumbnail as Nt, Button as ie, Divider as je, Box as re, Badge as qe, Icon as ve, Grid as Se, Page as Ie, ButtonGroup as Re, Layout as he, Card as ke, Modal as ct, InlineGrid as Wt } from "@shopify/polaris";
 var ft = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function mt(n) {
   return n && n.__esModule && Object.prototype.hasOwnProperty.call(n, "default") ? n.default : n;
@@ -9,7 +9,7 @@ var gt = { exports: {} };
   (function(u, c) {
     n.exports = c();
   })(ft, function() {
-    var u = 1e3, c = 6e4, y = 36e5, h = "millisecond", d = "second", T = "minute", f = "hour", _ = "day", M = "week", R = "month", B = "quarter", O = "year", W = "date", E = "Invalid Date", b = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, w = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, A = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(g) {
+    var u = 1e3, c = 6e4, y = 36e5, h = "millisecond", d = "second", T = "minute", f = "hour", _ = "day", A = "week", R = "month", N = "quarter", O = "year", W = "date", E = "Invalid Date", b = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, w = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, $ = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(g) {
       var i = ["th", "st", "nd", "rd"], l = g % 100;
       return "[" + g + (i[(l - 20) % 10] || i[l] || i[0]) + "]";
     } }, F = function(g, i, l) {
@@ -26,13 +26,13 @@ var gt = { exports: {} };
     }, a: function(g) {
       return g < 0 ? Math.ceil(g) || 0 : Math.floor(g);
     }, p: function(g) {
-      return { M: R, y: O, w: M, d: _, D: W, h: f, m: T, s: d, ms: h, Q: B }[g] || String(g || "").toLowerCase().replace(/s$/, "");
+      return { M: R, y: O, w: A, d: _, D: W, h: f, m: T, s: d, ms: h, Q: N }[g] || String(g || "").toLowerCase().replace(/s$/, "");
     }, u: function(g) {
       return g === void 0;
     } }, S = "en", p = {};
-    p[S] = A;
-    var $ = "$isDayjsObject", Q = function(g) {
-      return g instanceof ue || !(!g || !g[$]);
+    p[S] = $;
+    var M = "$isDayjsObject", Q = function(g) {
+      return g instanceof ue || !(!g || !g[M]);
     }, G = function g(i, l, m) {
       var s;
       if (!i)
@@ -48,18 +48,18 @@ var gt = { exports: {} };
         p[z] = i, s = z;
       }
       return !m && s && (S = s), s || !m && S;
-    }, H = function(g, i) {
+    }, U = function(g, i) {
       if (Q(g))
         return g.clone();
       var l = typeof i == "object" ? i : {};
       return l.date = g, l.args = arguments, new ue(l);
     }, I = j;
     I.l = G, I.i = Q, I.w = function(g, i) {
-      return H(g, { locale: i.$L, utc: i.$u, x: i.$x, $offset: i.$offset });
+      return U(g, { locale: i.$L, utc: i.$u, x: i.$x, $offset: i.$offset });
     };
     var ue = function() {
       function g(l) {
-        this.$L = G(l.locale, null, !0), this.parse(l), this.$x = this.$x || l.x || {}, this[$] = !0;
+        this.$L = G(l.locale, null, !0), this.parse(l), this.$x = this.$x || l.x || {}, this[M] = !0;
       }
       var i = g.prototype;
       return i.parse = function(l) {
@@ -88,12 +88,12 @@ var gt = { exports: {} };
       }, i.isValid = function() {
         return this.$d.toString() !== E;
       }, i.isSame = function(l, m) {
-        var s = H(l);
+        var s = U(l);
         return this.startOf(m) <= s && s <= this.endOf(m);
       }, i.isAfter = function(l, m) {
-        return H(l) < this.startOf(m);
+        return U(l) < this.startOf(m);
       }, i.isBefore = function(l, m) {
-        return this.endOf(m) < H(l);
+        return this.endOf(m) < U(l);
       }, i.$g = function(l, m, s) {
         return I.u(l) ? this[m] : this.set(s, l);
       }, i.unix = function() {
@@ -112,7 +112,7 @@ var gt = { exports: {} };
             return P ? z(1, 0) : z(31, 11);
           case R:
             return P ? z(1, ne) : z(0, ne + 1);
-          case M:
+          case A:
             var se = this.$locale().weekStart || 0, fe = (Z < se ? Z + 7 : Z) - se;
             return z(P ? le - fe : le + (6 - fe), ne);
           case _:
@@ -145,7 +145,7 @@ var gt = { exports: {} };
         var s, P = this;
         l = Number(l);
         var D = I.p(m), z = function(ne) {
-          var le = H(P);
+          var le = U(P);
           return I.w(le.date(le.date() + Math.round(ne * l)), P);
         };
         if (D === R)
@@ -154,7 +154,7 @@ var gt = { exports: {} };
           return this.set(O, this.$y + l);
         if (D === _)
           return z(1);
-        if (D === M)
+        if (D === A)
           return z(7);
         var K = (s = {}, s[T] = c, s[f] = y, s[d] = u, s)[D] || 1, Z = this.$d.getTime() + l * K;
         return I.w(Z, this);
@@ -230,7 +230,7 @@ var gt = { exports: {} };
       }, i.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, i.diff = function(l, m, s) {
-        var P, D = this, z = I.p(m), K = H(l), Z = (K.utcOffset() - this.utcOffset()) * c, ne = this - K, le = function() {
+        var P, D = this, z = I.p(m), K = U(l), Z = (K.utcOffset() - this.utcOffset()) * c, ne = this - K, le = function() {
           return I.m(D, K);
         };
         switch (z) {
@@ -240,10 +240,10 @@ var gt = { exports: {} };
           case R:
             P = le();
             break;
-          case B:
+          case N:
             P = le() / 3;
             break;
-          case M:
+          case A:
             P = (ne - Z) / 6048e5;
             break;
           case _:
@@ -283,20 +283,20 @@ var gt = { exports: {} };
         return this.$d.toUTCString();
       }, g;
     }(), x = ue.prototype;
-    return H.prototype = x, [["$ms", h], ["$s", d], ["$m", T], ["$H", f], ["$W", _], ["$M", R], ["$y", O], ["$D", W]].forEach(function(g) {
+    return U.prototype = x, [["$ms", h], ["$s", d], ["$m", T], ["$H", f], ["$W", _], ["$M", R], ["$y", O], ["$D", W]].forEach(function(g) {
       x[g[1]] = function(i) {
         return this.$g(i, g[0], g[1]);
       };
-    }), H.extend = function(g, i) {
-      return g.$i || (g(i, ue, H), g.$i = !0), H;
-    }, H.locale = G, H.isDayjs = Q, H.unix = function(g) {
-      return H(1e3 * g);
-    }, H.en = p[S], H.Ls = p, H.p = {}, H;
+    }), U.extend = function(g, i) {
+      return g.$i || (g(i, ue, U), g.$i = !0), U;
+    }, U.locale = G, U.isDayjs = Q, U.unix = function(g) {
+      return U(1e3 * g);
+    }, U.en = p[S], U.Ls = p, U.p = {}, U;
   });
 })(gt);
-var Ut = gt.exports;
-const Le = /* @__PURE__ */ mt(Ut);
-var $e = {};
+var Ht = gt.exports;
+const Le = /* @__PURE__ */ mt(Ht);
+var Me = {};
 /**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -307,24 +307,24 @@ var $e = {};
  * LICENSE file in the root directory of this source tree.
  */
 var ut;
-function Ht() {
+function Ut() {
   if (ut)
-    return $e;
+    return Me;
   ut = 1;
   var n = e, a = Symbol.for("react.element"), u = Symbol.for("react.fragment"), c = Object.prototype.hasOwnProperty, y = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, h = { key: !0, ref: !0, __self: !0, __source: !0 };
   function d(T, f, _) {
-    var M, R = {}, B = null, O = null;
-    _ !== void 0 && (B = "" + _), f.key !== void 0 && (B = "" + f.key), f.ref !== void 0 && (O = f.ref);
-    for (M in f)
-      c.call(f, M) && !h.hasOwnProperty(M) && (R[M] = f[M]);
+    var A, R = {}, N = null, O = null;
+    _ !== void 0 && (N = "" + _), f.key !== void 0 && (N = "" + f.key), f.ref !== void 0 && (O = f.ref);
+    for (A in f)
+      c.call(f, A) && !h.hasOwnProperty(A) && (R[A] = f[A]);
     if (T && T.defaultProps)
-      for (M in f = T.defaultProps, f)
-        R[M] === void 0 && (R[M] = f[M]);
-    return { $$typeof: a, type: T, key: B, ref: O, props: R, _owner: y.current };
+      for (A in f = T.defaultProps, f)
+        R[A] === void 0 && (R[A] = f[A]);
+    return { $$typeof: a, type: T, key: N, ref: O, props: R, _owner: y.current };
   }
-  return $e.Fragment = u, $e.jsx = d, $e.jsxs = d, $e;
+  return Me.Fragment = u, Me.jsx = d, Me.jsxs = d, Me;
 }
-var Me = {};
+var Ae = {};
 /**
  * @license React
  * react-jsx-runtime.development.js
@@ -337,7 +337,7 @@ var Me = {};
 var dt;
 function zt() {
   return dt || (dt = 1, process.env.NODE_ENV !== "production" && function() {
-    var n = e, a = Symbol.for("react.element"), u = Symbol.for("react.portal"), c = Symbol.for("react.fragment"), y = Symbol.for("react.strict_mode"), h = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), T = Symbol.for("react.context"), f = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), M = Symbol.for("react.suspense_list"), R = Symbol.for("react.memo"), B = Symbol.for("react.lazy"), O = Symbol.for("react.offscreen"), W = Symbol.iterator, E = "@@iterator";
+    var n = e, a = Symbol.for("react.element"), u = Symbol.for("react.portal"), c = Symbol.for("react.fragment"), y = Symbol.for("react.strict_mode"), h = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), T = Symbol.for("react.context"), f = Symbol.for("react.forward_ref"), _ = Symbol.for("react.suspense"), A = Symbol.for("react.suspense_list"), R = Symbol.for("react.memo"), N = Symbol.for("react.lazy"), O = Symbol.for("react.offscreen"), W = Symbol.iterator, E = "@@iterator";
     function b(t) {
       if (t === null || typeof t != "object")
         return null;
@@ -345,7 +345,7 @@ function zt() {
       return typeof r == "function" ? r : null;
     }
     var w = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function A(t) {
+    function $(t) {
       {
         for (var r = arguments.length, o = new Array(r > 1 ? r - 1 : 0), C = 1; C < r; C++)
           o[C - 1] = arguments[C];
@@ -354,18 +354,18 @@ function zt() {
     }
     function F(t, r, o) {
       {
-        var C = w.ReactDebugCurrentFrame, U = C.getStackAddendum();
-        U !== "" && (r += "%s", o = o.concat([U]));
-        var V = o.map(function(N) {
-          return String(N);
+        var C = w.ReactDebugCurrentFrame, H = C.getStackAddendum();
+        H !== "" && (r += "%s", o = o.concat([H]));
+        var V = o.map(function(B) {
+          return String(B);
         });
         V.unshift("Warning: " + r), Function.prototype.apply.call(console[t], console, V);
       }
     }
-    var j = !1, S = !1, p = !1, $ = !1, Q = !1, G;
+    var j = !1, S = !1, p = !1, M = !1, Q = !1, G;
     G = Symbol.for("react.module.reference");
-    function H(t) {
-      return !!(typeof t == "string" || typeof t == "function" || t === c || t === h || Q || t === y || t === _ || t === M || $ || t === O || j || S || p || typeof t == "object" && t !== null && (t.$$typeof === B || t.$$typeof === R || t.$$typeof === d || t.$$typeof === T || t.$$typeof === f || // This needs to include all possible module reference object
+    function U(t) {
+      return !!(typeof t == "string" || typeof t == "function" || t === c || t === h || Q || t === y || t === _ || t === A || M || t === O || j || S || p || typeof t == "object" && t !== null && (t.$$typeof === N || t.$$typeof === R || t.$$typeof === d || t.$$typeof === T || t.$$typeof === f || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
@@ -375,8 +375,8 @@ function zt() {
       var C = t.displayName;
       if (C)
         return C;
-      var U = r.displayName || r.name || "";
-      return U !== "" ? o + "(" + U + ")" : o;
+      var H = r.displayName || r.name || "";
+      return H !== "" ? o + "(" + H + ")" : o;
     }
     function ue(t) {
       return t.displayName || "Context";
@@ -384,7 +384,7 @@ function zt() {
     function x(t) {
       if (t == null)
         return null;
-      if (typeof t.tag == "number" && A("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof t == "function")
+      if (typeof t.tag == "number" && $("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof t == "function")
         return t.displayName || t.name || null;
       if (typeof t == "string")
         return t;
@@ -399,7 +399,7 @@ function zt() {
           return "StrictMode";
         case _:
           return "Suspense";
-        case M:
+        case A:
           return "SuspenseList";
       }
       if (typeof t == "object")
@@ -415,10 +415,10 @@ function zt() {
           case R:
             var C = t.displayName || null;
             return C !== null ? C : x(t.type) || "Memo";
-          case B: {
-            var U = t, V = U._payload, N = U._init;
+          case N: {
+            var H = t, V = H._payload, B = H._init;
             try {
-              return x(N(V));
+              return x(B(V));
             } catch {
               return null;
             }
@@ -485,7 +485,7 @@ function zt() {
             })
           });
         }
-        i < 0 && A("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+        i < 0 && $("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
     var de = w.ReactCurrentDispatcher, se;
@@ -494,8 +494,8 @@ function zt() {
         if (se === void 0)
           try {
             throw Error();
-          } catch (U) {
-            var C = U.stack.trim().match(/\n( *(at )?)/);
+          } catch (H) {
+            var C = H.stack.trim().match(/\n( *(at )?)/);
             se = C && C[1] || "";
           }
         return `
@@ -517,33 +517,33 @@ function zt() {
       }
       var C;
       ce = !0;
-      var U = Error.prepareStackTrace;
+      var H = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
       var V;
       V = de.current, de.current = null, ne();
       try {
         if (r) {
-          var N = function() {
+          var B = function() {
             throw Error();
           };
-          if (Object.defineProperty(N.prototype, "props", {
+          if (Object.defineProperty(B.prototype, "props", {
             set: function() {
               throw Error();
             }
           }), typeof Reflect == "object" && Reflect.construct) {
             try {
-              Reflect.construct(N, []);
+              Reflect.construct(B, []);
             } catch (ge) {
               C = ge;
             }
-            Reflect.construct(t, [], N);
+            Reflect.construct(t, [], B);
           } else {
             try {
-              N.call();
+              B.call();
             } catch (ge) {
               C = ge;
             }
-            t.call(N.prototype);
+            t.call(B.prototype);
           }
         } else {
           try {
@@ -573,7 +573,7 @@ function zt() {
             }
         }
       } finally {
-        ce = !1, de.current = V, le(), Error.prepareStackTrace = U;
+        ce = !1, de.current = V, le(), Error.prepareStackTrace = H;
       }
       var De = t ? t.displayName || t.name : "", st = De ? fe(De) : "";
       return typeof t == "function" && te.set(t, st), st;
@@ -595,7 +595,7 @@ function zt() {
       switch (t) {
         case _:
           return fe("Suspense");
-        case M:
+        case A:
           return fe("SuspenseList");
       }
       if (typeof t == "object")
@@ -604,10 +604,10 @@ function zt() {
             return we(t.render);
           case R:
             return Te(t.type, r, o);
-          case B: {
-            var C = t, U = C._payload, V = C._init;
+          case N: {
+            var C = t, H = C._payload, V = C._init;
             try {
-              return Te(V(U), r, o);
+              return Te(V(H), r, o);
             } catch {
             }
           }
@@ -622,27 +622,27 @@ function zt() {
       } else
         Ze.setExtraStackFrame(null);
     }
-    function yt(t, r, o, C, U) {
+    function yt(t, r, o, C, H) {
       {
         var V = Function.call.bind(Oe);
-        for (var N in t)
-          if (V(t, N)) {
+        for (var B in t)
+          if (V(t, B)) {
             var Y = void 0;
             try {
-              if (typeof t[N] != "function") {
-                var ae = Error((C || "React class") + ": " + o + " type `" + N + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof t[N] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+              if (typeof t[B] != "function") {
+                var ae = Error((C || "React class") + ": " + o + " type `" + B + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof t[B] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw ae.name = "Invariant Violation", ae;
               }
-              Y = t[N](r, N, C, o, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              Y = t[B](r, B, C, o, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (X) {
               Y = X;
             }
-            Y && !(Y instanceof Error) && (xe(U), A("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", C || "React class", o, N, typeof Y), xe(null)), Y instanceof Error && !(Y.message in Ge) && (Ge[Y.message] = !0, xe(U), A("Failed %s type: %s", o, Y.message), xe(null));
+            Y && !(Y instanceof Error) && (xe(H), $("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", C || "React class", o, B, typeof Y), xe(null)), Y instanceof Error && !(Y.message in Ge) && (Ge[Y.message] = !0, xe(H), $("Failed %s type: %s", o, Y.message), xe(null));
           }
       }
     }
     var pt = Array.isArray;
-    function Be(t) {
+    function Ne(t) {
       return pt(t);
     }
     function bt(t) {
@@ -663,9 +663,9 @@ function zt() {
     }
     function Qe(t) {
       if (St(t))
-        return A("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", bt(t)), Xe(t);
+        return $("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", bt(t)), Xe(t);
     }
-    var Ae = w.ReactCurrentOwner, Ct = {
+    var $e = w.ReactCurrentOwner, Ct = {
       key: !0,
       ref: !0,
       __self: !0,
@@ -689,15 +689,15 @@ function zt() {
       return t.key !== void 0;
     }
     function Dt(t, r) {
-      if (typeof t.ref == "string" && Ae.current && r && Ae.current.stateNode !== r) {
-        var o = x(Ae.current.type);
-        We[o] || (A('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', x(Ae.current.type), t.ref), We[o] = !0);
+      if (typeof t.ref == "string" && $e.current && r && $e.current.stateNode !== r) {
+        var o = x($e.current.type);
+        We[o] || ($('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', x($e.current.type), t.ref), We[o] = !0);
       }
     }
-    function At(t, r) {
+    function $t(t, r) {
       {
         var o = function() {
-          et || (et = !0, A("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
+          et || (et = !0, $("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
         };
         o.isReactWarning = !0, Object.defineProperty(t, "key", {
           get: o,
@@ -705,10 +705,10 @@ function zt() {
         });
       }
     }
-    function $t(t, r) {
+    function Mt(t, r) {
       {
         var o = function() {
-          tt || (tt = !0, A("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
+          tt || (tt = !0, $("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", r));
         };
         o.isReactWarning = !0, Object.defineProperty(t, "ref", {
           get: o,
@@ -716,7 +716,7 @@ function zt() {
         });
       }
     }
-    var Mt = function(t, r, o, C, U, V, N) {
+    var At = function(t, r, o, C, H, V, B) {
       var Y = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: a,
@@ -724,7 +724,7 @@ function zt() {
         type: t,
         key: r,
         ref: o,
-        props: N,
+        props: B,
         // Record the component responsible for creating this element.
         _owner: V
       };
@@ -742,28 +742,28 @@ function zt() {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: U
+        value: H
       }), Object.freeze && (Object.freeze(Y.props), Object.freeze(Y)), Y;
     };
-    function Rt(t, r, o, C, U) {
+    function Rt(t, r, o, C, H) {
       {
-        var V, N = {}, Y = null, ae = null;
-        o !== void 0 && (Qe(o), Y = "" + o), Pt(r) && (Qe(r.key), Y = "" + r.key), wt(r) && (ae = r.ref, Dt(r, U));
+        var V, B = {}, Y = null, ae = null;
+        o !== void 0 && (Qe(o), Y = "" + o), Pt(r) && (Qe(r.key), Y = "" + r.key), wt(r) && (ae = r.ref, Dt(r, H));
         for (V in r)
-          Oe.call(r, V) && !Ct.hasOwnProperty(V) && (N[V] = r[V]);
+          Oe.call(r, V) && !Ct.hasOwnProperty(V) && (B[V] = r[V]);
         if (t && t.defaultProps) {
           var X = t.defaultProps;
           for (V in X)
-            N[V] === void 0 && (N[V] = X[V]);
+            B[V] === void 0 && (B[V] = X[V]);
         }
         if (Y || ae) {
           var ee = typeof t == "function" ? t.displayName || t.name || "Unknown" : t;
-          Y && At(N, ee), ae && $t(N, ee);
+          Y && $t(B, ee), ae && Mt(B, ee);
         }
-        return Mt(t, Y, ae, U, C, Ae.current, N);
+        return At(t, Y, ae, H, C, $e.current, B);
       }
     }
-    var Ue = w.ReactCurrentOwner, nt = w.ReactDebugCurrentFrame;
+    var He = w.ReactCurrentOwner, nt = w.ReactDebugCurrentFrame;
     function Pe(t) {
       if (t) {
         var r = t._owner, o = Te(t.type, t._source, r ? r.type : null);
@@ -771,15 +771,15 @@ function zt() {
       } else
         nt.setExtraStackFrame(null);
     }
-    var He;
-    He = !1;
+    var Ue;
+    Ue = !1;
     function ze(t) {
       return typeof t == "object" && t !== null && t.$$typeof === a;
     }
     function rt() {
       {
-        if (Ue.current) {
-          var t = x(Ue.current.type);
+        if (He.current) {
+          var t = x(He.current.type);
           if (t)
             return `
 
@@ -822,14 +822,14 @@ Check the top-level render call using <` + o + ">.");
           return;
         at[o] = !0;
         var C = "";
-        t && t._owner && t._owner !== Ue.current && (C = " It was passed a child from " + x(t._owner.type) + "."), Pe(t), A('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', o, C), Pe(null);
+        t && t._owner && t._owner !== He.current && (C = " It was passed a child from " + x(t._owner.type) + "."), Pe(t), $('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', o, C), Pe(null);
       }
     }
     function it(t, r) {
       {
         if (typeof t != "object")
           return;
-        if (Be(t))
+        if (Ne(t))
           for (var o = 0; o < t.length; o++) {
             var C = t[o];
             ze(C) && lt(C, r);
@@ -837,10 +837,10 @@ Check the top-level render call using <` + o + ">.");
         else if (ze(t))
           t._store && (t._store.validated = !0);
         else if (t) {
-          var U = b(t);
-          if (typeof U == "function" && U !== t.entries)
-            for (var V = U.call(t), N; !(N = V.next()).done; )
-              ze(N.value) && lt(N.value, r);
+          var H = b(t);
+          if (typeof H == "function" && H !== t.entries)
+            for (var V = H.call(t), B; !(B = V.next()).done; )
+              ze(B.value) && lt(B.value, r);
         }
       }
     }
@@ -861,12 +861,12 @@ Check the top-level render call using <` + o + ">.");
         if (o) {
           var C = x(r);
           yt(o, t.props, "prop", C, t);
-        } else if (r.PropTypes !== void 0 && !He) {
-          He = !0;
-          var U = x(r);
-          A("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", U || "Unknown");
+        } else if (r.PropTypes !== void 0 && !Ue) {
+          Ue = !0;
+          var H = x(r);
+          $("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", H || "Unknown");
         }
-        typeof r.getDefaultProps == "function" && !r.getDefaultProps.isReactClassApproved && A("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+        typeof r.getDefaultProps == "function" && !r.getDefaultProps.isReactClassApproved && $("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
     }
     function xt(t) {
@@ -874,37 +874,37 @@ Check the top-level render call using <` + o + ">.");
         for (var r = Object.keys(t.props), o = 0; o < r.length; o++) {
           var C = r[o];
           if (C !== "children" && C !== "key") {
-            Pe(t), A("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", C), Pe(null);
+            Pe(t), $("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", C), Pe(null);
             break;
           }
         }
-        t.ref !== null && (Pe(t), A("Invalid attribute `ref` supplied to `React.Fragment`."), Pe(null));
+        t.ref !== null && (Pe(t), $("Invalid attribute `ref` supplied to `React.Fragment`."), Pe(null));
       }
     }
-    function ot(t, r, o, C, U, V) {
+    function ot(t, r, o, C, H, V) {
       {
-        var N = H(t);
-        if (!N) {
+        var B = U(t);
+        if (!B) {
           var Y = "";
           (t === void 0 || typeof t == "object" && t !== null && Object.keys(t).length === 0) && (Y += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
-          var ae = kt(U);
+          var ae = kt(H);
           ae ? Y += ae : Y += rt();
           var X;
-          t === null ? X = "null" : Be(t) ? X = "array" : t !== void 0 && t.$$typeof === a ? (X = "<" + (x(t.type) || "Unknown") + " />", Y = " Did you accidentally export a JSX literal instead of a component?") : X = typeof t, A("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", X, Y);
+          t === null ? X = "null" : Ne(t) ? X = "array" : t !== void 0 && t.$$typeof === a ? (X = "<" + (x(t.type) || "Unknown") + " />", Y = " Did you accidentally export a JSX literal instead of a component?") : X = typeof t, $("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", X, Y);
         }
-        var ee = Rt(t, r, o, U, V);
+        var ee = Rt(t, r, o, H, V);
         if (ee == null)
           return ee;
-        if (N) {
+        if (B) {
           var oe = r.children;
           if (oe !== void 0)
             if (C)
-              if (Be(oe)) {
+              if (Ne(oe)) {
                 for (var De = 0; De < oe.length; De++)
                   it(oe[De], t);
                 Object.freeze && Object.freeze(oe);
               } else
-                A("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                $("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
             else
               it(oe, t);
         }
@@ -918,10 +918,10 @@ Check the top-level render call using <` + o + ">.");
       return ot(t, r, o, !1);
     }
     var Ft = Yt, jt = Lt;
-    Me.Fragment = c, Me.jsx = Ft, Me.jsxs = jt;
-  }()), Me;
+    Ae.Fragment = c, Ae.jsx = Ft, Ae.jsxs = jt;
+  }()), Ae;
 }
-process.env.NODE_ENV === "production" ? Ht() : zt();
+process.env.NODE_ENV === "production" ? Ut() : zt();
 const k = {
   AmountPerInterval: "{{ amount }} per {{ interval }}",
   Back: "Back",
@@ -974,7 +974,7 @@ const k = {
   upgradeRequired: "Upgrade Required",
   limitReached: "Limit Reached"
 }, Vt = It(void 0), Jt = () => {
-  const n = Nt(Vt);
+  const n = Bt(Vt);
   if (n === void 0)
     throw new Error("useMantle must be used within a MantleProvider");
   return n;
@@ -1036,14 +1036,14 @@ const qt = (n = "EVERY_30_DAYS") => {
   refetch: T = async () => {
   },
   apps: f = []
-}) => /* @__PURE__ */ e.createElement(Fe, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(v, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(L, { gap: "300" }, f.map((_, M) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(q, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(q, { gap: "300" }, /* @__PURE__ */ e.createElement(
-  Bt,
+}) => /* @__PURE__ */ e.createElement(Fe, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(v, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(L, { gap: "300" }, f.map((_, A) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(q, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(q, { gap: "300" }, /* @__PURE__ */ e.createElement(
+  Nt,
   {
     source: _.iconUrl,
     alt: _.name,
     size: "small"
   }
-), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { variant: "headingSm" }, _.name), /* @__PURE__ */ e.createElement(v, null, _.description))), /* @__PURE__ */ e.createElement(q, { gap: "400" }, /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(ie, null, h.Install)))), M < f.length - 1 && /* @__PURE__ */ e.createElement(je, null))))));
+), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { variant: "headingSm" }, _.name), /* @__PURE__ */ e.createElement(v, null, _.description))), /* @__PURE__ */ e.createElement(q, { gap: "400" }, /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(ie, null, h.Install)))), A < f.length - 1 && /* @__PURE__ */ e.createElement(je, null))))));
 var Ce = function(a) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
@@ -1053,14 +1053,14 @@ var Ce = function(a) {
   }));
 };
 Ce.displayName = "CheckIcon";
-var Ne = function(a) {
+var Be = function(a) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
   }, a), /* @__PURE__ */ e.createElement("path", {
     d: "M10.75 6.75a.75.75 0 0 0-1.5 0v2.5h-2.5a.75.75 0 0 0 0 1.5h2.5v2.5a.75.75 0 0 0 1.5 0v-2.5h2.5a.75.75 0 0 0 0-1.5h-2.5v-2.5Z"
   }));
 };
-Ne.displayName = "PlusIcon";
+Be.displayName = "PlusIcon";
 const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planDescriptionTextVariant: y }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, /* @__PURE__ */ e.createElement(v, { variant: c, alignment: "center" }, u ? a(n.name) : n.name), n.description && /* @__PURE__ */ e.createElement(v, { variant: y, tone: "subdued", alignment: "center" }, a(n.description))), en = ({ plan: n, discount: a, t: u, priceTextVariant: c, useShortFormPlanIntervals: y = !0, toggleYearlySubtitle: h = !1 }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, !!a && /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: c }, Ee(a.presentmentDiscountedAmount, n.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(
   v,
   {
@@ -1070,7 +1070,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
     textDecorationLine: "line-through"
   },
   Ee(n.presentmentAmount, n.presentmentCurrencyCode, !0)
-), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: y })))), !a && /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: c }, Ee(n.presentmentAmount, n.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: y })))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${T}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ne, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, u(d.terms))))), h && n.usageCharges.length === 0 && n.interval === "ANNUAL" && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "center" }, "Billed yearly")), tn = ({ plan: n, t: a, trialDaysAsFeature: u = !1 }) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
+), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: y })))), !a && /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: c }, Ee(n.presentmentAmount, n.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: y })))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${T}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Be, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, u(d.terms))))), h && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "center" }, "Billed yearly")), tn = ({ plan: n, t: a, trialDaysAsFeature: u = !1 }) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
   const h = n.features[c];
   if (h.type !== "boolean" || h.value === !0)
     return /* @__PURE__ */ e.createElement(q, { key: `plan-feature-${y}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), h.type === "boolean" ? /* @__PURE__ */ e.createElement(v, null, a(h.name)) : /* @__PURE__ */ e.createElement(v, null, h.value, " ", a(h.name)));
@@ -1085,16 +1085,16 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   isActivePlan: T = !1,
   isRecommendedPlan: f = !1,
   isCustomPlan: _ = !1,
-  showRecommendedPlanBadge: M = !0,
+  showRecommendedPlanBadge: A = !0,
   t: R,
-  translatePlanName: B = !0,
+  translatePlanName: N = !0,
   planNameTextVariant: O = "headingMd",
   planDescriptionTextVariant: W = "bodyLg",
   priceTextVariant: E = "heading3xl",
   toggleYearlySubtitle: b = !1
 }) => {
-  const [w, A] = e.useState(!1), F = R || ((S) => S), j = async ({ plan: S, discount: p }) => {
-    c ? (A(!0), await c({ plan: S, discount: p }) !== !0 && A(!1)) : console.log("No onSelectPlan callback provided");
+  const [w, $] = e.useState(!1), F = R || ((S) => S), j = async ({ plan: S, discount: p }) => {
+    c ? ($(!0), await c({ plan: S, discount: p }) !== !0 && $(!1)) : console.log("No onSelectPlan callback provided");
   };
   return /* @__PURE__ */ e.createElement(re, { position: "relative", minHeight: "100%" }, /* @__PURE__ */ e.createElement(re, { paddingBlock: d || f ? void 0 : "800", minHeight: "100%" }, /* @__PURE__ */ e.createElement(
     re,
@@ -1113,7 +1113,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
       {
         plan: n,
         t: F,
-        translatePlanName: B,
+        translatePlanName: N,
         planNameTextVariant: O,
         planDescriptionTextVariant: W
       }
@@ -1139,7 +1139,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         loading: w
       },
       F(u || k.SelectPlan)
-    ), /* @__PURE__ */ e.createElement(tn, { plan: n, t: F, trialDaysAsFeature: h }), f && M && /* @__PURE__ */ e.createElement(q, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(qe, { tone: "success" }, F(k.MostPopular))))
+    ), /* @__PURE__ */ e.createElement(tn, { plan: n, t: F, trialDaysAsFeature: h }), f && A && /* @__PURE__ */ e.createElement(q, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(qe, { tone: "success" }, F(k.MostPopular))))
   )));
 }, pe = {
   /**
@@ -1165,23 +1165,23 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   keyForRecommended: T = "recommended",
   keyForCustomButtonLabel: f = "buttonLabel",
   showRecommendedPlanBadge: _ = !0,
-  applyDiscount: M = !0,
+  applyDiscount: A = !0,
   t: R,
-  translatePlanName: B = !0,
+  translatePlanName: N = !0,
   toggleYearlySubtitle: O = !1
 }) => {
   var j;
-  const W = (j = a == null ? void 0 : a.subscription) != null && j.active ? a.subscription : void 0, E = W == null ? void 0 : W.plan, b = c ? n.filter((S) => S.interval === c) : n, w = y === pe.Vertical ? 1 : Xt(b.length), A = Zt(w), F = R || ((S) => S);
+  const W = (j = a == null ? void 0 : a.subscription) != null && j.active ? a.subscription : void 0, E = W == null ? void 0 : W.plan, b = c ? n.filter((S) => S.interval === c) : n, w = y === pe.Vertical ? 1 : Xt(b.length), $ = Zt(w), F = R || ((S) => S);
   return /* @__PURE__ */ e.createElement(Se, { columns: w }, b.map((S) => {
-    const p = M ? vt({ plan: S }) : void 0, $ = (E == null ? void 0 : E.id) === S.id && !(W != null && W.cancelOn);
-    return /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: A, key: S.id }, y === pe.Highlighted && /* @__PURE__ */ e.createElement(
+    const p = A ? vt({ plan: S }) : void 0, M = (E == null ? void 0 : E.id) === S.id && !(W != null && W.cancelOn);
+    return /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: $, key: S.id }, y === pe.Highlighted && /* @__PURE__ */ e.createElement(
       nn,
       {
         key: `HighlightedPlanCard-${S.id}`,
         plan: S,
         discount: p,
         onSelectPlan: u,
-        isActivePlan: $,
+        isActivePlan: M,
         trialDaysAsFeature: h,
         useShortFormPlanIntervals: d,
         isCustomPlan: S.availability !== "public",
@@ -1190,7 +1190,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         showRecommendedPlanBadge: _,
         toggleYearlySubtitle: O,
         t: F,
-        translatePlanName: B
+        translatePlanName: N
       }
     ), y === pe.Horizontal && /* @__PURE__ */ e.createElement(
       on,
@@ -1199,7 +1199,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         plan: S,
         discount: p,
         onSelectPlan: u,
-        isActivePlan: $,
+        isActivePlan: M,
         trialDaysAsFeature: h,
         useShortFormPlanIntervals: d,
         isRecommendedPlan: Je({ plan: S, customFieldKey: T }),
@@ -1207,7 +1207,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         showRecommendedPlanBadge: _,
         toggleYearlySubtitle: O,
         t: F,
-        translatePlanName: B
+        translatePlanName: N
       }
     ));
   }));
@@ -1229,16 +1229,16 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   // boolean
   useShortFormPlanIntervals: _,
   // boolean: e.g. show "$ / mo" instead of "$ / month"
-  pageWidth: M = "default",
+  pageWidth: A = "default",
   // string: "full", "narrow", or "default"
   showCustomPlans: R = !0,
   // boolean: show custom plans
-  toggleYearlySubtitle: B = !1
+  toggleYearlySubtitle: N = !1
   // boolean: toggle monthly pricing
 }) => {
-  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some(($) => $.interval === J.Annual) && a.some(($) => $.interval === J.Every30Days), b = a.find(($) => $.id === (O == null ? void 0 : O.plan.id)), [w, A] = be(
+  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === J.Annual) && a.some((M) => M.interval === J.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
     b ? b.interval : E ? J.Annual : J.Every30Days
-  ), F = a.filter(($) => $.availability === "public"), j = R ? a.filter(($) => $.availability !== "public") : [], [S, p] = be(
+  ), F = a.filter((M) => M.availability === "public"), j = R ? a.filter((M) => M.availability !== "public") : [], [S, p] = be(
     W.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
@@ -1250,19 +1250,19 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         ie,
         {
           pressed: w === J.Every30Days,
-          onClick: () => A(J.Every30Days)
+          onClick: () => $(J.Every30Days)
         },
         k.Monthly
       ), /* @__PURE__ */ e.createElement(
         ie,
         {
           pressed: w === J.Annual,
-          onClick: () => A(J.Annual)
+          onClick: () => $(J.Annual)
         },
         k.Yearly
       )) : void 0,
-      fullWidth: M === "full",
-      narrowWidth: M === "narrow"
+      fullWidth: A === "full",
+      narrowWidth: A === "narrow"
     },
     /* @__PURE__ */ e.createElement(he, null, /* @__PURE__ */ e.createElement(he.Section, null, /* @__PURE__ */ e.createElement(L, { gap: "1000" }, S && /* @__PURE__ */ e.createElement(
       Fe,
@@ -1286,7 +1286,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         trialDaysAsFeature: f,
         useShortFormPlanIntervals: _,
         showRecommendedPlanBadge: y,
-        toggleYearlySubtitle: B
+        toggleYearlySubtitle: N
       }
     ), (j == null ? void 0 : j.length) > 0 && /* @__PURE__ */ e.createElement(je, { borderColor: "border" }), (j == null ? void 0 : j.length) > 0 && /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(re, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, k.CustomPlans)), /* @__PURE__ */ e.createElement(
       Ye,
@@ -1312,7 +1312,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
     textDecorationLine: "line-through"
   },
   n.presentmentAmount
-), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: c })))), (!a || a.presentmentDiscountedAmount == 0) && /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: c })))), n.usageCharges && n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${T}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ne, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, u(d.terms))))), h && n.usageCharges.length === 0 && n.interval === "ANNUAL" && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), ln = ({ plan: n, t: a, trialDaysAsFeature: u = !1 }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
+), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: c })))), (!a || a.presentmentDiscountedAmount == 0) && /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(_e({ interval: n.interval, useShortFormPlanIntervals: c })))), n.usageCharges && n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${T}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Be, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, u(d.terms))))), h && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), ln = ({ plan: n, t: a, trialDaysAsFeature: u = !1 }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(v, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
   const h = n.features[c];
   if (h.type !== "boolean" || h.value === !0)
     return /* @__PURE__ */ e.createElement(q, { key: `plan-feature-${y}`, align: "start", gap: "100", wrap: !1 }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), h.type === "boolean" ? /* @__PURE__ */ e.createElement(v, null, a(h.name)) : /* @__PURE__ */ e.createElement(v, null, h.value, " ", a(h.name)));
@@ -1327,13 +1327,13 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   isActivePlan: T = !1,
   t: f,
   translatePlanName: _ = !0,
-  showRecommendedPlanBadge: M = !0,
+  showRecommendedPlanBadge: A = !0,
   planNameTextVariant: R = "bodyLg",
-  planDescriptionTextVariant: B = "bodyMd",
+  planDescriptionTextVariant: N = "bodyMd",
   priceTextVariant: O = "headingXl",
   toggleYearlySubtitle: W = !1
 }) => {
-  const [E, b] = e.useState(!1), w = f || ((F) => F), A = async ({ plan: F, discount: j }) => {
+  const [E, b] = e.useState(!1), w = f || ((F) => F), $ = async ({ plan: F, discount: j }) => {
     c ? (b(!0), await c({ plan: F, discount: j }) !== !0 && b(!1)) : console.log("No onSelectPlan callback provided");
   };
   return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(
@@ -1341,11 +1341,11 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
     {
       plan: n,
       isRecommendedPlan: d,
-      showRecommendedPlanBadge: M,
+      showRecommendedPlanBadge: A,
       t: w,
       translatePlanName: _,
       planNameTextVariant: R,
-      planDescriptionTextVariant: B
+      planDescriptionTextVariant: N
     }
   ), /* @__PURE__ */ e.createElement(
     an,
@@ -1363,7 +1363,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
       size: "large",
       variant: d ? "primary" : "secondary",
       onClick: async () => {
-        await A({ plan: n, discount: a });
+        await $({ plan: n, discount: a });
       },
       disabled: T,
       loading: E
@@ -1388,16 +1388,16 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   // boolean
   useShortFormPlanIntervals: _ = !0,
   // boolean: e.g. show "$ / mo" instead of "$ / month"
-  pageWidth: M = "default",
+  pageWidth: A = "default",
   // string: "full", "narrow", or "default"
   showCustomPlans: R = !0,
   // boolean: show custom plans
-  toggleYearlySubtitle: B = !1
+  toggleYearlySubtitle: N = !1
   // boolean: show monthly pricing for annual plans
 }) => {
-  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some(($) => $.interval === J.Annual) && a.some(($) => $.interval === J.Every30Days), b = a.find(($) => $.id === (O == null ? void 0 : O.plan.id)), [w, A] = be(
+  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === J.Annual) && a.some((M) => M.interval === J.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
     b ? b.interval : E ? J.Annual : J.Every30Days
-  ), F = a.filter(($) => $.availability === "public"), j = R ? a.filter(($) => $.availability !== "public") : [], [S, p] = be(
+  ), F = a.filter((M) => M.availability === "public"), j = R ? a.filter((M) => M.availability !== "public") : [], [S, p] = be(
     W.get("subscribed") === "true"
   );
   return /* @__PURE__ */ e.createElement(
@@ -1409,19 +1409,19 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         ie,
         {
           pressed: w === J.Every30Days,
-          onClick: () => A(J.Every30Days)
+          onClick: () => $(J.Every30Days)
         },
         k.Monthly
       ), /* @__PURE__ */ e.createElement(
         ie,
         {
           pressed: w === J.Annual,
-          onClick: () => A(J.Annual)
+          onClick: () => $(J.Annual)
         },
         k.Yearly
       )) : void 0,
-      fullWidth: M === "full",
-      narrowWidth: M === "narrow"
+      fullWidth: A === "full",
+      narrowWidth: A === "narrow"
     },
     /* @__PURE__ */ e.createElement(re, { paddingBlockEnd: "800" }, /* @__PURE__ */ e.createElement(he, null, /* @__PURE__ */ e.createElement(he.Section, null, /* @__PURE__ */ e.createElement(L, { gap: "1000" }, S && /* @__PURE__ */ e.createElement(
       Fe,
@@ -1445,7 +1445,7 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         trialDaysAsFeature: f,
         useShortFormPlanIntervals: _,
         showRecommendedPlanBadge: y,
-        toggleYearlySubtitle: B
+        toggleYearlySubtitle: N
       }
     ), (j == null ? void 0 : j.length) > 0 && /* @__PURE__ */ e.createElement(je, { borderColor: "border" }), (j == null ? void 0 : j.length) > 0 && /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(re, { paddingInline: { xs: 400, sm: 0 } }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, k.CustomPlans)), /* @__PURE__ */ e.createElement(
       Ye,
@@ -1473,19 +1473,19 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   isActivePlan: T = !1,
   t: f = _t,
   translatePlanName: _ = !0,
-  showRecommendedPlanBadge: M = !0,
+  showRecommendedPlanBadge: A = !0,
   planNameTextVariant: R = "bodyLg",
-  planDescriptionTextVariant: B = "bodyMd",
+  planDescriptionTextVariant: N = "bodyMd",
   priceTextVariant: O = "headingXl",
   toggleYearlySubtitle: W = !1
 }) => {
-  const [E, b] = e.useState(!1), w = async ({ plan: p, discount: $ }) => {
-    c ? (b(!0), await c({ plan: p, discount: $ }) !== !0 && b(!1)) : console.log("No onSelectPlan callback provided");
-  }, A = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { variant: R }, _ ? f(p.name) : p.name), p.description && /* @__PURE__ */ e.createElement(v, { variant: B, tone: "subdued" }, f(p.description))), F = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { fontWeight: "medium" }, f(k.Features)), /* @__PURE__ */ e.createElement(L, { gap: "100" }, h && p.trialDays && p.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })), /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, f(k.FreeTrialLength.replace("{{ trialDays }}", p.trialDays)))) : null, p.featuresOrder.map(($, Q) => {
-    const G = p.features[$];
+  const [E, b] = e.useState(!1), w = async ({ plan: p, discount: M }) => {
+    c ? (b(!0), await c({ plan: p, discount: M }) !== !0 && b(!1)) : console.log("No onSelectPlan callback provided");
+  }, $ = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { variant: R }, _ ? f(p.name) : p.name), p.description && /* @__PURE__ */ e.createElement(v, { variant: N, tone: "subdued" }, f(p.description))), F = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { fontWeight: "medium" }, f(k.Features)), /* @__PURE__ */ e.createElement(L, { gap: "100" }, h && p.trialDays && p.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })), /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, f(k.FreeTrialLength.replace("{{ trialDays }}", p.trialDays)))) : null, p.featuresOrder.map((M, Q) => {
+    const G = p.features[M];
     if (G.type !== "boolean" || G.value === !0)
       return /* @__PURE__ */ e.createElement(q, { key: `plan-feature-${Q}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })), G.type === "boolean" ? /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, G.name) : /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, G.value, " ", G.name));
-  }))), j = ({ plan: p, discount: $, toggleYearlySubtitle: Q }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, $ ? /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: O }, Ee($.presentmentDiscountedAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
+  }))), j = ({ plan: p, discount: M, toggleYearlySubtitle: Q }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, M ? /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: O }, Ee(M.presentmentDiscountedAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(
     v,
     {
       variant: O,
@@ -1494,20 +1494,20 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
       textDecorationLine: "line-through"
     },
     p.presentmentAmount
-  ), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({ interval: p.interval, useShortFormPlanIntervals: y }))) : /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: O }, Ee(p.presentmentAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({ interval: p.interval, useShortFormPlanIntervals: y }))), p.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, p.usageCharges.map((G, H) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${H}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ne, tone: "positive" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, G.terms)))), Q && p.usageCharges.length === 0 && p.interval === "ANNUAL" && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), S = ({ plan: p, discount: $ }) => /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
+  ), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({ interval: p.interval, useShortFormPlanIntervals: y }))) : /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: O }, Ee(p.presentmentAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(v, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({ interval: p.interval, useShortFormPlanIntervals: y }))), p.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, p.usageCharges.map((G, U) => /* @__PURE__ */ e.createElement(q, { key: `plan-usageCharge-${U}`, align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Be, tone: "positive" })), /* @__PURE__ */ e.createElement(v, { variant: "bodyLg" }, G.terms)))), Q && /* @__PURE__ */ e.createElement(v, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), S = ({ plan: p, discount: M }) => /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
     ie,
     {
       size: "large",
       variant: d ? "primary" : "secondary",
       onClick: async () => {
-        await w({ plan: p, discount: $ });
+        await w({ plan: p, discount: M });
       },
       disabled: T,
       loading: E
     },
     f(T ? k.CurrentPlan : u || k.SelectPlan)
-  ), d && M && /* @__PURE__ */ e.createElement(qe, { tone: "success" }, f(k.MostPopular)));
-  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(Se, null, /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, /* @__PURE__ */ e.createElement(L, { gap: "300" }, A({ plan: n }), j({ plan: n, discount: a, toggleYearlySubtitle: W }), /* @__PURE__ */ e.createElement(re, null, S({ plan: n, discount: a })))), /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, F({ plan: n }))));
+  ), d && A && /* @__PURE__ */ e.createElement(qe, { tone: "success" }, f(k.MostPopular)));
+  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(Se, null, /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, /* @__PURE__ */ e.createElement(L, { gap: "300" }, $({ plan: n }), j({ plan: n, discount: a, toggleYearlySubtitle: W }), /* @__PURE__ */ e.createElement(re, null, S({ plan: n, discount: a })))), /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, F({ plan: n }))));
 }, hn = ({
   plans: n,
   customer: a,
@@ -1524,23 +1524,23 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
   // boolean: e.g. show "$ / mo" instead of "$ / month"
   pageWidth: _ = "default",
   // string: "full", "narrow", or "default"
-  showCustomPlans: M = !0,
+  showCustomPlans: A = !0,
   // boolean: show custom plans
   showRecommendedPlanBadge: R = !0,
   // boolean
-  applyDiscount: B = !0,
+  applyDiscount: N = !0,
   t: O,
   translatePlanName: W = !0,
   toggleYearlySubtitle: E = !1
 }) => {
   var ue;
-  const b = new URLSearchParams(window.location.search), w = n.some((x) => x.interval === J.Annual) && n.some((x) => x.interval === J.Every30Days), A = (ue = a == null ? void 0 : a.subscription) != null && ue.active ? a.subscription : void 0, F = A == null ? void 0 : A.plan, [j, S] = be(
+  const b = new URLSearchParams(window.location.search), w = n.some((x) => x.interval === J.Annual) && n.some((x) => x.interval === J.Every30Days), $ = (ue = a == null ? void 0 : a.subscription) != null && ue.active ? a.subscription : void 0, F = $ == null ? void 0 : $.plan, [j, S] = be(
     F ? F.interval : w ? J.Annual : J.Every30Days
   ), p = n.filter(
     (x) => x.availability !== "customerTag" && x.availability !== "customer"
-  ), $ = d && w ? p.filter((x) => x.interval === j) : p, Q = M ? n.filter(
+  ), M = d && w ? p.filter((x) => x.interval === j) : p, Q = A ? n.filter(
     (x) => x.availability === "customerTag" || x.availability === "customer"
-  ) : [], [G, H] = be(
+  ) : [], [G, U] = be(
     b.get("subscribed") === "true"
   ), I = O || ((x) => x);
   return /* @__PURE__ */ e.createElement(
@@ -1572,12 +1572,12 @@ const Qt = ({ plan: n, t: a, translatePlanName: u, planNameTextVariant: c, planD
         tone: "success",
         title: k.SubscribeSuccessTitle,
         onDismiss: () => {
-          H(!1), window.history.replaceState({}, document.title, window.location.pathname);
+          U(!1), window.history.replaceState({}, document.title, window.location.pathname);
         }
       },
       k.SubscribeSuccessBody
-    ), $.map((x, g) => {
-      const i = B ? vt({ plan: x }) : void 0, l = (F == null ? void 0 : F.id) === x.id && !(A != null && A.cancelOn);
+    ), M.map((x, g) => {
+      const i = N ? vt({ plan: x }) : void 0, l = (F == null ? void 0 : F.id) === x.id && !($ != null && $.cancelOn);
       return /* @__PURE__ */ e.createElement(
         sn,
         {
@@ -1616,15 +1616,15 @@ var ht = { exports: {} };
       var d = y.prototype, T = d.format;
       h.en.formats = u, d.format = function(f) {
         f === void 0 && (f = "YYYY-MM-DDTHH:mm:ssZ");
-        var _ = this.$locale().formats, M = function(R, B) {
+        var _ = this.$locale().formats, A = function(R, N) {
           return R.replace(/(\[[^\]]+])|(LTS?|l{1,4}|L{1,4})/g, function(O, W, E) {
             var b = E && E.toUpperCase();
-            return W || B[E] || u[E] || B[b].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(w, A, F) {
-              return A || F.slice(1);
+            return W || N[E] || u[E] || N[b].replace(/(\[[^\]]+])|(MMMM|MM|DD|dddd)/g, function(w, $, F) {
+              return $ || F.slice(1);
             });
           });
         }(f, _ === void 0 ? {} : _);
-        return T.call(this, M);
+        return T.call(this, A);
       };
     };
   });
@@ -1646,15 +1646,15 @@ const Ve = ({
   },
   t: f,
   translatePlanName: _ = !0,
-  hideSelectPlanButton: M = !1
+  hideSelectPlanButton: A = !1
 }) => {
   var G;
-  const [R, B] = be(!1), [O, W] = be(!1), E = f || ((H) => H), b = {
+  const [R, N] = be(!1), [O, W] = be(!1), E = f || ((U) => U), b = {
     ...k,
     ...h || {}
   };
   if (!d)
-    return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(v, null, E(b.NotSubscribed)), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, !M && /* @__PURE__ */ e.createElement(
+    return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(v, null, E(b.NotSubscribed)), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, !A && /* @__PURE__ */ e.createElement(
       ie,
       {
         variant: "primary",
@@ -1663,19 +1663,19 @@ const Ve = ({
       },
       E(b.SelectPlan)
     )))));
-  const { plan: w } = d, A = Ee(d.presentmentTotal, w.presentmentCurrencyCode), F = E(w.interval === J.Annual ? b.Year : b.Month), j = n === "horizontal" ? Wt : L, S = (G = d == null ? void 0 : d.appliedDiscount) == null ? void 0 : G.discount, p = S ? S.percentage ? `${S.percentage}%` : Ee(S.presentmentAmount, w.presentmentCurrencyCode) : null, $ = S && d.appliedDiscount.discountEndsAt && Le().isAfter(Le(d.appliedDiscount.discountEndsAt)), Q = w.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
-  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(j, { columns: Q, gap: "300" }, /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.CurrentPlan)), /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, _ ? E(w.name) : w.name), d.cancelOn && /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, E("Canceled, active until {{ date }}").replace("{{ date }}", Le(d.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.Price)), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, E(b.AmountPerInterval).replace("{{ amount }}", A).replace("{{ interval }}", F)), S && !$ && /* @__PURE__ */ e.createElement(v, { tone: "success" }, E(b.DiscountAmount).replace("{{ amount }}", p)), S && $ && /* @__PURE__ */ e.createElement(v, { tone: "subdued", textDecorationLine: "line-through" }, E(b.DiscountAmountExpired).replace("{{ amount }}", p)))), w.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.UsageCharges || "Usage charges")), w.usageCharges.map((H, I) => /* @__PURE__ */ e.createElement(v, { key: `usage-charge-${I}`, tone: "subdued" }, E(H.terms))))), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, /* @__PURE__ */ e.createElement(
+  const { plan: w } = d, $ = Ee(d.presentmentTotal, w.presentmentCurrencyCode), F = E(w.interval === J.Annual ? b.Year : b.Month), j = n === "horizontal" ? Wt : L, S = (G = d == null ? void 0 : d.appliedDiscount) == null ? void 0 : G.discount, p = S ? S.percentage ? `${S.percentage}%` : Ee(S.presentmentAmount, w.presentmentCurrencyCode) : null, M = S && d.appliedDiscount.discountEndsAt && Le().isAfter(Le(d.appliedDiscount.discountEndsAt)), Q = w.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(v, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(j, { columns: Q, gap: "300" }, /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.CurrentPlan)), /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, _ ? E(w.name) : w.name), d.cancelOn && /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, E("Canceled, active until {{ date }}").replace("{{ date }}", Le(d.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.Price)), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, { tone: "subdued" }, E(b.AmountPerInterval).replace("{{ amount }}", $).replace("{{ interval }}", F)), S && !M && /* @__PURE__ */ e.createElement(v, { tone: "success" }, E(b.DiscountAmount).replace("{{ amount }}", p)), S && M && /* @__PURE__ */ e.createElement(v, { tone: "subdued", textDecorationLine: "line-through" }, E(b.DiscountAmountExpired).replace("{{ amount }}", p)))), w.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(v, null, E(b.UsageCharges || "Usage charges")), w.usageCharges.map((U, I) => /* @__PURE__ */ e.createElement(v, { key: `usage-charge-${I}`, tone: "subdued" }, E(U.terms))))), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, /* @__PURE__ */ e.createElement(
     ie,
     {
       onClick: () => {
-        u ? u() : B(!0);
+        u ? u() : N(!0);
       },
       accessibilityLabel: E(b.CancelPlan),
       tone: "critical",
       disabled: !!d.cancelOn
     },
     E(b.CancelPlan)
-  ), !M && /* @__PURE__ */ e.createElement(
+  ), !A && /* @__PURE__ */ e.createElement(
     ie,
     {
       variant: "primary",
@@ -1687,7 +1687,7 @@ const Ve = ({
     ct,
     {
       open: !0,
-      onClose: () => B(!1),
+      onClose: () => N(!1),
       title: E(b.CancelPlan),
       primaryAction: {
         content: E(b.CancelPlan),
@@ -1695,14 +1695,14 @@ const Ve = ({
         loading: O,
         disabled: O,
         onAction: async () => {
-          W(!0), await y(), await T(), W(!1), B(!1), c();
+          W(!0), await y(), await T(), W(!1), N(!1), c();
         }
       },
       secondaryActions: [
         {
           content: E(b.Back),
           disabled: O,
-          onAction: () => B(!1)
+          onAction: () => N(!1)
         }
       ]
     },
