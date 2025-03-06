@@ -138,7 +138,7 @@ export const VerticalPlanCard = ({
             })}
           </BlockStack>
         )}
-        {toggleYearlySubtitle && plan.usageCharges.length === 0 && plan.interval === "ANNUAL" && (
+        {toggleYearlySubtitle && (
           <Text variant="bodyMd" tone="subdued" alignment="left">
             Billed yearly
           </Text>

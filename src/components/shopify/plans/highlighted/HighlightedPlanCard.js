@@ -83,7 +83,7 @@ export const PlanPricingSection = ({ plan, discount, t, priceTextVariant, useSho
         })}
       </BlockStack>
     )}
-    {toggleYearlySubtitle && plan.usageCharges.length === 0 && plan.interval === "ANNUAL" && (
+    {toggleYearlySubtitle && (
       <Text variant="bodyMd" tone="subdued" alignment="center">
         Billed yearly
       </Text>
