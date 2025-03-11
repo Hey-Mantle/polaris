@@ -1,17 +1,17 @@
-export function PlanTitleSection({ plan, t, translatePlanName, planNameTextVariant, planDescriptionTextVariant }: {
+export function PlanTitleSection({ plan, t, translatePlanName, planNameTextVariant, planDescriptionTextVariant, }: {
     plan: Plan;
     translatePlanName?: boolean;
     planNameTextVariant?: string;
     planDescriptionTextVariant?: string;
     toggleYearlySubtitle?: boolean;
 }): JSX.Element;
-export function PlanPricingSection({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals, toggleYearlySubtitle }: {
+export function PlanPricingSection({ plan, discount, t, priceTextVariant, useShortFormPlanIntervals, toggleYearlySubtitle, }: {
     plan: Plan;
     discount: Discount;
     priceTextVariant?: string;
     useShortFormPlanIntervals?: boolean;
 }): JSX.Element;
-export function PlanFeaturesSection({ plan, t, trialDaysAsFeature }: {
+export function PlanFeaturesSection({ plan, t, trialDaysAsFeature, }: {
     plan: Plan;
     trialDaysAsFeature?: boolean;
 }): JSX.Element;

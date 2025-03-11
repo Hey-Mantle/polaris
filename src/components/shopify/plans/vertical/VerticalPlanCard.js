@@ -30,7 +30,6 @@ export const VerticalPlanCard = ({
   priceTextVariant = "headingXl",
   toggleYearlySubtitle = false,
 }) => {
-
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
   const handleSelectPlan = async ({ plan, discount }) => {
@@ -50,8 +49,14 @@ export const VerticalPlanCard = ({
   const titleComponent = ({ plan }) => {
     return (
       <BlockStack>
-        <Text variant={planNameTextVariant}>{translatePlanName ? t(plan.name) : plan.name}</Text>
-        {plan.description && <Text variant={planDescriptionTextVariant} tone="subdued">{t(plan.description)}</Text>}
+        <Text variant={planNameTextVariant}>
+          {translatePlanName ? t(plan.name) : plan.name}
+        </Text>
+        {plan.description && (
+          <Text variant={planDescriptionTextVariant} tone="subdued">
+            {t(plan.description)}
+          </Text>
+        )}
       </BlockStack>
     );
   };
@@ -67,16 +72,27 @@ export const VerticalPlanCard = ({
                 <Icon source={CheckIcon} tone="positive" />
               </Box>
               <Text tone="subdued">
-                {t(Labels.FreeTrialLength.replace("{{ trialDays }}", plan.trialDays))}
+                {t(
+                  Labels.FreeTrialLength.replace(
+                    "{{ trialDays }}",
+                    plan.trialDays
+                  )
+                )}
               </Text>
             </InlineStack>
           ) : null}
           {plan.featuresOrder.map((feature, index) => {
             const planFeature = plan.features[feature];
-            const showFeature = planFeature.type !== "boolean" || planFeature.value === true;
+            const showFeature =
+              (planFeature.type !== "boolean" || planFeature.value === true) &&
+              planFeature.visible;
             if (showFeature) {
               return (
-                <InlineStack key={`plan-feature-${index}`} align="start" gap="100">
+                <InlineStack
+                  key={`plan-feature-${index}`}
+                  align="start"
+                  gap="100"
+                >
                   <Box>
                     <Icon source={CheckIcon} tone="positive" />
                   </Box>
@@ -101,7 +117,12 @@ export const VerticalPlanCard = ({
       <BlockStack gap="100">
         {discount ? (
           <InlineStack blockAlign="center" gap="200">
-            <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode)}</Text>
+            <Text variant={priceTextVariant}>
+              {money(
+                discount.presentmentDiscountedAmount,
+                plan.presentmentCurrencyCode
+              )}
+            </Text>
             <Text
               variant={priceTextVariant}
               tone="subdued"
@@ -111,7 +132,11 @@ export const VerticalPlanCard = ({
               {plan.presentmentAmount}
             </Text>
             <Text variant="bodyLg" tone="subdued">
-              {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}
+              {Labels.Per}{" "}
+              {intervalLabel({
+                interval: plan.interval,
+                useShortFormPlanIntervals,
+              })}
             </Text>
           </InlineStack>
         ) : (
@@ -120,7 +145,11 @@ export const VerticalPlanCard = ({
               {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
             </Text>
             <Text alignment="center" variant="bodyLg" tone="subdued">
-              {Labels.Per} {intervalLabel({ interval: plan.interval, useShortFormPlanIntervals })}
+              {Labels.Per}{" "}
+              {intervalLabel({
+                interval: plan.interval,
+                useShortFormPlanIntervals,
+              })}
             </Text>
           </InlineStack>
         )}
@@ -128,7 +157,11 @@ export const VerticalPlanCard = ({
           <BlockStack>
             {plan.usageCharges.map((usageCharge, index) => {
               return (
-                <InlineStack key={`plan-usageCharge-${index}`} align="start" gap="100">
+                <InlineStack
+                  key={`plan-usageCharge-${index}`}
+                  align="start"
+                  gap="100"
+                >
                   <Box>
                     <Icon source={PlusIcon} tone="positive" />
                   </Box>
@@ -159,9 +192,13 @@ export const VerticalPlanCard = ({
           disabled={isActivePlan}
           loading={isSelectingPlan}
         >
-          {t(isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan)}
+          {t(
+            isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan
+          )}
         </Button>
-        {isRecommendedPlan && showRecommendedPlanBadge && <Badge tone="success">{t(Labels.MostPopular)}</Badge>}
+        {isRecommendedPlan && showRecommendedPlanBadge && (
+          <Badge tone="success">{t(Labels.MostPopular)}</Badge>
+        )}
       </InlineStack>
     );
   };
@@ -182,4 +219,4 @@ export const VerticalPlanCard = ({
       </Grid>
     </Card>
   );
-}
+};

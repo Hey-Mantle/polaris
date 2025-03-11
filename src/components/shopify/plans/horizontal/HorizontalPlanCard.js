@@ -1,6 +1,15 @@
 import React from "react";
 import { CheckIcon, PlusIcon } from "@shopify/polaris-icons";
-import { Badge, Box, BlockStack, Button, Card, InlineStack, Icon, Text } from "@shopify/polaris";
+import {
+  Badge,
+  Box,
+  BlockStack,
+  Button,
+  Card,
+  InlineStack,
+  Icon,
+  Text,
+} from "@shopify/polaris";
 import { Labels, intervalLabel, money } from "@heymantle/react";
 
 /**
@@ -19,13 +28,29 @@ import { Labels, intervalLabel, money } from "@heymantle/react";
  * @param {boolean} [props.showRecommendedPlanBadge] - Whether to show the recommended plan badge.
  * @returns {JSX.Element}
  */
-export const PlanTitleSection = ({ plan, t, translatePlanName, isRecommendedPlan = false, planNameTextVariant, planDescriptionTextVariant, showRecommendedPlanBadge }) => (
+export const PlanTitleSection = ({
+  plan,
+  t,
+  translatePlanName,
+  isRecommendedPlan = false,
+  planNameTextVariant,
+  planDescriptionTextVariant,
+  showRecommendedPlanBadge,
+}) => (
   <BlockStack gap="100">
     <InlineStack align="space-between" gap="100">
-      <Text variant={planNameTextVariant}>{translatePlanName ? t(plan.name) : plan.name}</Text>
-      {isRecommendedPlan && showRecommendedPlanBadge && <Badge tone="success">{t(Labels.MostPopular)}</Badge>}
+      <Text variant={planNameTextVariant}>
+        {translatePlanName ? t(plan.name) : plan.name}
+      </Text>
+      {isRecommendedPlan && showRecommendedPlanBadge && (
+        <Badge tone="success">{t(Labels.MostPopular)}</Badge>
+      )}
     </InlineStack>
-    {plan.description && <Text variant={planDescriptionTextVariant} tone="subdued">{t(plan.description)}</Text>}
+    {plan.description && (
+      <Text variant={planDescriptionTextVariant} tone="subdued">
+        {t(plan.description)}
+      </Text>
+    )}
   </BlockStack>
 );
 
@@ -39,11 +64,23 @@ export const PlanTitleSection = ({ plan, t, translatePlanName, isRecommendedPlan
  * @param {boolean} [props.toggleYearlySubtitle] - Whether to show monthly pricing for annual plans.
  * @returns {JSX.Element}
  */
-export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanIntervals = true, priceTextVariant, toggleYearlySubtitle = false }) => (
+export const PlanPricingSection = ({
+  plan,
+  discount,
+  t,
+  useShortFormPlanIntervals = true,
+  priceTextVariant,
+  toggleYearlySubtitle = false,
+}) => (
   <BlockStack>
     {!!discount && discount.presentmentDiscountedAmount > 0 && (
       <InlineStack blockAlign="center" gap="200">
-        <Text variant={priceTextVariant}>{money(discount.presentmentDiscountedAmount, plan.presentmentCurrencyCode)}</Text>
+        <Text variant={priceTextVariant}>
+          {money(
+            discount.presentmentDiscountedAmount,
+            plan.presentmentCurrencyCode
+          )}
+        </Text>
         <Text
           variant={priceTextVariant}
           tone="subdued"
@@ -53,7 +90,13 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
           {plan.presentmentAmount}
         </Text>
         <Text variant="bodyLg" tone="subdued">
-          {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
+          {t(Labels.Per)}{" "}
+          {t(
+            intervalLabel({
+              interval: plan.interval,
+              useShortFormPlanIntervals,
+            })
+          )}
         </Text>
       </InlineStack>
     )}
@@ -63,7 +106,13 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
           {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
-          {t(Labels.Per)} {t(intervalLabel({ interval: plan.interval, useShortFormPlanIntervals }))}
+          {t(Labels.Per)}{" "}
+          {t(
+            intervalLabel({
+              interval: plan.interval,
+              useShortFormPlanIntervals,
+            })
+          )}
         </Text>
       </InlineStack>
     )}
@@ -71,7 +120,11 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
       <BlockStack>
         {plan.usageCharges.map((usageCharge, index) => {
           return (
-            <InlineStack key={`plan-usageCharge-${index}`} align="start" gap="100">
+            <InlineStack
+              key={`plan-usageCharge-${index}`}
+              align="start"
+              gap="100"
+            >
               <Box>
                 <Icon source={PlusIcon} tone="subdued" />
               </Box>
@@ -96,7 +149,11 @@ export const PlanPricingSection = ({ plan, discount, t, useShortFormPlanInterval
  * @param {boolean} [props.trialDaysAsFeature] - Whether to show the trial days as a feature.
  * @returns {JSX.Element}
  */
-export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => (
+export const PlanFeaturesSection = ({
+  plan,
+  t,
+  trialDaysAsFeature = false,
+}) => (
   <BlockStack gap="100">
     {trialDaysAsFeature && plan.trialDays && plan.trialDays > 0 ? (
       <InlineStack align="start" gap="100">
@@ -110,11 +167,18 @@ export const PlanFeaturesSection = ({ plan, t, trialDaysAsFeature = false }) => 
     ) : null}
     {plan.featuresOrder.map((feature, index) => {
       const planFeature = plan.features[feature];
-      const showFeature = planFeature.type !== "boolean" || planFeature.value === true;
+      const showFeature =
+        (planFeature.type !== "boolean" || planFeature.value === true) &&
+        planFeature.visible;
 
       if (showFeature) {
         return (
-          <InlineStack key={`plan-feature-${index}`} align="start" gap="100" wrap={false}>
+          <InlineStack
+            key={`plan-feature-${index}`}
+            align="start"
+            gap="100"
+            wrap={false}
+          >
             <Box>
               <Icon source={CheckIcon} tone="subdued" />
             </Box>
@@ -210,9 +274,15 @@ export const HorizontalPlanCard = ({
           disabled={isActivePlan}
           loading={isSelectingPlan}
         >
-          {t(isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan)}
+          {t(
+            isActivePlan ? Labels.CurrentPlan : buttonLabel || Labels.SelectPlan
+          )}
         </Button>
-        <PlanFeaturesSection plan={plan} trialDaysAsFeature={trialDaysAsFeature} t={t} />
+        <PlanFeaturesSection
+          plan={plan}
+          trialDaysAsFeature={trialDaysAsFeature}
+          t={t}
+        />
       </BlockStack>
     </Card>
   );
