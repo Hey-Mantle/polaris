@@ -1380,7 +1380,7 @@ const Qt = ({
   useShortFormPlanIntervals: c = !0,
   priceTextVariant: y,
   toggleYearlySubtitle: g = !1
-}) => /* @__PURE__ */ e.createElement(L, null, !!a && a.presentmentDiscountedAmount > 0 && /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: y }, Ee(
+}) => /* @__PURE__ */ e.createElement(L, null, a ? /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: y }, Ee(
   a.presentmentDiscountedAmount,
   n.presentmentCurrencyCode
 )), /* @__PURE__ */ e.createElement(
@@ -1392,17 +1392,13 @@ const Qt = ({
     textDecorationLine: "line-through"
   },
   n.presentmentAmount
-), /* @__PURE__ */ e.createElement(h, { variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(
-  _e({
-    interval: n.interval,
-    useShortFormPlanIntervals: c
-  })
-))), (!a || a.presentmentDiscountedAmount == 0) && /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(
-  _e({
-    interval: n.interval,
-    useShortFormPlanIntervals: c
-  })
-))), n.usageCharges && n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(
+), /* @__PURE__ */ e.createElement(h, { variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
+  interval: n.interval,
+  useShortFormPlanIntervals: c
+}))) : /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
+  interval: n.interval,
+  useShortFormPlanIntervals: c
+}))), n.usageCharges && n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(
   q,
   {
     key: `plan-usageCharge-${T}`,
