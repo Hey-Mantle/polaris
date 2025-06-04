@@ -73,7 +73,7 @@ export const PlanPricingSection = ({
   toggleYearlySubtitle = false,
 }) => (
   <BlockStack>
-    {!!discount && discount.presentmentDiscountedAmount > 0 && (
+    {discount ? (
       <InlineStack blockAlign="center" gap="200">
         <Text variant={priceTextVariant}>
           {money(
@@ -90,29 +90,24 @@ export const PlanPricingSection = ({
           {plan.presentmentAmount}
         </Text>
         <Text variant="bodyLg" tone="subdued">
-          {t(Labels.Per)}{" "}
-          {t(
-            intervalLabel({
-              interval: plan.interval,
-              useShortFormPlanIntervals,
-            })
-          )}
+          {Labels.Per}{" "}
+          {intervalLabel({
+            interval: plan.interval,
+            useShortFormPlanIntervals,
+          })}
         </Text>
       </InlineStack>
-    )}
-    {(!discount || discount.presentmentDiscountedAmount == 0) && (
+    ) : (
       <InlineStack blockAlign="center" gap="200">
         <Text alignment="center" variant={priceTextVariant}>
           {money(plan.presentmentAmount, plan.presentmentCurrencyCode)}
         </Text>
         <Text alignment="center" variant="bodyLg" tone="subdued">
-          {t(Labels.Per)}{" "}
-          {t(
-            intervalLabel({
-              interval: plan.interval,
-              useShortFormPlanIntervals,
-            })
-          )}
+          {Labels.Per}{" "}
+          {intervalLabel({
+            interval: plan.interval,
+            useShortFormPlanIntervals,
+          })}
         </Text>
       </InlineStack>
     )}
