@@ -19,22 +19,26 @@ import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polari
  * @param {string} props.title - The title of the checklist
  * @param {Array} props.steps - Array of checklist steps with { id, name, description, completed }
  * @param {boolean} props.showProgress - Whether to show progress indicator
+ * @param {boolean} props.showProgressText - Whether to show progress text message (defaults to true when showProgress is true)
  * @param {boolean} props.hideCompleted - Whether to hide completed steps
  * @param {boolean} props.allowExpandCompleted - Whether to allow expanding hidden completed steps
  * @param {boolean} props.showDescription - Whether to show descriptions inline
  * @param {boolean} props.enableDescriptionModal - Whether to enable clicking on step names to show description in modal
- * @param {Object} props.i18n - The internationalization object
+ * @param {string|JSX.Element} props.completionMessage - Message or JSX content to display when all items are completed and hidden
+ * @param {string|JSX.Element} props.noItemsMessage - Message or JSX content to display when there are no items in the checklist
  * @returns {JSX.Element}
  */
 export const ChecklistCard = ({
   title = "Checklist",
   steps = [],
   showProgress = true,
+  showProgressText = true,
   hideCompleted = false,
   allowExpandCompleted = true,
   showDescription = true,
   enableDescriptionModal = false,
-  i18n = {},
+  completionMessage = "All items completed! Great job!",
+  noItemsMessage = "No items in this checklist yet.",
 }) => {
   const [showCompletedSteps, setShowCompletedSteps] = useState(false);
   const [modalStepId, setModalStepId] = useState(null);
@@ -120,14 +124,16 @@ export const ChecklistCard = ({
 
           {showProgress && totalCount > 0 && (
             <BlockStack gap="100">
-              <InlineStack align="space-between">
-                <Text variant="bodyMd" tone="subdued">
-                  Progress: {completedCount} of {totalCount} completed
-                </Text>
-                <Text variant="bodyMd" tone="subdued">
-                  {progressPercentage}%
-                </Text>
-              </InlineStack>
+              {showProgressText && (
+                <InlineStack align="space-between">
+                  <Text variant="bodyMd" tone="subdued">
+                    Progress: {completedCount} of {totalCount} completed
+                  </Text>
+                  <Text variant="bodyMd" tone="subdued">
+                    {progressPercentage}%
+                  </Text>
+                </InlineStack>
+              )}
               <div
                 style={{
                   width: "100%",
@@ -215,15 +221,15 @@ export const ChecklistCard = ({
         )}
 
         {displayedSteps.length === 0 && hideCompleted && totalCount > 0 && !allowExpandCompleted && (
-          <Text tone="subdued" alignment="center">
-            All items completed! Great job!
-          </Text>
+          typeof completionMessage === 'string' ? <Text tone="subdued" alignment="center">
+            {completionMessage}
+          </Text> : completionMessage
         )}
 
         {totalCount === 0 && (
-          <Text tone="subdued" alignment="center">
-            No items in this checklist yet.
-          </Text>
+          typeof noItemsMessage === 'string' ? <Text tone="subdued" alignment="center">
+            {noItemsMessage}
+          </Text> : noItemsMessage
         )}
       </BlockStack>
 

@@ -19,6 +19,10 @@ export default {
       control: { type: "boolean" },
       description: "Whether to show progress indicator",
     },
+    showProgressText: {
+      control: { type: "boolean" },
+      description: "Whether to show progress text message (defaults to true when showProgress is true)",
+    },
     hideCompleted: {
       control: { type: "boolean" },
       description: "Whether to hide completed steps",
@@ -39,10 +43,19 @@ export default {
       control: { type: "object" },
       description: "Array of checklist steps",
     },
+    completionMessage: {
+      control: { type: "text" },
+      description: "Message or JSX content to display when all items are completed and hidden",
+    },
+    noItemsMessage: {
+      control: { type: "text" },
+      description: "Message or JSX content to display when there are no items in the checklist",
+    },
   },
   args: {
     title: "Setup Checklist",
     showProgress: true,
+    showProgressText: true,
     hideCompleted: false,
     allowExpandCompleted: true,
     showDescription: true,
