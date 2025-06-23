@@ -16,6 +16,7 @@ import { CheckCircleIcon } from "@shopify/polaris-icons";
  * @param {string} props.title - The title of the checklist
  * @param {Array} props.steps - Array of checklist steps with { id, text, completed }
  * @param {boolean} props.showProgress - Whether to show progress indicator
+ * @param {boolean} props.hideCompleted - Whether to hide completed steps
  * @param {Object} props.i18n - The internationalization object
  * @returns {JSX.Element}
  */
@@ -23,12 +24,16 @@ export const ChecklistCard = ({
   title = "Checklist",
   steps = [],
   showProgress = true,
+  hideCompleted = false,
   i18n = {},
 }) => {
   const completedCount = steps.filter(step => step.completed).length;
   const totalCount = steps.length;
   const progressPercentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
   const isComplete = completedCount === totalCount && totalCount > 0;
+
+  // Filter steps based on hideCompleted prop
+  const displayedSteps = hideCompleted ? steps.filter(step => !step.completed) : steps;
 
   return (
     <Card>
@@ -77,7 +82,7 @@ export const ChecklistCard = ({
         </BlockStack>
 
         <BlockStack gap="300">
-          {steps.map((step) => (
+          {displayedSteps.map((step) => (
             <InlineStack key={step.id} align="space-between" blockAlign="start">
               <InlineStack gap="300" blockAlign="start">
                 <Checkbox
@@ -103,6 +108,12 @@ export const ChecklistCard = ({
             </InlineStack>
           ))}
         </BlockStack>
+
+        {displayedSteps.length === 0 && hideCompleted && totalCount > 0 && (
+          <Text tone="subdued" alignment="center">
+            All items completed! Great job!
+          </Text>
+        )}
 
         {totalCount === 0 && (
           <Text tone="subdued" alignment="center">

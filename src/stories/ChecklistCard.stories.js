@@ -21,6 +21,10 @@ export default {
       control: { type: "boolean" },
       description: "Whether to show progress indicator",
     },
+    hideCompleted: {
+      control: { type: "boolean" },
+      description: "Whether to hide completed steps",
+    },
     steps: {
       control: { type: "object" },
       description: "Array of checklist steps",
@@ -41,6 +45,7 @@ export default {
   args: {
     title: "Setup Checklist",
     showProgress: true,
+    hideCompleted: false,
     steps: sampleChecklistItems,
     appId: "",
     customerApiToken: "",
@@ -86,5 +91,13 @@ export const Interactive = {
   args: {
     title: "Interactive Checklist",
     steps: sampleChecklistItems,
+  },
+};
+
+export const HideCompleted = {
+  args: {
+    title: "Hide Completed Steps",
+    steps: sampleChecklistItems,
+    hideCompleted: true,
   },
 };
