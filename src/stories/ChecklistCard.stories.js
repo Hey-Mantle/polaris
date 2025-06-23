@@ -29,6 +29,14 @@ export default {
       control: { type: "boolean" },
       description: "Whether to allow expanding hidden completed steps. Use with hideCompleted.",
     },
+    showDescription: {
+      control: { type: "boolean" },
+      description: "Whether to show descriptions inline",
+    },
+    enableDescriptionModal: {
+      control: { type: "boolean" },
+      description: "Whether to enable clicking on step names to show description in modal",
+    },
     steps: {
       control: { type: "object" },
       description: "Array of checklist steps",
@@ -51,6 +59,8 @@ export default {
     showProgress: true,
     hideCompleted: false,
     allowExpandCompleted: true,
+    showDescription: true,
+    enableDescriptionModal: false,
     steps: sampleChecklistItems,
     appId: "",
     customerApiToken: "",
@@ -122,5 +132,39 @@ export const HideCompletedNoExpand = {
     steps: sampleChecklistItems,
     hideCompleted: true,
     allowExpandCompleted: false,
+  },
+};
+
+export const WithDescriptionModal = {
+  args: {
+    title: "Click Names for Details",
+    steps: sampleChecklistItems,
+    enableDescriptionModal: true,
+  },
+};
+
+export const ModalWithHideCompleted = {
+  args: {
+    title: "Modal + Hide Completed",
+    steps: sampleChecklistItems,
+    hideCompleted: true,
+    enableDescriptionModal: true,
+  },
+};
+
+export const WithoutDescriptions = {
+  args: {
+    title: "Clean List (No Descriptions)",
+    steps: sampleChecklistItems,
+    showDescription: false,
+  },
+};
+
+export const ModalOnlyDescriptions = {
+  args: {
+    title: "Modal-Only Descriptions",
+    steps: sampleChecklistItems,
+    showDescription: false,
+    enableDescriptionModal: true,
   },
 };

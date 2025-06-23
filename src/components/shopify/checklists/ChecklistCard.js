@@ -8,6 +8,7 @@ import {
   Text,
   Icon,
   Collapsible,
+  Modal,
 } from "@shopify/polaris";
 import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polaris-icons";
 
@@ -19,6 +20,8 @@ import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polari
  * @param {boolean} props.showProgress - Whether to show progress indicator
  * @param {boolean} props.hideCompleted - Whether to hide completed steps
  * @param {boolean} props.allowExpandCompleted - Whether to allow expanding hidden completed steps
+ * @param {boolean} props.showDescription - Whether to show descriptions inline
+ * @param {boolean} props.enableDescriptionModal - Whether to enable clicking on step names to show description in modal
  * @param {Object} props.i18n - The internationalization object
  * @returns {JSX.Element}
  */
@@ -28,9 +31,12 @@ export const ChecklistCard = ({
   showProgress = true,
   hideCompleted = false,
   allowExpandCompleted = true,
+  showDescription = true,
+  enableDescriptionModal = false,
   i18n = {},
 }) => {
   const [showCompletedSteps, setShowCompletedSteps] = useState(false);
+  const [modalStepId, setModalStepId] = useState(null);
 
   const completedCount = steps.filter(step => step.completed).length;
   const totalCount = steps.length;
@@ -44,6 +50,57 @@ export const ChecklistCard = ({
 
   const handleToggleCompleted = () => {
     setShowCompletedSteps(!showCompletedSteps);
+  };
+
+  const handleStepNameClick = (stepId) => {
+    if (enableDescriptionModal) {
+      const step = steps.find(s => s.id === stepId);
+      if (step && step.description) {
+        setModalStepId(stepId);
+      }
+    }
+  };
+
+  const handleCloseModal = () => {
+    setModalStepId(null);
+  };
+
+  const modalStep = modalStepId ? steps.find(s => s.id === modalStepId) : null;
+
+  const renderStepName = (step) => {
+    const stepNameElement = (
+      <Text
+        variant="bodyMd"
+        tone={step.completed ? "subdued" : "base"}
+        textDecorationLine={step.completed ? "line-through" : "none"}
+      >
+        {step.name}
+      </Text>
+    );
+
+    if (enableDescriptionModal && step.description) {
+      return (
+        <span
+          style={{
+            cursor: "pointer",
+            textDecoration: "underline",
+            textDecorationColor: "transparent",
+            transition: "text-decoration-color 0.2s ease"
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.textDecorationColor = "currentColor";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.textDecorationColor = "transparent";
+          }}
+          onClick={() => handleStepNameClick(step.id)}
+        >
+          {stepNameElement}
+        </span>
+      );
+    }
+
+    return stepNameElement;
   };
 
   return (
@@ -102,14 +159,8 @@ export const ChecklistCard = ({
                   onChange={() => handleToggle(step.id)}
                 />
                 <BlockStack gap="100">
-                  <Text
-                    variant="bodyMd"
-                    tone={step.completed ? "subdued" : "base"}
-                    textDecorationLine={step.completed ? "line-through" : "none"}
-                  >
-                    {step.name}
-                  </Text>
-                  {step.description && (
+                  {renderStepName(step)}
+                  {step.description && showDescription && (
                     <Text variant="bodySm" tone="subdued">
                       {step.description}
                     </Text>
@@ -147,14 +198,8 @@ export const ChecklistCard = ({
                         onChange={() => handleToggle(step.id)}
                       />
                       <BlockStack gap="100">
-                        <Text
-                          variant="bodyMd"
-                          tone="subdued"
-                          textDecorationLine="line-through"
-                        >
-                          {step.name}
-                        </Text>
-                        {step.description && (
+                        {renderStepName(step)}
+                        {step.description && showDescription && (
                           <Text variant="bodySm" tone="subdued">
                             {step.description}
                           </Text>
@@ -180,6 +225,24 @@ export const ChecklistCard = ({
           </Text>
         )}
       </BlockStack>
+
+      {modalStep && (
+        <Modal
+          open={!!modalStepId}
+          onClose={handleCloseModal}
+          title={modalStep.name}
+          primaryAction={{
+            content: "Close",
+            onAction: handleCloseModal,
+          }}
+        >
+        <Modal.Section>
+          <Text variant="bodyMd">
+            {modalStep.description}
+          </Text>
+        </Modal.Section>
+        </Modal>
+      )}
     </Card>
   );
 };
