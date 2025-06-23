@@ -1,5 +1,3 @@
-import { AppProvider } from "@shopify/polaris";
-import { MantleProvider } from "@heymantle/react";
 import { ChecklistCard } from "..";
 import {
   sampleChecklistItems,

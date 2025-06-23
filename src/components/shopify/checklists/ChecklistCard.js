@@ -12,11 +12,12 @@ import {
 } from "@shopify/polaris";
 import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polaris-icons";
 
-/**
- * Checklist component for displaying a list of actionable items
+/*
+ * Checklist component for displaying a list of actionable items.
+ *
  * @param {Object} props
  * @param {string} props.title - The title of the checklist
- * @param {Array} props.steps - Array of checklist steps with { id, text, completed }
+ * @param {Array} props.steps - Array of checklist steps with { id, name, description, completed }
  * @param {boolean} props.showProgress - Whether to show progress indicator
  * @param {boolean} props.hideCompleted - Whether to hide completed steps
  * @param {boolean} props.allowExpandCompleted - Whether to allow expanding hidden completed steps
