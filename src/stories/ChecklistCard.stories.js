@@ -42,18 +42,6 @@ export default {
       description: "Array of checklist steps",
     },
   },
-  decorators: [
-    (Story, context) => (
-      <AppProvider i18n={{}}>
-        <MantleProvider
-          appId={context.args.appId}
-          customerApiToken={context.args.customerApiToken}
-        >
-          <Story />
-        </MantleProvider>
-      </AppProvider>
-    ),
-  ],
   args: {
     title: "Setup Checklist",
     showProgress: true,
@@ -62,8 +50,6 @@ export default {
     showDescription: true,
     enableDescriptionModal: false,
     steps: sampleChecklistItems,
-    appId: "",
-    customerApiToken: "",
   },
 };
 
