@@ -7,8 +7,9 @@ import {
   InlineStack,
   Text,
   Icon,
+  Collapsible,
 } from "@shopify/polaris";
-import { CheckCircleIcon } from "@shopify/polaris-icons";
+import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polaris-icons";
 
 /**
  * Checklist component for displaying a list of actionable items
@@ -17,6 +18,7 @@ import { CheckCircleIcon } from "@shopify/polaris-icons";
  * @param {Array} props.steps - Array of checklist steps with { id, text, completed }
  * @param {boolean} props.showProgress - Whether to show progress indicator
  * @param {boolean} props.hideCompleted - Whether to hide completed steps
+ * @param {boolean} props.allowExpandCompleted - Whether to allow expanding hidden completed steps
  * @param {Object} props.i18n - The internationalization object
  * @returns {JSX.Element}
  */
@@ -25,15 +27,24 @@ export const ChecklistCard = ({
   steps = [],
   showProgress = true,
   hideCompleted = false,
+  allowExpandCompleted = true,
   i18n = {},
 }) => {
+  const [showCompletedSteps, setShowCompletedSteps] = useState(false);
+
   const completedCount = steps.filter(step => step.completed).length;
   const totalCount = steps.length;
   const progressPercentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
   const isComplete = completedCount === totalCount && totalCount > 0;
 
-  // Filter steps based on hideCompleted prop
-  const displayedSteps = hideCompleted ? steps.filter(step => !step.completed) : steps;
+  // Filter steps based on hideCompleted prop and expansion state
+  const incompleteSteps = steps.filter(step => !step.completed);
+  const completedSteps = steps.filter(step => step.completed);
+  const displayedSteps = hideCompleted ? incompleteSteps : steps;
+
+  const handleToggleCompleted = () => {
+    setShowCompletedSteps(!showCompletedSteps);
+  };
 
   return (
     <Card>
@@ -109,7 +120,55 @@ export const ChecklistCard = ({
           ))}
         </BlockStack>
 
-        {displayedSteps.length === 0 && hideCompleted && totalCount > 0 && (
+        {/* Expandable completed section */}
+        {hideCompleted && allowExpandCompleted && completedSteps.length > 0 && (
+          <BlockStack gap="200">
+            <Button
+              variant="plain"
+              onClick={handleToggleCompleted}
+              icon={showCompletedSteps ? ChevronUpIcon : ChevronDownIcon}
+              disclosure={showCompletedSteps ? "up" : "down"}
+            >
+              {showCompletedSteps ? "Hide" : "Show"} {completedCount} completed {completedCount === 1 ? "item" : "items"}
+            </Button>
+
+            <Collapsible
+              open={showCompletedSteps}
+              id="completed-steps"
+              transition={{duration: '200ms', timingFunction: 'ease-in-out'}}
+            >
+              <BlockStack gap="300">
+                {completedSteps.map((step) => (
+                  <InlineStack key={step.id} align="space-between" blockAlign="start">
+                    <InlineStack gap="300" blockAlign="start">
+                      <Checkbox
+                        id={`checklist-step-${step.id}`}
+                        checked={step.completed}
+                        onChange={() => handleToggle(step.id)}
+                      />
+                      <BlockStack gap="100">
+                        <Text
+                          variant="bodyMd"
+                          tone="subdued"
+                          textDecorationLine="line-through"
+                        >
+                          {step.name}
+                        </Text>
+                        {step.description && (
+                          <Text variant="bodySm" tone="subdued">
+                            {step.description}
+                          </Text>
+                        )}
+                      </BlockStack>
+                    </InlineStack>
+                  </InlineStack>
+                ))}
+              </BlockStack>
+            </Collapsible>
+          </BlockStack>
+        )}
+
+        {displayedSteps.length === 0 && hideCompleted && totalCount > 0 && !allowExpandCompleted && (
           <Text tone="subdued" alignment="center">
             All items completed! Great job!
           </Text>

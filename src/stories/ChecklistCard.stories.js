@@ -25,6 +25,10 @@ export default {
       control: { type: "boolean" },
       description: "Whether to hide completed steps",
     },
+    allowExpandCompleted: {
+      control: { type: "boolean" },
+      description: "Whether to allow expanding hidden completed steps. Use with hideCompleted.",
+    },
     steps: {
       control: { type: "object" },
       description: "Array of checklist steps",
@@ -46,6 +50,7 @@ export default {
     title: "Setup Checklist",
     showProgress: true,
     hideCompleted: false,
+    allowExpandCompleted: true,
     steps: sampleChecklistItems,
     appId: "",
     customerApiToken: "",
@@ -99,5 +104,23 @@ export const HideCompleted = {
     title: "Hide Completed Steps",
     steps: sampleChecklistItems,
     hideCompleted: true,
+  },
+};
+
+export const ExpandableCompleted = {
+  args: {
+    title: "Expandable Completed Steps",
+    steps: sampleChecklistItems,
+    hideCompleted: true,
+    allowExpandCompleted: true,
+  },
+};
+
+export const HideCompletedNoExpand = {
+  args: {
+    title: "Hide Completed (No Expand)",
+    steps: sampleChecklistItems,
+    hideCompleted: true,
+    allowExpandCompleted: false,
   },
 };
