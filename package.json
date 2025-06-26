@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@heymantle/react": "^0.0.55",
+    "@heymantle/react": "^0.0.56",
     "@shopify/polaris-icons": "^8.1.0",
     "dayjs": "^1.11.10"
   },
