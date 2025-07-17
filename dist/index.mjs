@@ -1,5 +1,5 @@
 import e, { createContext as It, useContext as Bt, useState as be } from "react";
-import { Banner as Fe, BlockStack as L, Text as h, InlineStack as q, Thumbnail as Nt, Button as ie, Divider as je, Box as re, Badge as qe, Icon as ve, Grid as Se, Page as Ie, ButtonGroup as Re, Layout as he, Card as ke, Modal as ct, InlineGrid as Wt } from "@shopify/polaris";
+import { Banner as Fe, BlockStack as L, Text as h, InlineStack as J, Thumbnail as Nt, Button as ie, Divider as je, Box as re, Badge as Je, Icon as ve, Grid as Se, Page as Ie, ButtonGroup as Re, Layout as he, Card as ke, Modal as ct, InlineGrid as Wt } from "@shopify/polaris";
 var ft = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
 function mt(n) {
   return n && n.__esModule && Object.prototype.hasOwnProperty.call(n, "default") ? n.default : n;
@@ -74,8 +74,8 @@ var gt = { exports: {} };
           if (typeof s == "string" && !/Z$/i.test(s)) {
             var D = s.match(b);
             if (D) {
-              var z = D[2] - 1 || 0, K = (D[7] || "0").substring(0, 3);
-              return P ? new Date(Date.UTC(D[1], z, D[3] || 1, D[4] || 0, D[5] || 0, D[6] || 0, K)) : new Date(D[1], z, D[3] || 1, D[4] || 0, D[5] || 0, D[6] || 0, K);
+              var z = D[2] - 1 || 0, q = (D[7] || "0").substring(0, 3);
+              return P ? new Date(Date.UTC(D[1], z, D[3] || 1, D[4] || 0, D[5] || 0, D[6] || 0, q)) : new Date(D[1], z, D[3] || 1, D[4] || 0, D[5] || 0, D[6] || 0, q);
             }
           }
           return new Date(s);
@@ -104,7 +104,7 @@ var gt = { exports: {} };
         var s = this, P = !!I.u(m) || m, D = I.p(l), z = function(ce, te) {
           var me = I.w(s.$u ? Date.UTC(s.$y, te, ce) : new Date(s.$y, te, ce), s);
           return P ? me : me.endOf(_);
-        }, K = function(ce, te) {
+        }, q = function(ce, te) {
           return I.w(s.toDate()[ce].apply(s.toDate("s"), (P ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(te)), s);
         }, Z = this.$W, ne = this.$M, le = this.$D, de = "set" + (this.$u ? "UTC" : "");
         switch (D) {
@@ -117,25 +117,25 @@ var gt = { exports: {} };
             return z(P ? le - fe : le + (6 - fe), ne);
           case _:
           case W:
-            return K(de + "Hours", 0);
+            return q(de + "Hours", 0);
           case f:
-            return K(de + "Minutes", 1);
+            return q(de + "Minutes", 1);
           case T:
-            return K(de + "Seconds", 2);
+            return q(de + "Seconds", 2);
           case d:
-            return K(de + "Milliseconds", 3);
+            return q(de + "Milliseconds", 3);
           default:
             return this.clone();
         }
       }, i.endOf = function(l) {
         return this.startOf(l, !1);
       }, i.$set = function(l, m) {
-        var s, P = I.p(l), D = "set" + (this.$u ? "UTC" : ""), z = (s = {}, s[_] = D + "Date", s[W] = D + "Date", s[R] = D + "Month", s[O] = D + "FullYear", s[f] = D + "Hours", s[T] = D + "Minutes", s[d] = D + "Seconds", s[g] = D + "Milliseconds", s)[P], K = P === _ ? this.$D + (m - this.$W) : m;
+        var s, P = I.p(l), D = "set" + (this.$u ? "UTC" : ""), z = (s = {}, s[_] = D + "Date", s[W] = D + "Date", s[R] = D + "Month", s[O] = D + "FullYear", s[f] = D + "Hours", s[T] = D + "Minutes", s[d] = D + "Seconds", s[g] = D + "Milliseconds", s)[P], q = P === _ ? this.$D + (m - this.$W) : m;
         if (P === R || P === O) {
           var Z = this.clone().set(W, 1);
-          Z.$d[z](K), Z.init(), this.$d = Z.set(W, Math.min(this.$D, Z.daysInMonth())).$d;
+          Z.$d[z](q), Z.init(), this.$d = Z.set(W, Math.min(this.$D, Z.daysInMonth())).$d;
         } else
-          z && this.$d[z](K);
+          z && this.$d[z](q);
         return this.init(), this;
       }, i.set = function(l, m) {
         return this.clone().$set(l, m);
@@ -156,7 +156,7 @@ var gt = { exports: {} };
           return z(1);
         if (D === A)
           return z(7);
-        var K = (s = {}, s[T] = c, s[f] = y, s[d] = u, s)[D] || 1, Z = this.$d.getTime() + l * K;
+        var q = (s = {}, s[T] = c, s[f] = y, s[d] = u, s)[D] || 1, Z = this.$d.getTime() + l * q;
         return I.w(Z, this);
       }, i.subtract = function(l, m) {
         return this.add(-1 * l, m);
@@ -164,7 +164,7 @@ var gt = { exports: {} };
         var m = this, s = this.$locale();
         if (!this.isValid())
           return s.invalidDate || E;
-        var P = l || "YYYY-MM-DDTHH:mm:ssZ", D = I.z(this), z = this.$H, K = this.$m, Z = this.$M, ne = s.weekdays, le = s.months, de = s.meridiem, se = function(te, me, ye, we) {
+        var P = l || "YYYY-MM-DDTHH:mm:ssZ", D = I.z(this), z = this.$H, q = this.$m, Z = this.$M, ne = s.weekdays, le = s.months, de = s.meridiem, se = function(te, me, ye, we) {
           return te && (te[me] || te(m, P)) || ye[me].slice(0, we);
         }, fe = function(te) {
           return I.s(z % 12 || 12, te, "0");
@@ -208,13 +208,13 @@ var gt = { exports: {} };
               case "hh":
                 return fe(2);
               case "a":
-                return ce(z, K, !0);
+                return ce(z, q, !0);
               case "A":
-                return ce(z, K, !1);
+                return ce(z, q, !1);
               case "m":
-                return String(K);
+                return String(q);
               case "mm":
-                return I.s(K, 2, "0");
+                return I.s(q, 2, "0");
               case "s":
                 return String(m.$s);
               case "ss":
@@ -230,8 +230,8 @@ var gt = { exports: {} };
       }, i.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, i.diff = function(l, m, s) {
-        var P, D = this, z = I.p(m), K = U(l), Z = (K.utcOffset() - this.utcOffset()) * c, ne = this - K, le = function() {
-          return I.m(D, K);
+        var P, D = this, z = I.p(m), q = U(l), Z = (q.utcOffset() - this.utcOffset()) * c, ne = this - q, le = function() {
+          return I.m(D, q);
         };
         switch (z) {
           case O:
@@ -426,14 +426,14 @@ function zt() {
         }
       return null;
     }
-    var v = Object.assign, i = 0, l, m, s, P, D, z, K;
+    var v = Object.assign, i = 0, l, m, s, P, D, z, q;
     function Z() {
     }
     Z.__reactDisabledLog = !0;
     function ne() {
       {
         if (i === 0) {
-          l = console.log, m = console.info, s = console.warn, P = console.error, D = console.group, z = console.groupCollapsed, K = console.groupEnd;
+          l = console.log, m = console.info, s = console.warn, P = console.error, D = console.group, z = console.groupCollapsed, q = console.groupEnd;
           var t = {
             configurable: !0,
             enumerable: !0,
@@ -481,7 +481,7 @@ function zt() {
               value: z
             }),
             groupEnd: v({}, t, {
-              value: K
+              value: q
             })
           });
         }
@@ -973,21 +973,21 @@ const k = {
   featureNotAvailable: "This feature is not available on your current plan",
   upgradeRequired: "Upgrade Required",
   limitReached: "Limit Reached"
-}, Vt = It(void 0), Jt = () => {
+}, Vt = It(void 0), Kt = () => {
   const n = Bt(Vt);
   if (n === void 0)
     throw new Error("useMantle must be used within a MantleProvider");
   return n;
-}, Kt = (n = "USD") => new Intl.NumberFormat("en-US", {
+}, qt = (n = "USD") => new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: n,
   notation: "standard"
 }), Ee = (n, a = "USD", u = !0) => {
-  let c = Kt(a).format(n);
+  let c = qt(a).format(n);
   return u && (c = c.replace(/\.00$/, "")), c;
 };
-var J = /* @__PURE__ */ ((n) => (n.Annual = "ANNUAL", n.Every30Days = "EVERY_30_DAYS", n))(J || {});
-const qt = (n = "EVERY_30_DAYS") => {
+var K = /* @__PURE__ */ ((n) => (n.Annual = "ANNUAL", n.Every30Days = "EVERY_30_DAYS", n))(K || {});
+const Jt = (n = "EVERY_30_DAYS") => {
   switch (n) {
     case "ANNUAL":
       return "year";
@@ -1006,13 +1006,13 @@ const qt = (n = "EVERY_30_DAYS") => {
 }, _e = ({
   interval: n = "EVERY_30_DAYS",
   useShortFormPlanIntervals: a = !0
-}) => a ? Gt(n) : qt(n), Je = ({
+}) => a ? Gt(n) : Jt(n), Ke = ({
   plan: n,
   customFieldKey: a = "recommended"
 }) => {
   var u;
   return !!((u = n.customFields) != null && u[a]);
-}, Ke = ({
+}, qe = ({
   plan: n,
   customFieldKey: a = "buttonLabel"
 }) => {
@@ -1036,14 +1036,14 @@ const qt = (n = "EVERY_30_DAYS") => {
   refetch: T = async () => {
   },
   apps: f = []
-}) => /* @__PURE__ */ e.createElement(Fe, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(h, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(L, { gap: "300" }, f.map((_, A) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(q, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(q, { gap: "300" }, /* @__PURE__ */ e.createElement(
+}) => /* @__PURE__ */ e.createElement(Fe, { title: "Bundle and save!", tone: "success" }, /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(h, null, "Save money on your subscription when you install these great apps."), /* @__PURE__ */ e.createElement(L, { gap: "300" }, f.map((_, A) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, /* @__PURE__ */ e.createElement(J, { gap: "200", align: "space-between", blockAlign: "center" }, /* @__PURE__ */ e.createElement(J, { gap: "300" }, /* @__PURE__ */ e.createElement(
   Nt,
   {
     source: _.iconUrl,
     alt: _.name,
     size: "small"
   }
-), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { variant: "headingSm" }, _.name), /* @__PURE__ */ e.createElement(h, null, _.description))), /* @__PURE__ */ e.createElement(q, { gap: "400" }, /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(ie, null, g.Install)))), A < f.length - 1 && /* @__PURE__ */ e.createElement(je, null))))));
+), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { variant: "headingSm" }, _.name), /* @__PURE__ */ e.createElement(h, null, _.description))), /* @__PURE__ */ e.createElement(J, { gap: "400" }, /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, "20% off"), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(ie, null, g.Install)))), A < f.length - 1 && /* @__PURE__ */ e.createElement(je, null))))));
 var Ce = function(a) {
   return /* @__PURE__ */ e.createElement("svg", Object.assign({
     viewBox: "0 0 20 20"
@@ -1082,7 +1082,7 @@ const Qt = ({
   priceTextVariant: c,
   useShortFormPlanIntervals: y = !0,
   toggleYearlySubtitle: g = !1
-}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, !!a && /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: c }, Ee(
+}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, !!a && /* @__PURE__ */ e.createElement(J, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: c }, Ee(
   a.presentmentDiscountedAmount,
   n.presentmentCurrencyCode,
   !0
@@ -1100,13 +1100,13 @@ const Qt = ({
     interval: n.interval,
     useShortFormPlanIntervals: y
   })
-))), !a && /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: c }, Ee(n.presentmentAmount, n.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(
+))), !a && /* @__PURE__ */ e.createElement(J, { align: "center", blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: c }, Ee(n.presentmentAmount, n.presentmentCurrencyCode, !0)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, u(k.Per), " ", u(
   _e({
     interval: n.interval,
     useShortFormPlanIntervals: y
   })
 ))), n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(
-  q,
+  J,
   {
     key: `plan-usageCharge-${T}`,
     align: "center",
@@ -1118,10 +1118,10 @@ const Qt = ({
   plan: n,
   t: a,
   trialDaysAsFeature: u = !1
-}) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(h, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
+}) => /* @__PURE__ */ e.createElement(L, { gap: "300" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(J, { align: "center", blockAlign: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(h, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
   const g = n.features[c];
   if ((g.type !== "boolean" || g.value === !0) && g.visible)
-    return /* @__PURE__ */ e.createElement(q, { key: `plan-feature-${y}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(h, null, a(g.name)) : /* @__PURE__ */ e.createElement(h, null, g.value, " ", a(g.name)));
+    return /* @__PURE__ */ e.createElement(J, { key: `plan-feature-${y}`, align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), g.type === "boolean" ? /* @__PURE__ */ e.createElement(h, null, a(g.name)) : /* @__PURE__ */ e.createElement(h, null, g.value, " ", a(g.name)));
 })), nn = ({
   plan: n,
   discount: a,
@@ -1200,7 +1200,7 @@ const Qt = ({
           t: F,
           trialDaysAsFeature: g
         }
-      ), f && A && /* @__PURE__ */ e.createElement(q, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(qe, { tone: "success" }, F(k.MostPopular))))
+      ), f && A && /* @__PURE__ */ e.createElement(J, { align: "center", gap: "100" }, /* @__PURE__ */ e.createElement(Je, { tone: "success" }, F(k.MostPopular))))
     )
   ));
 }, pe = {
@@ -1247,8 +1247,8 @@ const Qt = ({
         trialDaysAsFeature: g,
         useShortFormPlanIntervals: d,
         isCustomPlan: S.availability !== "public",
-        isRecommendedPlan: Je({ plan: S, customFieldKey: T }),
-        buttonLabel: Ke({ plan: S, customFieldKey: f }),
+        isRecommendedPlan: Ke({ plan: S, customFieldKey: T }),
+        buttonLabel: qe({ plan: S, customFieldKey: f }),
         showRecommendedPlanBadge: _,
         toggleYearlySubtitle: O,
         t: F,
@@ -1264,8 +1264,8 @@ const Qt = ({
         isActivePlan: M,
         trialDaysAsFeature: g,
         useShortFormPlanIntervals: d,
-        isRecommendedPlan: Je({ plan: S, customFieldKey: T }),
-        buttonLabel: Ke({ plan: S, customFieldKey: f }),
+        isRecommendedPlan: Ke({ plan: S, customFieldKey: T }),
+        buttonLabel: qe({ plan: S, customFieldKey: f }),
         showRecommendedPlanBadge: _,
         toggleYearlySubtitle: O,
         t: F,
@@ -1298,8 +1298,8 @@ const Qt = ({
   toggleYearlySubtitle: N = !1
   // boolean: toggle monthly pricing
 }) => {
-  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === J.Annual) && a.some((M) => M.interval === J.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
-    b ? b.interval : E ? J.Annual : J.Every30Days
+  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === K.Annual) && a.some((M) => M.interval === K.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
+    b ? b.interval : E ? K.Annual : K.Every30Days
   ), F = a.filter((M) => M.availability === "public"), j = R ? a.filter((M) => M.availability !== "public") : [], [S, p] = be(
     W.get("subscribed") === "true"
   );
@@ -1311,15 +1311,15 @@ const Qt = ({
       secondaryActions: T && E ? /* @__PURE__ */ e.createElement(Re, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: w === J.Every30Days,
-          onClick: () => $(J.Every30Days)
+          pressed: w === K.Every30Days,
+          onClick: () => $(K.Every30Days)
         },
         k.Monthly
       ), /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: w === J.Annual,
-          onClick: () => $(J.Annual)
+          pressed: w === K.Annual,
+          onClick: () => $(K.Annual)
         },
         k.Yearly
       )) : void 0,
@@ -1373,14 +1373,14 @@ const Qt = ({
   planNameTextVariant: y,
   planDescriptionTextVariant: g,
   showRecommendedPlanBadge: d
-}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, /* @__PURE__ */ e.createElement(q, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(h, { variant: y }, u ? a(n.name) : n.name), c && d && /* @__PURE__ */ e.createElement(qe, { tone: "success" }, a(k.MostPopular))), n.description && /* @__PURE__ */ e.createElement(h, { variant: g, tone: "subdued" }, a(n.description))), an = ({
+}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, /* @__PURE__ */ e.createElement(J, { align: "space-between", gap: "100" }, /* @__PURE__ */ e.createElement(h, { variant: y }, u ? a(n.name) : n.name), c && d && /* @__PURE__ */ e.createElement(Je, { tone: "success" }, a(k.MostPopular))), n.description && /* @__PURE__ */ e.createElement(h, { variant: g, tone: "subdued" }, a(n.description))), an = ({
   plan: n,
   discount: a,
   t: u,
   useShortFormPlanIntervals: c = !0,
   priceTextVariant: y,
   toggleYearlySubtitle: g = !1
-}) => /* @__PURE__ */ e.createElement(L, null, a ? /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: y }, Ee(
+}) => /* @__PURE__ */ e.createElement(L, null, a ? /* @__PURE__ */ e.createElement(J, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: y }, Ee(
   a.presentmentDiscountedAmount,
   n.presentmentCurrencyCode
 )), /* @__PURE__ */ e.createElement(
@@ -1395,11 +1395,11 @@ const Qt = ({
 ), /* @__PURE__ */ e.createElement(h, { variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
   interval: n.interval,
   useShortFormPlanIntervals: c
-}))) : /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
+}))) : /* @__PURE__ */ e.createElement(J, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: y }, Ee(n.presentmentAmount, n.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
   interval: n.interval,
   useShortFormPlanIntervals: c
 }))), n.usageCharges && n.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, n.usageCharges.map((d, T) => /* @__PURE__ */ e.createElement(
-  q,
+  J,
   {
     key: `plan-usageCharge-${T}`,
     align: "start",
@@ -1411,11 +1411,11 @@ const Qt = ({
   plan: n,
   t: a,
   trialDaysAsFeature: u = !1
-}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(h, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
+}) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, u && n.trialDays && n.trialDays > 0 ? /* @__PURE__ */ e.createElement(J, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "subdued" })), /* @__PURE__ */ e.createElement(h, null, a(k.FreeTrialLength).replace("{{ trialDays }}", n.trialDays))) : null, n.featuresOrder.map((c, y) => {
   const g = n.features[c];
   if ((g.type !== "boolean" || g.value === !0) && g.visible)
     return /* @__PURE__ */ e.createElement(
-      q,
+      J,
       {
         key: `plan-feature-${y}`,
         align: "start",
@@ -1513,8 +1513,8 @@ const Qt = ({
   toggleYearlySubtitle: N = !1
   // boolean: show monthly pricing for annual plans
 }) => {
-  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === J.Annual) && a.some((M) => M.interval === J.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
-    b ? b.interval : E ? J.Annual : J.Every30Days
+  const O = n == null ? void 0 : n.subscription, W = new URLSearchParams(window.location.search), E = a.some((M) => M.interval === K.Annual) && a.some((M) => M.interval === K.Every30Days), b = a.find((M) => M.id === (O == null ? void 0 : O.plan.id)), [w, $] = be(
+    b ? b.interval : E ? K.Annual : K.Every30Days
   ), F = a.filter((M) => M.availability === "public"), j = R ? a.filter((M) => M.availability !== "public") : [], [S, p] = be(
     W.get("subscribed") === "true"
   );
@@ -1526,15 +1526,15 @@ const Qt = ({
       secondaryActions: T && E ? /* @__PURE__ */ e.createElement(Re, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: w === J.Every30Days,
-          onClick: () => $(J.Every30Days)
+          pressed: w === K.Every30Days,
+          onClick: () => $(K.Every30Days)
         },
         k.Monthly
       ), /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: w === J.Annual,
-          onClick: () => $(J.Annual)
+          pressed: w === K.Annual,
+          onClick: () => $(K.Annual)
         },
         k.Yearly
       )) : void 0,
@@ -1599,7 +1599,7 @@ const Qt = ({
 }) => {
   const [E, b] = e.useState(!1), w = async ({ plan: p, discount: M }) => {
     c ? (b(!0), await c({ plan: p, discount: M }) !== !0 && b(!1)) : console.log("No onSelectPlan callback provided");
-  }, $ = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { variant: R }, _ ? f(p.name) : p.name), p.description && /* @__PURE__ */ e.createElement(h, { variant: N, tone: "subdued" }, f(p.description))), F = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { fontWeight: "medium" }, f(k.Features)), /* @__PURE__ */ e.createElement(L, { gap: "100" }, g && p.trialDays && p.trialDays > 0 ? /* @__PURE__ */ e.createElement(q, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })), /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, f(
+  }, $ = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { variant: R }, _ ? f(p.name) : p.name), p.description && /* @__PURE__ */ e.createElement(h, { variant: N, tone: "subdued" }, f(p.description))), F = ({ plan: p }) => /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { fontWeight: "medium" }, f(k.Features)), /* @__PURE__ */ e.createElement(L, { gap: "100" }, g && p.trialDays && p.trialDays > 0 ? /* @__PURE__ */ e.createElement(J, { align: "start", gap: "100" }, /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })), /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, f(
     k.FreeTrialLength.replace(
       "{{ trialDays }}",
       p.trialDays
@@ -1608,7 +1608,7 @@ const Qt = ({
     const G = p.features[M];
     if ((G.type !== "boolean" || G.value === !0) && G.visible)
       return /* @__PURE__ */ e.createElement(
-        q,
+        J,
         {
           key: `plan-feature-${Q}`,
           align: "start",
@@ -1617,7 +1617,7 @@ const Qt = ({
         /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Ce, tone: "positive" })),
         G.type === "boolean" ? /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, G.name) : /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, G.value, " ", G.name)
       );
-  }))), j = ({ plan: p, discount: M, toggleYearlySubtitle: Q }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, M ? /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: O }, Ee(
+  }))), j = ({ plan: p, discount: M, toggleYearlySubtitle: Q }) => /* @__PURE__ */ e.createElement(L, { gap: "100" }, M ? /* @__PURE__ */ e.createElement(J, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: O }, Ee(
     M.presentmentDiscountedAmount,
     p.presentmentCurrencyCode
   )), /* @__PURE__ */ e.createElement(
@@ -1632,11 +1632,11 @@ const Qt = ({
   ), /* @__PURE__ */ e.createElement(h, { variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
     interval: p.interval,
     useShortFormPlanIntervals: y
-  }))) : /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: O }, Ee(p.presentmentAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
+  }))) : /* @__PURE__ */ e.createElement(J, { blockAlign: "center", gap: "200" }, /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: O }, Ee(p.presentmentAmount, p.presentmentCurrencyCode)), /* @__PURE__ */ e.createElement(h, { alignment: "center", variant: "bodyLg", tone: "subdued" }, k.Per, " ", _e({
     interval: p.interval,
     useShortFormPlanIntervals: y
   }))), p.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, p.usageCharges.map((G, U) => /* @__PURE__ */ e.createElement(
-    q,
+    J,
     {
       key: `plan-usageCharge-${U}`,
       align: "start",
@@ -1644,7 +1644,7 @@ const Qt = ({
     },
     /* @__PURE__ */ e.createElement(re, null, /* @__PURE__ */ e.createElement(ve, { source: Be, tone: "positive" })),
     /* @__PURE__ */ e.createElement(h, { variant: "bodyLg" }, G.terms)
-  ))), Q && /* @__PURE__ */ e.createElement(h, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), S = ({ plan: p, discount: M }) => /* @__PURE__ */ e.createElement(q, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
+  ))), Q && /* @__PURE__ */ e.createElement(h, { variant: "bodyMd", tone: "subdued", alignment: "left" }, "Billed yearly")), S = ({ plan: p, discount: M }) => /* @__PURE__ */ e.createElement(J, { blockAlign: "center", gap: "400" }, /* @__PURE__ */ e.createElement(
     ie,
     {
       size: "large",
@@ -1658,7 +1658,7 @@ const Qt = ({
     f(
       T ? k.CurrentPlan : u || k.SelectPlan
     )
-  ), d && A && /* @__PURE__ */ e.createElement(qe, { tone: "success" }, f(k.MostPopular)));
+  ), d && A && /* @__PURE__ */ e.createElement(Je, { tone: "success" }, f(k.MostPopular)));
   return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(Se, null, /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, /* @__PURE__ */ e.createElement(L, { gap: "300" }, $({ plan: n }), j({ plan: n, discount: a, toggleYearlySubtitle: W }), /* @__PURE__ */ e.createElement(re, null, S({ plan: n, discount: a })))), /* @__PURE__ */ e.createElement(Se.Cell, { columnSpan: { xs: 6, sm: 6, md: 3, lg: 6, xl: 6 } }, F({ plan: n }))));
 }, hn = ({
   plans: n,
@@ -1686,8 +1686,8 @@ const Qt = ({
   toggleYearlySubtitle: E = !1
 }) => {
   var ue;
-  const b = new URLSearchParams(window.location.search), w = n.some((x) => x.interval === J.Annual) && n.some((x) => x.interval === J.Every30Days), $ = (ue = a == null ? void 0 : a.subscription) != null && ue.active ? a.subscription : void 0, F = $ == null ? void 0 : $.plan, [j, S] = be(
-    F ? F.interval : w ? J.Annual : J.Every30Days
+  const b = new URLSearchParams(window.location.search), w = n.some((x) => x.interval === K.Annual) && n.some((x) => x.interval === K.Every30Days), $ = (ue = a == null ? void 0 : a.subscription) != null && ue.active ? a.subscription : void 0, F = $ == null ? void 0 : $.plan, [j, S] = be(
+    F ? F.interval : w ? K.Annual : K.Every30Days
   ), p = n.filter(
     (x) => x.availability !== "customerTag" && x.availability !== "customer"
   ), M = d && w ? p.filter((x) => x.interval === j) : p, Q = A ? n.filter(
@@ -1703,15 +1703,15 @@ const Qt = ({
       secondaryActions: d && w ? /* @__PURE__ */ e.createElement(Re, { variant: "segmented" }, /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: j === J.Every30Days,
-          onClick: () => S(J.Every30Days)
+          pressed: j === K.Every30Days,
+          onClick: () => S(K.Every30Days)
         },
         k.Monthly
       ), /* @__PURE__ */ e.createElement(
         ie,
         {
-          pressed: j === J.Annual,
-          onClick: () => S(J.Annual)
+          pressed: j === K.Annual,
+          onClick: () => S(K.Annual)
         },
         k.Year
       )) : void 0,
@@ -1741,8 +1741,8 @@ const Qt = ({
           trialDaysAsFeature: T,
           useShortFormPlanIntervals: f,
           isCustomPlan: x.availability !== "public",
-          isRecommendedPlan: Je({ plan: x, customFieldKey: y }),
-          buttonLabel: Ke({ plan: x, customFieldKey: g }),
+          isRecommendedPlan: Ke({ plan: x, customFieldKey: y }),
+          buttonLabel: qe({ plan: x, customFieldKey: g }),
           showRecommendedPlanBadge: R,
           t: I,
           translatePlanName: W,
@@ -1806,7 +1806,7 @@ const Ve = ({
     ...g || {}
   };
   if (!d)
-    return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(h, null, E(b.NotSubscribed)), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, !A && /* @__PURE__ */ e.createElement(
+    return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(h, null, E(b.NotSubscribed)), /* @__PURE__ */ e.createElement(J, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, !A && /* @__PURE__ */ e.createElement(
       ie,
       {
         variant: "primary",
@@ -1815,8 +1815,8 @@ const Ve = ({
       },
       E(b.SelectPlan)
     )))));
-  const { plan: w } = d, $ = Ee(d.presentmentTotal, w.presentmentCurrencyCode), F = E(w.interval === J.Annual ? b.Year : b.Month), j = n === "horizontal" ? Wt : L, S = (G = d == null ? void 0 : d.appliedDiscount) == null ? void 0 : G.discount, p = S ? S.percentage ? `${S.percentage}%` : Ee(S.presentmentAmount, w.presentmentCurrencyCode) : null, M = S && d.appliedDiscount.discountEndsAt && Le().isAfter(Le(d.appliedDiscount.discountEndsAt)), Q = w.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
-  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(j, { columns: Q, gap: "300" }, /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.CurrentPlan)), /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, _ ? E(w.name) : w.name), d.cancelOn && /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, E("Canceled, active until {{ date }}").replace("{{ date }}", Le(d.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.Price)), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, E(b.AmountPerInterval).replace("{{ amount }}", $).replace("{{ interval }}", F)), S && !M && /* @__PURE__ */ e.createElement(h, { tone: "success" }, E(b.DiscountAmount).replace("{{ amount }}", p)), S && M && /* @__PURE__ */ e.createElement(h, { tone: "subdued", textDecorationLine: "line-through" }, E(b.DiscountAmountExpired).replace("{{ amount }}", p)))), w.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.UsageCharges || "Usage charges")), w.usageCharges.map((U, I) => /* @__PURE__ */ e.createElement(h, { key: `usage-charge-${I}`, tone: "subdued" }, E(U.terms))))), /* @__PURE__ */ e.createElement(q, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, /* @__PURE__ */ e.createElement(
+  const { plan: w } = d, $ = Ee(d.presentmentTotal, w.presentmentCurrencyCode), F = E(w.interval === K.Annual ? b.Year : b.Month), j = n === "horizontal" ? Wt : L, S = (G = d == null ? void 0 : d.appliedDiscount) == null ? void 0 : G.discount, p = S ? S.percentage ? `${S.percentage}%` : Ee(S.presentmentAmount, w.presentmentCurrencyCode) : null, M = S && d.appliedDiscount.discountEndsAt && Le().isAfter(Le(d.appliedDiscount.discountEndsAt)), Q = w.usageCharges.length > 0 ? { xs: 1, md: 3 } : { xs: 1, md: 2 };
+  return /* @__PURE__ */ e.createElement(ke, null, /* @__PURE__ */ e.createElement(L, { gap: "200" }, /* @__PURE__ */ e.createElement(h, { variant: "headingMd" }, E(b.Subscription)), /* @__PURE__ */ e.createElement(L, { gap: "400" }, /* @__PURE__ */ e.createElement(j, { columns: Q, gap: "300" }, /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.CurrentPlan)), /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, _ ? E(w.name) : w.name), d.cancelOn && /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, E("Canceled, active until {{ date }}").replace("{{ date }}", Le(d.cancelOn).format("LL")))), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.Price)), /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, { tone: "subdued" }, E(b.AmountPerInterval).replace("{{ amount }}", $).replace("{{ interval }}", F)), S && !M && /* @__PURE__ */ e.createElement(h, { tone: "success" }, E(b.DiscountAmount).replace("{{ amount }}", p)), S && M && /* @__PURE__ */ e.createElement(h, { tone: "subdued", textDecorationLine: "line-through" }, E(b.DiscountAmountExpired).replace("{{ amount }}", p)))), w.usageCharges.length > 0 && /* @__PURE__ */ e.createElement(L, null, /* @__PURE__ */ e.createElement(h, null, E(b.UsageCharges || "Usage charges")), w.usageCharges.map((U, I) => /* @__PURE__ */ e.createElement(h, { key: `usage-charge-${I}`, tone: "subdued" }, E(U.terms))))), /* @__PURE__ */ e.createElement(J, { align: "end" }, /* @__PURE__ */ e.createElement(Re, null, /* @__PURE__ */ e.createElement(
     ie,
     {
       onClick: () => {
@@ -1866,7 +1866,7 @@ const Ve = ({
   pageWidth: a = "narrow"
   // string: "full", "narrow", or "default"
 }) => {
-  const { cancelSubscription: u, i18n: c, subscription: y, refetch: g } = Jt(), d = () => {
+  const { cancelSubscription: u, i18n: c, subscription: y, refetch: g } = Kt(), d = () => {
     console.log("Show plans. Navigate to the plans page, open a modal, etc.");
   };
   return /* @__PURE__ */ e.createElement(
