@@ -52,7 +52,7 @@ const App = (Component) => {
 };
 ```
 
-Furthur down the stack you can then use the `useMantle` hook for most data and operations, for example:
+Further down the stack you can then use the `useMantle` hook for most data and operations, for example:
 
 ```js
 import { useMantle } from "@heymantle/react";

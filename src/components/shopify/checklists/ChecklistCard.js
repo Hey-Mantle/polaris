@@ -1,0 +1,255 @@
+import React, { useState } from "react";
+import {
+  BlockStack,
+  Button,
+  Card,
+  Checkbox,
+  InlineStack,
+  Text,
+  Icon,
+  Collapsible,
+  Modal,
+} from "@shopify/polaris";
+import { CheckCircleIcon, ChevronDownIcon, ChevronUpIcon } from "@shopify/polaris-icons";
+
+/*
+ * Checklist component for displaying a list of actionable items.
+ *
+ * @param {Object} props
+ * @param {string} props.title - The title of the checklist
+ * @param {Array} props.steps - Array of checklist steps with { id, name, description, completed }
+ * @param {boolean} props.showProgress - Whether to show progress indicator
+ * @param {boolean} props.showProgressText - Whether to show progress text message (defaults to true when showProgress is true)
+ * @param {boolean} props.hideCompleted - Whether to hide completed steps
+ * @param {boolean} props.allowExpandCompleted - Whether to allow expanding hidden completed steps
+ * @param {boolean} props.showDescription - Whether to show descriptions inline
+ * @param {boolean} props.enableDescriptionModal - Whether to enable clicking on step names to show description in modal
+ * @param {string|JSX.Element} props.completionMessage - Message or JSX content to display when all items are completed and hidden
+ * @param {string|JSX.Element} props.noItemsMessage - Message or JSX content to display when there are no items in the checklist
+ * @returns {JSX.Element}
+ */
+export const ChecklistCard = ({
+  title = "Checklist",
+  steps = [],
+  showProgress = true,
+  showProgressText = true,
+  hideCompleted = false,
+  allowExpandCompleted = true,
+  showDescription = true,
+  enableDescriptionModal = false,
+  completionMessage = "All items completed! Great job!",
+  noItemsMessage = "No items in this checklist yet.",
+}) => {
+  const [showCompletedSteps, setShowCompletedSteps] = useState(false);
+  const [modalStepId, setModalStepId] = useState(null);
+
+  const completedCount = steps.filter(step => step.completed).length;
+  const totalCount = steps.length;
+  const progressPercentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+  const isComplete = completedCount === totalCount && totalCount > 0;
+
+  // Filter steps based on hideCompleted prop and expansion state
+  const incompleteSteps = steps.filter(step => !step.completed);
+  const completedSteps = steps.filter(step => step.completed);
+  const displayedSteps = hideCompleted ? incompleteSteps : steps;
+
+  const handleToggleCompleted = () => {
+    setShowCompletedSteps(!showCompletedSteps);
+  };
+
+  const handleStepNameClick = (stepId) => {
+    if (enableDescriptionModal) {
+      const step = steps.find(s => s.id === stepId);
+      if (step && step.description) {
+        setModalStepId(stepId);
+      }
+    }
+  };
+
+  const handleCloseModal = () => {
+    setModalStepId(null);
+  };
+
+  const modalStep = modalStepId ? steps.find(s => s.id === modalStepId) : null;
+
+  const renderStepName = (step) => {
+    const stepNameElement = (
+      <Text
+        variant="bodyMd"
+        tone={step.completed ? "subdued" : "base"}
+        textDecorationLine={step.completed ? "line-through" : "none"}
+      >
+        {step.name}
+      </Text>
+    );
+
+    if (enableDescriptionModal && step.description) {
+      return (
+        <span
+          style={{
+            cursor: "pointer",
+            textDecoration: "underline",
+            textDecorationColor: "transparent",
+            transition: "text-decoration-color 0.2s ease"
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.textDecorationColor = "currentColor";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.textDecorationColor = "transparent";
+          }}
+          onClick={() => handleStepNameClick(step.id)}
+        >
+          {stepNameElement}
+        </span>
+      );
+    }
+
+    return stepNameElement;
+  };
+
+  return (
+    <Card>
+      <BlockStack gap="400">
+        <BlockStack gap="200">
+          <InlineStack align="space-between" blockAlign="center">
+            <Text variant="headingMd">{title}</Text>
+            {isComplete && (
+              <InlineStack gap="100" blockAlign="center">
+                <Icon source={CheckCircleIcon} tone="success" />
+                <Text tone="success">Complete!</Text>
+              </InlineStack>
+            )}
+          </InlineStack>
+
+          {showProgress && totalCount > 0 && (
+            <BlockStack gap="100">
+              {showProgressText && (
+                <InlineStack align="space-between">
+                  <Text variant="bodyMd" tone="subdued">
+                    Progress: {completedCount} of {totalCount} completed
+                  </Text>
+                  <Text variant="bodyMd" tone="subdued">
+                    {progressPercentage}%
+                  </Text>
+                </InlineStack>
+              )}
+              <div
+                style={{
+                  width: "100%",
+                  height: "8px",
+                  backgroundColor: "#f0f0f0",
+                  borderRadius: "4px",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${progressPercentage}%`,
+                    height: "100%",
+                    backgroundColor: isComplete ? "#00a047" : "#006fbb",
+                    transition: "width 0.3s ease",
+                  }}
+                />
+              </div>
+            </BlockStack>
+          )}
+        </BlockStack>
+
+        <BlockStack gap="300">
+          {displayedSteps.map((step) => (
+            <InlineStack key={step.id} align="space-between" blockAlign="start">
+              <InlineStack gap="300" blockAlign="start">
+                <Checkbox
+                  id={`checklist-step-${step.id}`}
+                  checked={step.completed}
+                  onChange={() => handleToggle(step.id)}
+                />
+                <BlockStack gap="100">
+                  {renderStepName(step)}
+                  {step.description && showDescription && (
+                    <Text variant="bodySm" tone="subdued">
+                      {step.description}
+                    </Text>
+                  )}
+                </BlockStack>
+              </InlineStack>
+            </InlineStack>
+          ))}
+        </BlockStack>
+
+        {/* Expandable completed section */}
+        {hideCompleted && allowExpandCompleted && completedSteps.length > 0 && (
+          <BlockStack gap="200">
+            <Button
+              variant="plain"
+              onClick={handleToggleCompleted}
+              icon={showCompletedSteps ? ChevronUpIcon : ChevronDownIcon}
+              disclosure={showCompletedSteps ? "up" : "down"}
+            >
+              {showCompletedSteps ? "Hide" : "Show"} {completedCount} completed {completedCount === 1 ? "item" : "items"}
+            </Button>
+
+            <Collapsible
+              open={showCompletedSteps}
+              id="completed-steps"
+              transition={{duration: '200ms', timingFunction: 'ease-in-out'}}
+            >
+              <BlockStack gap="300">
+                {completedSteps.map((step) => (
+                  <InlineStack key={step.id} align="space-between" blockAlign="start">
+                    <InlineStack gap="300" blockAlign="start">
+                      <Checkbox
+                        id={`checklist-step-${step.id}`}
+                        checked={step.completed}
+                        onChange={() => handleToggle(step.id)}
+                      />
+                      <BlockStack gap="100">
+                        {renderStepName(step)}
+                        {step.description && showDescription && (
+                          <Text variant="bodySm" tone="subdued">
+                            {step.description}
+                          </Text>
+                        )}
+                      </BlockStack>
+                    </InlineStack>
+                  </InlineStack>
+                ))}
+              </BlockStack>
+            </Collapsible>
+          </BlockStack>
+        )}
+
+        {displayedSteps.length === 0 && hideCompleted && totalCount > 0 && !allowExpandCompleted && (
+          typeof completionMessage === 'string' ? <Text tone="subdued" alignment="center">
+            {completionMessage}
+          </Text> : completionMessage
+        )}
+
+        {totalCount === 0 && (
+          typeof noItemsMessage === 'string' ? <Text tone="subdued" alignment="center">
+            {noItemsMessage}
+          </Text> : noItemsMessage
+        )}
+      </BlockStack>
+
+      {modalStep && (
+        <Modal
+          open={!!modalStepId}
+          onClose={handleCloseModal}
+          title={modalStep.name}
+          primaryAction={{
+            content: "Close",
+            onAction: handleCloseModal,
+          }}
+        >
+        <Modal.Section>
+          <Text variant="bodyMd">
+            {modalStep.description}
+          </Text>
+        </Modal.Section>
+        </Modal>
+      )}
+    </Card>
+  );
+};
