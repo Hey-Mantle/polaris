@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon, PlusIcon } from "@shopify/polaris-icons";
+import { CheckIcon, PlusIcon, InfoIcon } from "@shopify/polaris-icons";
 import {
   Badge,
   Box,
@@ -10,6 +10,7 @@ import {
   InlineStack,
   Icon,
   Text,
+  Tooltip,
 } from "@shopify/polaris";
 import { intervalLabel, Labels, money } from "@heymantle/react";
 
@@ -29,6 +30,7 @@ export const VerticalPlanCard = ({
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
   toggleYearlySubtitle = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -92,6 +94,7 @@ export const VerticalPlanCard = ({
                   key={`plan-feature-${index}`}
                   align="start"
                   gap="100"
+                  wrap={false}
                 >
                   <Box>
                     <Icon source={CheckIcon} tone="positive" />
@@ -102,6 +105,11 @@ export const VerticalPlanCard = ({
                     <Text tone="subdued">
                       {planFeature.value} {planFeature.name}
                     </Text>
+                  )}
+                  {planFeature.description && showFeatureDescriptionAsTooltip && (
+                    <Tooltip content={t(planFeature.description)}>
+                      <Icon source={InfoIcon} tone="subdued" />
+                    </Tooltip>
                   )}
                 </InlineStack>
               );
@@ -155,7 +163,7 @@ export const VerticalPlanCard = ({
         )}
         {plan.usageCharges.length > 0 && (
           <BlockStack>
-            {plan.usageCharges.map((usageCharge, index) => {
+            {plan.usageCharges.filter(charge => charge.terms && charge.terms.length > 0).map((usageCharge, index) => {
               return (
                 <InlineStack
                   key={`plan-usageCharge-${index}`}

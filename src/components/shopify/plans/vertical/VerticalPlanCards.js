@@ -38,6 +38,7 @@ export const VerticalPlanCards = ({
   t: _t,
   translatePlanName = true,
   toggleYearlySubtitle = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const hasMonthlyAndYearlyPlans =
@@ -130,6 +131,7 @@ export const VerticalPlanCards = ({
                   t={t}
                   translatePlanName={translatePlanName}
                   toggleYearlySubtitle={toggleYearlySubtitle}
+                  showFeatureDescriptionAsTooltip={showFeatureDescriptionAsTooltip}
                 />
               );
             })}

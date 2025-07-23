@@ -1,4 +1,4 @@
-export function VerticalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, t, translatePlanName, showRecommendedPlanBadge, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, toggleYearlySubtitle, }: {
+export function VerticalPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, isRecommendedPlan, isActivePlan, t, translatePlanName, showRecommendedPlanBadge, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, toggleYearlySubtitle, showFeatureDescriptionAsTooltip, }: {
     plan: any;
     discount: any;
     buttonLabel: any;
@@ -14,6 +14,7 @@ export function VerticalPlanCard({ plan, discount, buttonLabel, onSelectPlan, us
     planDescriptionTextVariant?: string;
     priceTextVariant?: string;
     toggleYearlySubtitle?: boolean;
+    showFeatureDescriptionAsTooltip?: boolean;
 }): React.JSX.Element;
 import React from "react";
 //# sourceMappingURL=VerticalPlanCard.d.ts.map

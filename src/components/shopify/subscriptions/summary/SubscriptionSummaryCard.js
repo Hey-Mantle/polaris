@@ -111,7 +111,7 @@ export const SubscriptionSummaryCard = ({
             {plan.usageCharges.length > 0 && (
               <BlockStack>
                 <Text>{t(i18n.UsageCharges || "Usage charges")}</Text>
-                {plan.usageCharges.map((charge, index) => {
+                {plan.usageCharges.filter(charge => charge.terms && charge.terms.length > 0).map((charge, index) => {
                   return (
                     <Text key={`usage-charge-${index}`} tone="subdued">{t(charge.terms)}</Text>
                   )

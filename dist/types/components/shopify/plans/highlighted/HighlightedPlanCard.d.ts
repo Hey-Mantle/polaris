@@ -11,11 +11,11 @@ export function PlanPricingSection({ plan, discount, t, priceTextVariant, useSho
     priceTextVariant?: string;
     useShortFormPlanIntervals?: boolean;
 }): JSX.Element;
-export function PlanFeaturesSection({ plan, t, trialDaysAsFeature, }: {
+export function PlanFeaturesSection({ plan, t, trialDaysAsFeature, showFeatureDescriptionAsTooltip, }: {
     plan: Plan;
     trialDaysAsFeature?: boolean;
 }): JSX.Element;
-export function HighlightedPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, expanded, isActivePlan, isRecommendedPlan, isCustomPlan, showRecommendedPlanBadge, t: _t, translatePlanName, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, toggleYearlySubtitle, }: {
+export function HighlightedPlanCard({ plan, discount, buttonLabel, onSelectPlan, useShortFormPlanIntervals, trialDaysAsFeature, expanded, isActivePlan, isRecommendedPlan, isCustomPlan, showRecommendedPlanBadge, t: _t, translatePlanName, planNameTextVariant, planDescriptionTextVariant, priceTextVariant, toggleYearlySubtitle, showFeatureDescriptionAsTooltip, }: {
     plan: Plan;
     discount: Discount;
     buttonLabel?: string;

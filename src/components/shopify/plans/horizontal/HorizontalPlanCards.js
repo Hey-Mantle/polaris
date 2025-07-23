@@ -27,6 +27,7 @@ export const HorizontalPlanCards = ({
   pageWidth = "default", // string: "full", "narrow", or "default"
   showCustomPlans = true, // boolean: show custom plans
   toggleYearlySubtitle = false, // boolean: toggle monthly pricing
+  showFeatureDescriptionAsTooltip = true, // boolean: show feature description as tooltip
 }) => {
   const subscription = customer?.subscription;
   const urlParams = new URLSearchParams(window.location.search);
@@ -104,6 +105,7 @@ export const HorizontalPlanCards = ({
               useShortFormPlanIntervals={useShortFormPlanIntervals}
               showRecommendedPlanBadge={showRecommendedBadge}
               toggleYearlySubtitle={toggleYearlySubtitle}
+              showFeatureDescriptionAsTooltip={showFeatureDescriptionAsTooltip}
             />
             {customPlans?.length > 0 && <Divider borderColor="border" />}
             {customPlans?.length > 0 && (
@@ -121,6 +123,7 @@ export const HorizontalPlanCards = ({
                   trialDaysAsFeature={showTrialDaysAsFeature}
                   useShortFormPlanIntervals={useShortFormPlanIntervals}
                   showRecommendedPlanBadge={showRecommendedBadge}
+                  showFeatureDescriptionAsTooltip={showFeatureDescriptionAsTooltip}
                 />
               </BlockStack>
             )}

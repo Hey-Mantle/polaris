@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon, PlusIcon } from "@shopify/polaris-icons";
+import { CheckIcon, PlusIcon, InfoIcon } from "@shopify/polaris-icons";
 import {
   Badge,
   Box,
@@ -8,6 +8,7 @@ import {
   InlineStack,
   Icon,
   Text,
+  Tooltip,
 } from "@shopify/polaris";
 import { Labels, intervalLabel, money } from "@heymantle/react";
 
@@ -114,7 +115,7 @@ export const PlanPricingSection = ({
     )}
     {plan.usageCharges.length > 0 && (
       <BlockStack>
-        {plan.usageCharges.map((usageCharge, index) => {
+        {plan.usageCharges.filter(charge => charge.terms && charge.terms.length > 0).map((usageCharge, index) => {
           return (
             <InlineStack
               key={`plan-usageCharge-${index}`}
@@ -149,6 +150,7 @@ export const PlanFeaturesSection = ({
   plan,
   t,
   trialDaysAsFeature = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => (
   <BlockStack gap="300">
     {trialDaysAsFeature && plan.trialDays && plan.trialDays > 0 ? (
@@ -168,7 +170,7 @@ export const PlanFeaturesSection = ({
         planFeature.visible;
       if (showFeature) {
         return (
-          <InlineStack key={`plan-feature-${index}`} align="center" gap="100">
+          <InlineStack key={`plan-feature-${index}`} align="center" gap="100" wrap={false}>
             <Box>
               <Icon source={CheckIcon} tone="subdued" />
             </Box>
@@ -178,6 +180,11 @@ export const PlanFeaturesSection = ({
               <Text>
                 {planFeature.value} {t(planFeature.name)}
               </Text>
+            )}
+            {planFeature.description && showFeatureDescriptionAsTooltip && (
+              <Tooltip content={t(planFeature.description)}>
+                <Icon source={InfoIcon} tone="subdued" />
+              </Tooltip>
             )}
           </InlineStack>
         );
@@ -220,6 +227,7 @@ export const HighlightedPlanCard = ({
   planDescriptionTextVariant = "bodyLg",
   priceTextVariant = "heading3xl",
   toggleYearlySubtitle = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -292,6 +300,7 @@ export const HighlightedPlanCard = ({
               plan={plan}
               t={t}
               trialDaysAsFeature={trialDaysAsFeature}
+              showFeatureDescriptionAsTooltip={showFeatureDescriptionAsTooltip}
             />
             {isRecommendedPlan && showRecommendedPlanBadge && (
               <InlineStack align="center" gap="100">

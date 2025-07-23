@@ -1,4 +1,4 @@
-export function HorizontalPlanCards({ customer, plans, onSubscribe, backUrl, showRecommendedBadge, customFieldCta, customFieldPlanRecommended, showPlanIntervalToggle, showTrialDaysAsFeature, useShortFormPlanIntervals, pageWidth, showCustomPlans, toggleYearlySubtitle, }: {
+export function HorizontalPlanCards({ customer, plans, onSubscribe, backUrl, showRecommendedBadge, customFieldCta, customFieldPlanRecommended, showPlanIntervalToggle, showTrialDaysAsFeature, useShortFormPlanIntervals, pageWidth, showCustomPlans, toggleYearlySubtitle, showFeatureDescriptionAsTooltip, }: {
     customer: any;
     plans: any;
     onSubscribe: any;
@@ -12,6 +12,7 @@ export function HorizontalPlanCards({ customer, plans, onSubscribe, backUrl, sho
     pageWidth?: string;
     showCustomPlans?: boolean;
     toggleYearlySubtitle?: boolean;
+    showFeatureDescriptionAsTooltip?: boolean;
 }): React.JSX.Element;
 import React from "react";
 //# sourceMappingURL=HorizontalPlanCards.d.ts.map

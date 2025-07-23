@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon, PlusIcon } from "@shopify/polaris-icons";
+import { CheckIcon, PlusIcon, InfoIcon } from "@shopify/polaris-icons";
 import {
   Badge,
   Box,
@@ -9,6 +9,7 @@ import {
   InlineStack,
   Icon,
   Text,
+  Tooltip,
 } from "@shopify/polaris";
 import { Labels, intervalLabel, money } from "@heymantle/react";
 
@@ -113,7 +114,7 @@ export const PlanPricingSection = ({
     )}
     {plan.usageCharges && plan.usageCharges.length > 0 && (
       <BlockStack>
-        {plan.usageCharges.map((usageCharge, index) => {
+        {plan.usageCharges.filter(charge => charge.terms && charge.terms.length > 0).map((usageCharge, index) => {
           return (
             <InlineStack
               key={`plan-usageCharge-${index}`}
@@ -148,6 +149,7 @@ export const PlanFeaturesSection = ({
   plan,
   t,
   trialDaysAsFeature = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => (
   <BlockStack gap="100">
     {trialDaysAsFeature && plan.trialDays && plan.trialDays > 0 ? (
@@ -183,6 +185,11 @@ export const PlanFeaturesSection = ({
               <Text>
                 {planFeature.value} {t(planFeature.name)}
               </Text>
+            )}
+            {planFeature.description && showFeatureDescriptionAsTooltip && (
+              <Tooltip content={t(planFeature.description)}>
+                <Icon source={InfoIcon} tone="subdued" />
+              </Tooltip>
             )}
           </InlineStack>
         );
@@ -221,6 +228,7 @@ export const HorizontalPlanCard = ({
   planDescriptionTextVariant = "bodyMd",
   priceTextVariant = "headingXl",
   toggleYearlySubtitle = false,
+  showFeatureDescriptionAsTooltip = true,
 }) => {
   const [isSelectingPlan, setIsSelectingPlan] = React.useState(false);
 
@@ -276,6 +284,7 @@ export const HorizontalPlanCard = ({
         <PlanFeaturesSection
           plan={plan}
           trialDaysAsFeature={trialDaysAsFeature}
+          showFeatureDescriptionAsTooltip={showFeatureDescriptionAsTooltip}
           t={t}
         />
       </BlockStack>
